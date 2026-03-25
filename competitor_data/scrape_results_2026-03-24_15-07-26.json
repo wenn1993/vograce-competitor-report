@@ -1,0 +1,29 @@
+{
+  "vograce": {
+    "name": "Vograce",
+    "url": "https://vograce.com",
+    "timestamp": "2026-03-24T15:07:12.128340",
+    "pages_checked": 0,
+    "prices_found": [],
+    "promotions": [],
+    "new_products": []
+  },
+  "wooacry": {
+    "name": "WooAcry",
+    "url": "https://wooacry.com",
+    "timestamp": "2026-03-24T15:07:19.723170",
+    "pages_checked": 0,
+    "prices_found": [],
+    "promotions": [],
+    "new_products": []
+  },
+  "zap": {
+    "name": "Zap! Creatives",
+    "url": "https://zapcreatives.com",
+    "timestamp": "2026-03-24T15:07:24.095129",
+    "pages_checked": 0,
+    "prices_found": [],
+    "promotions": [],
+    "new_products": []
+  }
+}

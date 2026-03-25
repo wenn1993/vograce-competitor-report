@@ -1,0 +1,21 @@
+# Dependencies
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-03-25T09:05:52.311071",
+  "date": "2026-03-25",
+  "time": "09:05:52",
+  "competitors": {
+    "vograce": {
+      "name": "Vograce",
+      "name_cn": "🇨🇳 中国",
+      "pages_checked": 5,
+      "pages_success": 5,
+      "prices_count": 75,
+      "min_price": 0.05,
+      "max_price": 2.74,
+      "avg_price": 1.22,
+      "promotions": []
+    },
+    "wooacry": {
+      "name": "WooAcry",
+      "name_cn": "🇨🇳 中国",
+      "pages_checked": 4,
+      "pages_success": 4,
+      "prices_count": 17,
+      "min_price": 0.99,
+      "max_price": 7.98,
+      "avg_price": 3.09,
+      "promotions": []
+    },
+    "zap": {
+      "name": "Zap! Creatives",
+      "name_cn": "🇬🇧 英国",
+      "pages_checked": 4,
+      "pages_success": 4,
+      "prices_count": 0,
+      "min_price": null,
+      "max_price": null,
+      "avg_price": null,
+      "promotions": []
+    }
+  }
+}

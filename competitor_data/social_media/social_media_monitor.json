@@ -1,0 +1,236 @@
+{
+  "last_updated": "2026-03-25 09:06:12",
+  "competitors": {
+    "vograce": {
+      "name": "Vograce",
+      "platforms": {
+        "twitter": {
+          "handle": "@Vograce_com",
+          "followers": "12.5K",
+          "followers_raw": 12500,
+          "recent_activity": [
+            {
+              "date": "2026-03-25",
+              "type": "promotion",
+              "content": "Spring Sale! Extra 15% off all acrylic keychains with code SPRING15",
+              "engagement": {
+                "likes": 234,
+                "retweets": 45
+              }
+            },
+            {
+              "date": "2026-03-23",
+              "type": "product",
+              "content": "New 3D printed acrylic figures now available! Perfect for anime fans",
+              "engagement": {
+                "likes": 189,
+                "retweets": 32
+              }
+            }
+          ],
+          "last_post": "2026-03-25"
+        },
+        "instagram": {
+          "handle": "@vograce_com",
+          "followers": "28.3K",
+          "followers_raw": 28300,
+          "recent_posts": 12,
+          "avg_engagement": "4.2%"
+        }
+      },
+      "brand_mentions": {
+        "mentions_7d": 156,
+        "sentiment": "positive",
+        "trend": "up"
+      }
+    },
+    "wooacry": {
+      "name": "WooAcry",
+      "platforms": {
+        "twitter": {
+          "handle": "@WooAcry",
+          "followers": "8.2K",
+          "followers_raw": 8200,
+          "recent_activity": [
+            {
+              "date": "2026-03-25",
+              "type": "community",
+              "content": "Join our Discord! 30,000+ creators sharing tips and feedback",
+              "engagement": {
+                "likes": 312,
+                "retweets": 89
+              }
+            },
+            {
+              "date": "2026-03-24",
+              "type": "promotion",
+              "content": "Bulk discount alert! Up to 72% off for large orders",
+              "engagement": {
+                "likes": 445,
+                "retweets": 156
+              }
+            }
+          ],
+          "last_post": "2026-03-25"
+        },
+        "discord": {
+          "members": "30,000+",
+          "active_channels": 45,
+          "engagement": "High"
+        }
+      },
+      "brand_mentions": {
+        "mentions_7d": 423,
+        "sentiment": "positive",
+        "trend": "up"
+      }
+    },
+    "zapcreatives": {
+      "name": "Zap! Creatives",
+      "platforms": {
+        "twitter": {
+          "handle": "@ZapCreatives",
+          "followers": "15.1K",
+          "followers_raw": 15100,
+          "recent_activity": [
+            {
+              "date": "2026-03-24",
+              "type": "review",
+              "content": "Featured in @Buzzfeed's 'Best Custom Merch Sites' list! Thank you!",
+              "engagement": {
+                "likes": 567,
+                "retweets": 234
+              }
+            }
+          ],
+          "last_post": "2026-03-24"
+        },
+        "instagram": {
+          "handle": "@zapcreatives",
+          "followers": "42K",
+          "followers_raw": 42000,
+          "recent_posts": 18,
+          "avg_engagement": "5.8%"
+        }
+      },
+      "brand_mentions": {
+        "mentions_7d": 287,
+        "sentiment": "positive",
+        "trend": "stable"
+      }
+    }
+  },
+  "industry_trends": {
+    "trending_topics": [
+      {
+        "topic": "print on demand",
+        "volume": "High",
+        "trend": "up"
+      },
+      {
+        "topic": "custom keychains",
+        "volume": "Very High",
+        "trend": "up"
+      },
+      {
+        "topic": "anime merch",
+        "volume": "High",
+        "trend": "up"
+      },
+      {
+        "topic": "artist alley prep",
+        "volume": "Medium",
+        "trend": "seasonal"
+      }
+    ],
+    "recent_mentions": {
+      "vograce": 156,
+      "wooacry": 423,
+      "zapcreatives": 287,
+      "stickermule": 892,
+      "makeship": 234
+    }
+  },
+  "reddit_search": [
+    {
+      "title": "I Made A Custom Machined Tritium Keychain",
+      "url": "https://reddit.com/r/DIY/comments/71j2d3/i_made_a_custom_machined_tritium_keychain/",
+      "subreddit": "r/merch",
+      "score": 9468,
+      "num_comments": 586,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "My sister is a nurse. In light of her many delightful encounters she's had with various incredibly friendly patients who definitely didn't give her a ",
+      "url": "https://reddit.com/r/pokemon/comments/1jff5jl/my_sister_is_a_nurse_in_light_of_her_many/",
+      "subreddit": "r/merch",
+      "score": 2835,
+      "num_comments": 72,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "I made custom NFC keychains for all of my clients for Xmas this yr!",
+      "url": "https://reddit.com/r/NailArt/comments/1rh6edc/i_made_custom_nfc_keychains_for_all_of_my_clients/",
+      "subreddit": "r/merch",
+      "score": 621,
+      "num_comments": 44,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "I Made A Custom Machined Tritium Keychain",
+      "url": "https://reddit.com/r/DIY/comments/71j2d3/i_made_a_custom_machined_tritium_keychain/",
+      "subreddit": "r/AnimeMerch",
+      "score": 9470,
+      "num_comments": 586,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "My sister is a nurse. In light of her many delightful encounters she's had with various incredibly friendly patients who definitely didn't give her a ",
+      "url": "https://reddit.com/r/pokemon/comments/1jff5jl/my_sister_is_a_nurse_in_light_of_her_many/",
+      "subreddit": "r/AnimeMerch",
+      "score": 2843,
+      "num_comments": 72,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "I made custom NFC keychains for all of my clients for Xmas this yr!",
+      "url": "https://reddit.com/r/NailArt/comments/1rh6edc/i_made_custom_nfc_keychains_for_all_of_my_clients/",
+      "subreddit": "r/AnimeMerch",
+      "score": 621,
+      "num_comments": 44,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "I Made A Custom Machined Tritium Keychain",
+      "url": "https://reddit.com/r/DIY/comments/71j2d3/i_made_a_custom_machined_tritium_keychain/",
+      "subreddit": "r/customkeychains",
+      "score": 9465,
+      "num_comments": 586,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "My sister is a nurse. In light of her many delightful encounters she's had with various incredibly friendly patients who definitely didn't give her a ",
+      "url": "https://reddit.com/r/pokemon/comments/1jff5jl/my_sister_is_a_nurse_in_light_of_her_many/",
+      "subreddit": "r/customkeychains",
+      "score": 2835,
+      "num_comments": 72,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "I made custom NFC keychains for all of my clients for Xmas this yr!",
+      "url": "https://reddit.com/r/NailArt/comments/1rh6edc/i_made_custom_nfc_keychains_for_all_of_my_clients/",
+      "subreddit": "r/customkeychains",
+      "score": 619,
+      "num_comments": 44,
+      "keyword": "custom keychain"
+    },
+    {
+      "title": "My acrylic standee came in!!",
+      "url": "https://reddit.com/r/ironlung/comments/1rrukvk/my_acrylic_standee_came_in/",
+      "subreddit": "r/merch",
+      "score": 2395,
+      "num_comments": 43,
+      "keyword": "acrylic standee"
+    }
+  ]
+}
