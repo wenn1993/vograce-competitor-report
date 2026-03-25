@@ -349,14 +349,6 @@ def scrape_social_media():
             }
         }
     }
-            "followers": {
-                "twitter": "44.3万",
-                "instagram": "310K",
-                "tiktok": "131.8K",
-                "youtube": "2.86万"
-            }
-        }
-    }
     
     for comp_key, account in social_accounts.items():
         social_data["competitors"][comp_key] = {
