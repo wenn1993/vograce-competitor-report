@@ -1262,7 +1262,7 @@
     
 
     <div class="hero-meta" id="scrapeInfo">
-    <div class="meta-item"><div class="meta-dot"></div>数据来源：18个</div>
+    <div class="meta-item"><div class="meta-dot"></div>数据来源：34个</div>
     <div class="meta-item"><div class="meta-dot"></div>市场：动漫周边/定制</div>
   </div>
 </div>
@@ -1282,7 +1282,7 @@
       <div style="font-size:11px;color:#94A3B8;margin-top:4px;">可信度评分</div>
     </div>
     <div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:12px;text-align:center;">
-      <div style="font-size:22px;font-weight:700;color:#3B82F6;" id="data-sources">18</div>
+      <div style="font-size:22px;font-weight:700;color:#3B82F6;" id="data-sources">34</div>
       <div style="font-size:11px;color:#94A3B8;margin-top:4px;">数据来源</div>
     </div>
     <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:12px;text-align:center;">
@@ -4142,11 +4142,12 @@
     <div style="flex:1;min-width:300px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <i data-lucide="shield-check" class="icon icon-lg" style="color:#3B82F6"></i>
-        <span style="font-size:13px;font-weight:600;color:#fff;">数据可信度声明</span>
+        <span style="font-size:13px;font-weight:600;color:#fff;">数据来源：34个</span>
+        <span style="font-size:10px;color:#64748B;">（竞品/POD/电商/社媒/SEO/众筹/展会/市场研究）</span>
       </div>
       <div style="font-size:11px;color:#94A3B8;line-height:1.6;">
-        本报告数据来源：①7家核心竞品官网（Vograce/WooAcry/StickerMule/Zap!/Makeship/Redbubble/Society6/Zazzle）②3大POD平台（Printful/Printify/Spring）③电商平台（Etsy/Amazon/eBay）④社媒矩阵（Instagram/TikTok/Pinterest/YouTube/Reddit/Discord）⑤SEO工具（SimilarWeb/SEMrush/Ahrefs/BuzzSumo）⑥众筹展会（Kickstarter/Indiegogo/Anime Expo/AnimeCons）⑦市场研究（Grand View/Mordor/Fortune/Statista）⑧Google Trends搜索趋势⑨内部历史数据库。<br>
-        <span style="color:#10B981;">数据均经交叉验证，可追溯原始来源。</span> 仅供内部研究参考，不构成投资建议。
+        ①核心竞品官网（Vograce/WooAcry/StickerMule/Zap!/Makeship/Redbubble/Society6/Zazzle）②POD平台（Printful/Printify/Spring）③电商平台（Etsy/Amazon/eBay）④社媒矩阵（Instagram/TikTok/Pinterest/YouTube/Reddit/Discord）⑤SEO工具（SimilarWeb/SEMrush/Ahrefs/BuzzSumo/Google Trends）⑥众筹展会（Kickstarter/Indiegogo/Anime Expo/AnimeCons）⑦市场研究（Grand View/Mordor/Fortune/Statista）⑧内部历史数据库。<br>
+        <span style="color:#10B981;">数据均经交叉验证，每日08:00自动更新。</span> 仅供内部研究参考，不构成投资建议。
       </div>
     </div>
     <div style="text-align:right;font-size:11px;color:#94A3B8;">
@@ -4162,18 +4163,7 @@
   </div>
 </div>
 
-<div class="footer">
-  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-      <span style="color:#94A3B8;font-size:12px;">数据来源：34个（竞品/POD/电商/社媒/SEO/众筹/展会/市场研究）</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-      <span style="color:#64748B;font-size:12px;" id="footerGenTime2">加载中...</span>
-      <span style="color:#475569;font-size:12px;">每日 08:00 自动更新</span>
-      <a href="https://github.com/wenn1993/vograce-competitor-report" target="_blank" style="color:#94A3B8;font-size:12px;text-decoration:none;">GitHub</a>
-    </div>
-  </div>
-</div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -4685,10 +4675,10 @@ async function updateScrapeInfo() {
       const timestamp = Object.values(data)[0]?.timestamp || '';
       industryUpdateEl.textContent = timestamp ? new Date(timestamp).toLocaleDateString('zh-CN') : '待更新';
     }
-    // 更新核心竞品数量
+    // 更新核心竞品数量 - 显示全部数据来源数量(34个)
     if (industryCompetitorsEl) {
-      const competitorCount = Object.keys(data).filter(k => data[k] && data[k].name).length;
-      industryCompetitorsEl.textContent = competitorCount > 0 ? competitorCount + '+' : '5+';
+      // industryCompetitorsEl 显示的是"数据来源"，应该显示全部34个来源，不是爬取的竞品数
+      // 保持原有HTML中的"34+"不变，由数据来源透明度区域的动态计数来更新
     }
     // 更新抓取摘要框
     const timeEl = document.getElementById('scrapeTime');
