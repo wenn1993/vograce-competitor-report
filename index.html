@@ -4,7 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vograce全球竞品监控</title>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
+  /* Lucide图标通用样式 */
+  .icon {
+    width: 1em;
+    height: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
+  .icon-lg {
+    width: 20px;
+    height: 20px;
+  }
+  .icon-xl {
+    width: 24px;
+    height: 24px;
+  }
+  .icon-sm {
+    width: 14px;
+    height: 14px;
+  }
   :root {
     --primary: #6C3CE1;
     --primary-light: #8B5CF6;
@@ -1293,11 +1316,11 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
-        <div style="font-size:11px;color:#6EE7B7;font-weight:600;margin-bottom:6px;">✓ 核心优势</div>
+        <div style="font-size:11px;color:#6EE7B7;font-weight:600;margin-bottom:6px;"><i data-lucide="check-circle" class="icon" style="color:#6EE7B7"></i> 核心优势</div>
         <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">Vograce木质钥匙扣价格全球最低($0.71)，比WooAcry低28%；SKU覆盖最全面(24+品类)，满足一站式采购需求</div>
       </div>
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
-        <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;">⚠ 关键风险</div>
+        <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;"><i data-lucide="alert-triangle" class="icon" style="color:#FCA5A5"></i> 关键风险</div>
         <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">WooAcry亚克力钥匙扣$0.99起，比Vograce低34%；其POD开店模式对独立艺术家吸引力更强</div>
       </div>
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
@@ -1313,7 +1336,7 @@
     <!-- 市场竞争格局 -->
     <div class="vograce-card" id="anchor-market-position" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,rgba(59,130,246,0.2) 0%,rgba(59,130,246,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(59,130,246,0.2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:#93C5FD;">🏢 市场竞争格局</span>
+        <span style="font-size:13px;font-weight:600;color:#93C5FD;"><i data-lucide="building-2" class="icon" style="color:#93C5FD"></i> 市场竞争格局</span>
         <span style="font-size:10px;color:#93C5FD;opacity:0.7;">Market Position</span>
       </div>
       <div style="padding:16px;">
@@ -1435,7 +1458,7 @@
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,rgba(16,185,129,0.3),rgba(16,185,129,0.1));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-size:16px;">♻️</span>
+            <i data-lucide="refresh-cw" class="icon icon-lg" style="color:#94A3B8"></i>
           </div>
           <div style="flex:1;">
             <div style="font-size:12px;font-weight:600;color:#C4B5FD;margin-bottom:4px;">环保材料成新卖点</div>
@@ -1554,7 +1577,7 @@
     <!-- 供应链与成本动态 -->
     <div class="vograce-card" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,rgba(245,158,11,0.2) 0%,rgba(245,158,11,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(245,158,11,0.2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:#FCD34D;">⚙️ 供应链与成本动态</span>
+        <span style="font-size:13px;font-weight:600;color:#FCD34D;"><i data-lucide="settings" class="icon" style="color:#FCD34D"></i> 供应链与成本动态</span>
         <span style="font-size:10px;color:#FCD34D;opacity:0.7;">Supply Chain</span>
       </div>
       <div style="padding:16px;">
@@ -2167,13 +2190,13 @@
         <div style="font-size:13px;font-weight:700;color:#EF4444;margin-top:6px;">-34%</div>
       </div>
       <div style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:24px;margin-bottom:6px;">🏷️</div>
+        <i data-lucide="tag" class="icon icon-xl" style="color:#10B981;margin-bottom:6px;"></i>
         <div style="font-size:12px;font-weight:700;color:#FBBF24;margin-bottom:4px;">贴纸</div>
         <div style="font-size:11px;color:#94A3B8;">Sticker Mule更低价</div>
         <div style="font-size:13px;font-weight:700;color:#F59E0B;margin-top:6px;">+14%</div>
       </div>
       <div style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:24px;margin-bottom:6px;">🎖️</div>
+        <i data-lucide="award" class="icon icon-xl" style="color:#FCD34D;margin-bottom:6px;"></i>
         <div style="font-size:12px;font-weight:700;color:#10B981;margin-bottom:4px;">徽章/吧唧</div>
         <div style="font-size:11px;color:#94A3B8;">全区间领先</div>
         <div style="font-size:13px;font-weight:700;color:#10B981;margin-top:6px;">-30%~72%</div>
@@ -2200,7 +2223,7 @@
   <!-- 品类一：徽章/吧唧（Vograce最强优势） -->
   <div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(59,130,246,0.08));border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:20px;margin-bottom:20px;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-      <span style="font-size:20px;">🎖️</span>
+      <i data-lucide="award" class="icon icon-xl" style="color:#FCD34D"></i>
       <h3 style="font-size:15px;font-weight:700;color:#fff;margin:0;">徽章/吧唧价格对比 (58mm标准款)</h3>
       <span style="background:#10B981;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;margin-left:auto;">Vograce最强优势</span>
     </div>
@@ -2246,7 +2269,7 @@
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 14px;background:rgba(16,185,129,0.15);border-radius:8px;font-size:12px;color:#fff;">
-      <strong style="color:#10B981;">📌 结论:</strong> Vograce全区间价格领先，比竞品便宜<strong>30%-72%</strong>。建议作为核心营销卖点推广。
+      <strong style="color:#10B981;"><i data-lucide="map-pin" class="icon" style="color:#10B981"></i> 结论:</strong> Vograce全区间价格领先，比竞品便宜<strong>30%-72%</strong>。建议作为核心营销卖点推广。
     </div>
   </div>
 
@@ -2299,7 +2322,7 @@
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 14px;background:rgba(16,185,129,0.15);border-radius:8px;font-size:12px;color:#fff;">
-      <strong style="color:#10B981;">📌 结论:</strong> 比Printful便宜<strong>30%-53%</strong>，比Redbubble便宜<strong>55%-72%</strong>。POD定制首选供应商。
+      <strong style="color:#10B981;"><i data-lucide="map-pin" class="icon" style="color:#10B981"></i> 结论:</strong> 比Printful便宜<strong>30%-53%</strong>，比Redbubble便宜<strong>55%-72%</strong>。POD定制首选供应商。
     </div>
   </div>
 
@@ -2352,7 +2375,7 @@
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 14px;background:rgba(16,185,129,0.15);border-radius:8px;font-size:12px;color:#fff;">
-      <strong style="color:#10B981;">📌 结论:</strong> 比Printful便宜<strong>35%-65%</strong>，比Redbubble便宜<strong>60%-86%</strong>。粉丝周边/活动周边首选。
+      <strong style="color:#10B981;"><i data-lucide="map-pin" class="icon" style="color:#10B981"></i> 结论:</strong> 比Printful便宜<strong>35%-65%</strong>，比Redbubble便宜<strong>60%-86%</strong>。粉丝周边/活动周边首选。
     </div>
   </div>
 
@@ -2398,14 +2421,14 @@
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 14px;background:rgba(239,68,68,0.15);border-radius:8px;font-size:12px;color:#fff;">
-      <strong style="color:#EF4444;">📌 结论:</strong> WooAcry在所有批量区间均低于Vograce <strong>34%-133%</strong>。建议强调<strong style="color:#10B981;">无MOQ政策</strong>和<strong style="color:#10B981;">木质钥匙扣($0.71起)</strong>等差异化优势。
+      <strong style="color:#EF4444;"><i data-lucide="map-pin" class="icon" style="color:#EF4444"></i> 结论:</strong> WooAcry在所有批量区间均低于Vograce <strong>34%-133%</strong>。建议强调<strong style="color:#10B981;">无MOQ政策</strong>和<strong style="color:#10B981;">木质钥匙扣($0.71起)</strong>等差异化优势。
     </div>
   </div>
 
   <!-- 品类五：贴纸（Vograce劣势） -->
   <div style="background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(16,185,129,0.08));border:1px solid rgba(245,158,11,0.35);border-radius:12px;padding:20px;margin-bottom:24px;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-      <span style="font-size:20px;">🏷️</span>
+      <i data-lucide="tag" class="icon icon-xl" style="color:#F59E0B"></i>
       <h3 style="font-size:15px;font-weight:700;color:#fff;margin:0;">贴纸价格对比 (3"×3"标准尺寸)</h3>
       <span style="background:#F59E0B;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;margin-left:auto;">Sticker Mule更低价</span>
     </div>
@@ -2444,7 +2467,7 @@
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 14px;background:rgba(245,158,11,0.15);border-radius:8px;font-size:12px;color:#fff;">
-      <strong style="color:#F59E0B;">📌 结论:</strong> Sticker Mule凭借专业贴纸供应商地位价格略优。Vograce可强调<strong>动漫周边定制特色</strong>和<strong>组合套装优惠</strong>。
+      <strong style="color:#F59E0B;"><i data-lucide="map-pin" class="icon" style="color:#F59E0B"></i> 结论:</strong> Sticker Mule凭借专业贴纸供应商地位价格略优。Vograce可强调<strong>动漫周边定制特色</strong>和<strong>组合套装优惠</strong>。
     </div>
   </div>
 
@@ -2929,7 +2952,7 @@
             <span style="font-size:11px;font-weight:700;color:#FCD34D;">$1.44</span>
           </div>
           <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:8px;margin-top:4px;">
-            <div style="font-size:10px;color:#EF4444;">⚠ WooAcry低34%</div>
+            <div style="font-size:10px;color:#EF4444;"><i data-lucide="alert-triangle" class="icon icon-sm" style="color:#EF4444"></i> WooAcry低34%</div>
             <div style="font-size:9px;color:#6B7280;margin-top:2px;">价格优势持续</div>
           </div>
         </div>
@@ -2987,7 +3010,7 @@
     <!-- 竞争威胁评估 -->
     <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;">
       <h3 style="font-size:15px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
-        ⚔️ 竞争威胁评估
+        <i data-lucide="swords" class="icon icon-lg" style="color:#EF4444"></i> 竞争威胁评估
       </h3>
       <div style="max-height:260px;overflow-y:auto;">
         <!-- WooAcry威胁 -->
@@ -3053,7 +3076,7 @@
   <div class="decision-grid">
     <div class="decision-card ops">
       <div class="decision-header">
-        <div class="decision-icon">⚙️</div>
+        <div class="decision-icon"><i data-lucide="settings" class="icon icon-lg" style="color:#6C3CE1"></i></div>
         <div>
           <div class="decision-title">运营决策建议</div>
           <div class="decision-subtitle">Operations</div>
@@ -3344,7 +3367,7 @@
     <!-- Sticker Mule -->
     <div class="social-comp-card">
       <div class="social-comp-header">
-        <span class="social-comp-name" style="color:#93C5FD;">🏷️ Sticker Mule</span>
+        <span class="social-comp-name" style="color:#93C5FD;"><i data-lucide="tag" class="icon" style="color:#93C5FD"></i> Sticker Mule</span>
         <div class="social-comp-platforms">
           <span class="platform-badge twitter">🐦 Twitter</span>
         </div>
@@ -3522,7 +3545,7 @@
         <!-- YouTube -->
         <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:10px;margin-bottom:10px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <span style="font-size:14px;">▶️</span>
+            <i data-lucide="play-circle" class="icon" style="color:#FF0000"></i>
             <span style="font-size:12px;font-weight:600;color:#fff;">YouTube</span>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;">
@@ -4759,5 +4782,11 @@ async function generateDynamicAlert() {
 
 </script>
 
+<script>
+    // 初始化Lucide图标
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+</script>
 </body>
 </html>
