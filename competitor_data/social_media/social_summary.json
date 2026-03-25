@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-25 16:04:53",
+  "last_updated": "2026-03-25 16:37:46",
   "total_mentions": 0,
   "most_active": "WooAcry",
   "trending": [
@@ -8,31 +8,55 @@
     "print on demand"
   ],
   "data": {
-    "last_updated": "2026-03-25 16:04:53",
+    "last_updated": "2026-03-25 16:37:46",
     "competitors": {
       "vograce": {
         "name": "Vograce",
         "followers": {
-          "twitter": "12.5K",
-          "instagram": "28.3K",
-          "tiktok": "-",
-          "youtube": "-"
+          "twitter": "4.7万",
+          "instagram": "175K",
+          "tiktok": "249.2K",
+          "youtube": "1.37万"
         },
         "last_activity": "2026-03-25"
       },
       "wooacry": {
         "name": "WooAcry",
         "followers": {
-          "twitter": "8.2K",
-          "discord": "30,000+"
+          "twitter": "8,466",
+          "instagram": "354",
+          "tiktok": "65.1K",
+          "youtube": "6,080"
         },
         "last_activity": "2026-03-25"
       },
       "zapcreatives": {
         "name": "Zap! Creatives",
         "followers": {
-          "twitter": "15.1K",
-          "instagram": "42K"
+          "twitter": "1.5万",
+          "instagram": "36.7K",
+          "tiktok": "5,337",
+          "youtube": "413"
+        },
+        "last_activity": "2026-03-25"
+      },
+      "stickermule": {
+        "name": "Sticker Mule",
+        "followers": {
+          "twitter": "21.3万",
+          "instagram": "450K",
+          "tiktok": "91.4K",
+          "youtube": "1.43万"
+        },
+        "last_activity": "2026-03-25"
+      },
+      "makeship": {
+        "name": "Makeship",
+        "followers": {
+          "twitter": "44.3万",
+          "instagram": "310K",
+          "tiktok": "131.8K",
+          "youtube": "2.86万"
         },
         "last_activity": "2026-03-25"
       }

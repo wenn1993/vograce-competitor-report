@@ -41,8 +41,12 @@
 追踪竞品（配置在 auto_update.py）：
 - WooAcry: wooacry.com
 - Sticker Mule: stickermule.com
-- Zap! Creatives: zapcreatives.com  
+- Zap! Creatives: zapcreatives.com
 - Vograce: vograce.com
+
+**Vograce官方社媒账号**（已添加到报告）：
+- TikTok: https://www.tiktok.com/@vogracecharms
+- YouTube: https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ
 
 数据输出目录: competitor_data/
 

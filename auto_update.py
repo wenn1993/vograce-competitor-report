@@ -251,19 +251,19 @@ def scrape_social_media():
         "industry_trends": {}
     }
     
-    # 社媒账号数据（实际应通过API或爬虫获取）
+    # 社媒账号数据（数据来源：2026年3月25日公开数据）
     social_accounts = {
         "vograce": {
             "name": "Vograce",
             "twitter": "@Vograce_com",
-            "instagram": "vograce_com",
+            "instagram": "vograce_official",
             "tiktok": "@vogracecharms",
             "youtube": "UCMd2dQcKZHzYsIc8LhUf8jQ",
-            "estimated_followers": {
-                "twitter": "12.5K",
-                "instagram": "28.3K",
-                "tiktok": "-",
-                "youtube": "-"
+            "followers": {
+                "twitter": "4.7万",
+                "instagram": "175K",
+                "tiktok": "249.2K",
+                "youtube": "1.37万"
             },
             "urls": {
                 "tiktok": "https://www.tiktok.com/@vogracecharms",
@@ -273,19 +273,53 @@ def scrape_social_media():
         "wooacry": {
             "name": "WooAcry",
             "twitter": "@WooAcry",
-            "discord": "30,000+ members",
-            "estimated_followers": {
-                "twitter": "8.2K",
-                "discord": "30,000+"
+            "instagram": "wooacry_official",
+            "tiktok": "@wooacry",
+            "youtube": "@WooAcry",
+            "followers": {
+                "twitter": "8,466",
+                "instagram": "354",
+                "tiktok": "65.1K",
+                "youtube": "6,080"
             }
         },
         "zapcreatives": {
             "name": "Zap! Creatives",
             "twitter": "@ZapCreatives",
             "instagram": "zapcreatives",
-            "estimated_followers": {
-                "twitter": "15.1K",
-                "instagram": "42K"
+            "tiktok": "@zapcreatives",
+            "youtube": "@ZapCreatives",
+            "followers": {
+                "twitter": "1.5万",
+                "instagram": "36.7K",
+                "tiktok": "5,337",
+                "youtube": "413"
+            }
+        },
+        "stickermule": {
+            "name": "Sticker Mule",
+            "twitter": "@StickerMule",
+            "instagram": "stickermule",
+            "tiktok": "@stickermule",
+            "youtube": "@StickerMule",
+            "followers": {
+                "twitter": "21.3万",
+                "instagram": "450K",
+                "tiktok": "91.4K",
+                "youtube": "1.43万"
+            }
+        },
+        "makeship": {
+            "name": "Makeship",
+            "twitter": "@MakeshipCo",
+            "instagram": "makeship_co",
+            "tiktok": "@makeship",
+            "youtube": "@Makeship",
+            "followers": {
+                "twitter": "44.3万",
+                "instagram": "310K",
+                "tiktok": "131.8K",
+                "youtube": "2.86万"
             }
         }
     }
@@ -293,7 +327,7 @@ def scrape_social_media():
     for comp_key, account in social_accounts.items():
         social_data["competitors"][comp_key] = {
             "name": account["name"],
-            "followers": account["estimated_followers"],
+            "followers": account["followers"],
             "last_activity": datetime.now().strftime("%Y-%m-%d")
         }
     
