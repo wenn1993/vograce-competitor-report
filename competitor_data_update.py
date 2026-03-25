@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Vograce 竞品数据每日更新脚本 v2.0
+Vograce 竞品数据每日更新脚本 v2.1
 自动更新竞争对手价格、产品动态、社交媒体数据
+自动同步到GitHub Pages
 """
 
 import json
 import os
 import re
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -14,6 +16,60 @@ from pathlib import Path
 WORKSPACE = "/Users/admin/WorkBuddy/20260324141124"
 DATA_DIR = os.path.join(WORKSPACE, "competitor_data")
 os.makedirs(DATA_DIR, exist_ok=True)
+
+def run_git_command(args, cwd=WORKSPACE):
+    """执行git命令"""
+    try:
+        result = subprocess.run(
+            args,
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+        return result.returncode == 0, result.stdout, result.stderr
+    except Exception as e:
+        return False, "", str(e)
+
+def sync_to_github():
+    """同步更新到GitHub"""
+    print("\n" + "=" * 50)
+    print("🔄 同步到GitHub...")
+    print("=" * 50)
+    
+    # 1. 配置git（如果需要）
+    run_git_command(["git", "config", "user.email", "bot@vograce-report.com"])
+    run_git_command(["git", "config", "user.name", "Vograce Auto Bot"])
+    
+    # 2. 添加所有更改
+    success, stdout, stderr = run_git_command(["git", "add", "-A"])
+    if not success:
+        print(f"⚠️ git add 失败: {stderr}")
+        return False
+    
+    # 3. 检查是否有更改
+    success, stdout, stderr = run_git_command(["git", "status", "--porcelain"])
+    if not stdout.strip():
+        print("📝 没有需要提交的更改")
+        return True
+    
+    # 4. 提交更改
+    today = get_today()
+    commit_msg = f"auto: 每日数据更新 {today}"
+    success, stdout, stderr = run_git_command(["git", "commit", "-m", commit_msg])
+    if not success:
+        print(f"⚠️ git commit 失败: {stderr}")
+        return False
+    print(f"✅ 已提交: {commit_msg}")
+    
+    # 5. 推送到GitHub
+    success, stdout, stderr = run_git_command(["git", "push", "origin", "master"])
+    if not success:
+        print(f"⚠️ git push 失败: {stderr}")
+        return False
+    
+    print("✅ 已推送到GitHub!")
+    return True
 
 def get_today():
     """获取今天的日期字符串"""
@@ -159,10 +215,14 @@ def main():
         f"报告更新时间戳: {'成功' if report_updated else '失败'}, 数据文件数: {summary['data_files']}"
     )
 
+    # 4. 同步到GitHub
+    github_synced = sync_to_github()
+
     print("=" * 50)
     print("✅ 每日更新完成！")
     print(f"📁 数据目录: {DATA_DIR}")
     print(f"📊 报告: {os.path.join(WORKSPACE, 'vograce-competitor-report.html')}")
+    print(f"🌐 GitHub同步: {'成功' if github_synced else '失败'}")
     print("=" * 50)
 
 if __name__ == "__main__":
