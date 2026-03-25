@@ -1082,6 +1082,10 @@
   .platform-badge.twitter { background: rgba(29,161,242,0.2); color: #1DA1F2; }
   .platform-badge.instagram { background: rgba(225,48,108,0.2); color: #E1306C; }
   .platform-badge.discord { background: rgba(88,101,242,0.2); color: #5865F2; }
+  .platform-badge.tiktok { background: rgba(0,242,234,0.15); color: #00F2EA; cursor: pointer; }
+  .platform-badge.youtube { background: rgba(255,0,0,0.15); color: #FF0000; cursor: pointer; }
+  .platform-badge.tiktok:hover { background: rgba(0,242,234,0.25); }
+  .platform-badge.youtube:hover { background: rgba(255,0,0,0.25); }
   .social-stat-row {
     display: flex;
     justify-content: space-between;
@@ -3367,9 +3371,15 @@
       <div class="social-comp-header">
         <span class="social-comp-name" style="color:#C4B5FD;">Vograce</span>
         <div class="social-comp-platforms">
+          <a href="https://www.tiktok.com/@vogracecharms" target="_blank" class="platform-badge tiktok" style="text-decoration:none;">📱 TikTok</a>
+          <a href="https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ" target="_blank" class="platform-badge youtube" style="text-decoration:none;">▶️ YouTube</a>
           <span class="platform-badge twitter">🐦 Twitter</span>
           <span class="platform-badge instagram">📷 IG</span>
         </div>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ" target="_blank" style="color:inherit;text-decoration:none;">YouTube订阅</a></span>
+        <span class="social-stat-val" id="vogYouTube">-</span>
       </div>
       <div class="social-stat-row">
         <span>Twitter粉丝</span>

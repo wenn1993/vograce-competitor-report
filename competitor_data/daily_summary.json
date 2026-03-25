@@ -1,19 +1,19 @@
 {
   "date": "2026-03-25",
-  "timestamp": "2026-03-25T15:58:18.533011",
+  "timestamp": "2026-03-25T16:05:15.261709",
   "competitors_scraped": 4,
   "total_pages": 13,
   "successful_pages": 13,
   "price_changes": 1,
   "alerts": [
     {
-      "type": "info",
+      "type": "danger",
       "competitor": "WooAcry",
-      "message": "WooAcry 价格上调了 292.9%"
+      "message": "WooAcry 价格下降了 74.5%，现最低价 $0.14"
     }
   ],
   "vograce_min_price": 0.05,
-  "wooacry_min_price": 0.55,
+  "wooacry_min_price": 0.14,
   "zap_min_price": null,
   "stickermule_min_price": 9.0,
   "social_updated": true,

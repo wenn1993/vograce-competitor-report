@@ -251,16 +251,23 @@ def scrape_social_media():
         "industry_trends": {}
     }
     
-    # 模拟的社媒账号数据（实际应通过API或爬虫获取）
-    # 由于Twitter/Instagram等需要认证，这里使用竞品官网的公开信息
+    # 社媒账号数据（实际应通过API或爬虫获取）
     social_accounts = {
         "vograce": {
             "name": "Vograce",
             "twitter": "@Vograce_com",
             "instagram": "vograce_com",
+            "tiktok": "@vogracecharms",
+            "youtube": "UCMd2dQcKZHzYsIc8LhUf8jQ",
             "estimated_followers": {
                 "twitter": "12.5K",
-                "instagram": "28.3K"
+                "instagram": "28.3K",
+                "tiktok": "-",
+                "youtube": "-"
+            },
+            "urls": {
+                "tiktok": "https://www.tiktok.com/@vogracecharms",
+                "youtube": "https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ"
             }
         },
         "wooacry": {

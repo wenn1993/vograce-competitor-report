@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-25 15:58:12",
+  "last_updated": "2026-03-25 16:04:53",
   "total_mentions": 0,
   "most_active": "WooAcry",
   "trending": [
@@ -8,13 +8,15 @@
     "print on demand"
   ],
   "data": {
-    "last_updated": "2026-03-25 15:58:12",
+    "last_updated": "2026-03-25 16:04:53",
     "competitors": {
       "vograce": {
         "name": "Vograce",
         "followers": {
           "twitter": "12.5K",
-          "instagram": "28.3K"
+          "instagram": "28.3K",
+          "tiktok": "-",
+          "youtube": "-"
         },
         "last_activity": "2026-03-25"
       },
