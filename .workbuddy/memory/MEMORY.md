@@ -27,8 +27,10 @@
 
 ## 每日自动化更新任务
 - 自动化任务 ID: vograce，每天 08:00 执行
-- 脚本: competitor_data_update.py
+- 脚本: competitor_data_update.py v2.1
 - 功能：更新报告时间戳、写入 daily_summary.json、追加 daily_update_log.json
+- **自动同步GitHub**: 更新完成后自动git add/commit/push到origin master
+- GitHub Actions自动部署: push后自动触发GitHub Pages部署workflow
 - 首次成功执行：2026-03-25 08:00
 
 ## 2026-03-24 第五模块重大升级
