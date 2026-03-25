@@ -92,3 +92,35 @@ HTML报告新增动态加载模块：
 - Section 6末尾新增Reddit趋势网格和行业动态列表
 
 所有数据源每日08:00自动抓取并同步到GitHub
+
+## 2026-03-25 第六模块社媒数据更新
+用户提供的真实社媒数据（2026年3月25日），更新所有竞品卡片：
+
+**Twitter粉丝：**
+- WooAcry: 8,466 | Vograce: 4.7万 | Zap! Creatives: 1.5万 | Sticker Mule: 21.3万 | Makeship: 44.3万
+
+**YouTube粉丝：**
+- WooAcry: 6,080 | Vograce: 1.37万 | Zap! Creatives: 413 | Sticker Mule: 1.43万 | Makeship: 2.86万
+
+**TikTok粉丝：**
+- WooAcry: 65.1K | Vograce: 249.2K | Zap! Creatives: 5,337 | Sticker Mule: 91.4K | Makeship: 131.8K
+
+**Instagram粉丝：**
+- WooAcry: 354 | Vograce: 175K | Zap! Creatives: 36.7K | Sticker Mule: 450K | Makeship: 310K
+
+已同步更新：
+1. vograce-competitor-report.html Section 6所有社媒卡片
+2. auto_update.py中的social_accounts配置
+3. 每个竞品卡片添加完整4平台徽章（TikTok/YouTube/Twitter/IG）
+
+## 2026-03-25 第六模块社媒URL重构
+用户提供的竞品社媒完整URL，重构第六模块所有卡片：
+
+**各竞品社媒URL：**
+- WooAcry: X=https://x.com/Wooacry_Charms, TikTok=@wooacryofficial, YouTube=搜索页, IG=wooacryofficial
+- Vograce: X=https://x.com/VograceCharms, TikTok=@vogracecharms, YouTube=官方频道, IG=vograce_official
+- Zap! Creatives: X=https://x.com/ZapCreatives, TikTok=@zapcreatives, YouTube=搜索页, IG=zapcreatives
+- Sticker Mule: X=https://x.com/stickermule, TikTok=@stickermule, YouTube=搜索页, IG=stickermule
+- Makeship: X=https://x.com/Makeship, TikTok=@makeship, YouTube=搜索页, IG=makeship
+
+已更新：所有粉丝数据和标签改为可点击链接，指向对应社媒页面

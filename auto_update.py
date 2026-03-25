@@ -255,7 +255,7 @@ def scrape_social_media():
     social_accounts = {
         "vograce": {
             "name": "Vograce",
-            "twitter": "@Vograce_com",
+            "twitter": "@VograceCharms",
             "instagram": "vograce_official",
             "tiktok": "@vogracecharms",
             "youtube": "UCMd2dQcKZHzYsIc8LhUf8jQ",
@@ -266,21 +266,29 @@ def scrape_social_media():
                 "youtube": "1.37万"
             },
             "urls": {
+                "x": "https://x.com/VograceCharms",
                 "tiktok": "https://www.tiktok.com/@vogracecharms",
-                "youtube": "https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ"
+                "youtube": "https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ",
+                "instagram": "https://www.instagram.com/vograce_official/"
             }
         },
         "wooacry": {
             "name": "WooAcry",
-            "twitter": "@WooAcry",
-            "instagram": "wooacry_official",
-            "tiktok": "@wooacry",
-            "youtube": "@WooAcry",
+            "twitter": "@Wooacry_Charms",
+            "instagram": "wooacryofficial",
+            "tiktok": "@wooacryofficial",
+            "youtube": "wooacry",
             "followers": {
                 "twitter": "8,466",
                 "instagram": "354",
                 "tiktok": "65.1K",
                 "youtube": "6,080"
+            },
+            "urls": {
+                "x": "https://x.com/Wooacry_Charms",
+                "tiktok": "https://www.tiktok.com/@wooacryofficial",
+                "youtube": "https://www.youtube.com/results?search_query=wooacry",
+                "instagram": "https://www.instagram.com/wooacryofficial/"
             }
         },
         "zapcreatives": {
@@ -288,33 +296,59 @@ def scrape_social_media():
             "twitter": "@ZapCreatives",
             "instagram": "zapcreatives",
             "tiktok": "@zapcreatives",
-            "youtube": "@ZapCreatives",
+            "youtube": "Zap! Creatives",
             "followers": {
                 "twitter": "1.5万",
                 "instagram": "36.7K",
                 "tiktok": "5,337",
                 "youtube": "413"
+            },
+            "urls": {
+                "x": "https://x.com/ZapCreatives",
+                "tiktok": "https://www.tiktok.com/@zapcreatives",
+                "youtube": "https://www.youtube.com/results?search_query=zap!+creatives",
+                "instagram": "https://www.instagram.com/zapcreatives/"
             }
         },
         "stickermule": {
             "name": "Sticker Mule",
-            "twitter": "@StickerMule",
+            "twitter": "@stickermule",
             "instagram": "stickermule",
             "tiktok": "@stickermule",
-            "youtube": "@StickerMule",
+            "youtube": "Sticker Mule",
             "followers": {
                 "twitter": "21.3万",
                 "instagram": "450K",
                 "tiktok": "91.4K",
                 "youtube": "1.43万"
+            },
+            "urls": {
+                "x": "https://x.com/stickermule",
+                "tiktok": "https://www.tiktok.com/@stickermule",
+                "youtube": "https://www.youtube.com/results?search_query=sticker+mule",
+                "instagram": "https://www.instagram.com/stickermule/"
             }
         },
         "makeship": {
             "name": "Makeship",
-            "twitter": "@MakeshipCo",
-            "instagram": "makeship_co",
+            "twitter": "@Makeship",
+            "instagram": "makeship",
             "tiktok": "@makeship",
-            "youtube": "@Makeship",
+            "youtube": "Makeship",
+            "followers": {
+                "twitter": "44.3万",
+                "instagram": "310K",
+                "tiktok": "131.8K",
+                "youtube": "2.86万"
+            },
+            "urls": {
+                "x": "https://x.com/Makeship",
+                "tiktok": "https://www.tiktok.com/@makeship",
+                "youtube": "https://www.youtube.com/results?search_query=makeship",
+                "instagram": "https://www.instagram.com/makeship/"
+            }
+        }
+    }
             "followers": {
                 "twitter": "44.3万",
                 "instagram": "310K",
