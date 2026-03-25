@@ -3736,6 +3736,39 @@
     </ul>
   </div>
 
+  <!-- Reddit趋势热帖模块 -->
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0;display:flex;align-items:center;gap:8px;">
+        <span style="color:#FF4500;">🔥</span> Reddit热门话题
+      </h3>
+      <span style="font-size:11px;color:var(--text-muted);" id="redditUpdateTime">加载中...</span>
+    </div>
+    <div class="reddit-trends-grid" id="redditTrendsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;">
+      <div style="text-align:center;color:#94A3B8;padding:40px;">数据加载中...</div>
+    </div>
+  </div>
+
+  <!-- 行业动态新闻模块 -->
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0;display:flex;align-items:center;gap:8px;">
+        <span style="color:#10B981;">📰</span> 行业动态
+      </h3>
+      <span style="font-size:11px;color:var(--text-muted);" id="newsUpdateTime">加载中...</span>
+    </div>
+    <div class="industry-news-list" id="industryNewsList" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="text-align:center;color:#94A3B8;padding:40px;">数据加载中...</div>
+    </div>
+  </div>
+
+  <!-- 数据来源说明 -->
+  <div style="background:rgba(29,161,242,0.08);border:1px solid rgba(29,161,242,0.2);border-radius:8px;padding:12px 16px;margin-bottom:24px;font-size:12px;color:#94A3B8;">
+    <strong style="color:#1DA1F2;">数据来源说明：</strong>
+    Twitter/Discord粉丝数基于公开资料估算 | Reddit数据来自r/ArtistAlley、r/merch等 | 行业趋势基于搜索趋势分析
+    <br>所有数据每日08:00自动更新
+  </div>
+
   <!-- ══ Section 7: 竞品流量对比 ══ -->
   <div class="section-title" id="section-7">
     <div class="section-num">7</div> 竞品流量对比
@@ -4189,6 +4222,8 @@ document.addEventListener('DOMContentLoaded', function() {
   updateSocialStats();
   generateDynamicAlert();
   updateDataCredibility(); // 更新数据可信度
+  loadRedditTrends();      // 加载Reddit趋势
+  loadIndustryNews();       // 加载行业动态
 
   // 更新追踪数量
   const trackerItems = document.querySelectorAll('#competitorTracker .tracker-item');
@@ -4713,6 +4748,140 @@ async function updateScrapeInfo() {
 
   } catch (err) {
     console.error('更新抓取信息失败:', err);
+  }
+}
+
+// 加载Reddit趋势热帖
+async function loadRedditTrends() {
+  const grid = document.getElementById('redditTrendsGrid');
+  const updateTime = document.getElementById('redditUpdateTime');
+  if (!grid) return;
+
+  try {
+    // 尝试加载Reddit数据
+    let redditData = null;
+    try {
+      const res = await fetchFresh('competitor_data/social_media/reddit_trends.json');
+      redditData = await res.json();
+    } catch (e) {
+      // 如果专门的reddit文件不存在，尝试从social_summary获取
+      const socialRes = await fetchFresh('competitor_data/social_media/social_summary.json');
+      const socialData = await socialRes.json();
+      if (socialData.data && socialData.data.reddit_search) {
+        redditData = { hot_posts: socialData.data.reddit_search, last_updated: socialData.last_updated };
+      }
+    }
+
+    // 更新更新时间
+    if (updateTime && redditData && redditData.last_updated) {
+      updateTime.textContent = `更新: ${new Date(redditData.last_updated).toLocaleDateString('zh-CN')}`;
+    }
+
+    if (!redditData || !redditData.hot_posts || redditData.hot_posts.length === 0) {
+      grid.innerHTML = `
+        <div style="background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.2);border-radius:8px;padding:20px;text-align:center;color:#94A3B8;">
+          暂无Reddit数据<br><span style="font-size:11px;">爬虫将在下次运行时自动抓取</span>
+        </div>
+      `;
+      return;
+    }
+
+    let html = '';
+    const posts = redditData.hot_posts.slice(0, 6);
+
+    for (const post of posts) {
+      const subredditColor = post.subreddit?.includes('ArtistAlley') ? '#FF4500' :
+                            post.subreddit?.includes('merch') ? '#10B981' : '#93C5FD';
+      html += `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="background:${subredditColor};color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;">${post.subreddit || 'r/merch'}</span>
+            <span style="font-size:11px;color:#10B981;">▲ ${post.score || 0}</span>
+            <span style="font-size:11px;color:#94A3B8;">💬 ${post.num_comments || 0}</span>
+          </div>
+          <div style="font-size:13px;color:#fff;line-height:1.5;margin-bottom:8px;">${escapeHtml(post.title?.substring(0, 100) || '无标题')}${post.title?.length > 100 ? '...' : ''}</div>
+          <a href="${post.url || '#'}" target="_blank" style="font-size:11px;color:#60A5FA;text-decoration:none;">查看原文 →</a>
+        </div>
+      `;
+    }
+
+    grid.innerHTML = html;
+
+  } catch (err) {
+    console.error('加载Reddit趋势失败:', err);
+    grid.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败</div>`;
+  }
+}
+
+// 加载行业动态新闻
+async function loadIndustryNews() {
+  const newsList = document.getElementById('industryNewsList');
+  const updateTime = document.getElementById('newsUpdateTime');
+  if (!newsList) return;
+
+  try {
+    // 尝试加载行业新闻数据
+    let newsData = null;
+    try {
+      const res = await fetchFresh('competitor_data/industry_news.json');
+      newsData = await res.json();
+    } catch (e) {
+      // 尝试从social_summary获取
+      const socialRes = await fetchFresh('competitor_data/social_media/social_summary.json');
+      const socialData = await socialRes.json();
+      if (socialData.data && socialData.data.industry_trends) {
+        newsData = { news: [], market_trends: socialData.data.industry_trends.trending_topics?.map(t => t.topic) || [] };
+      }
+    }
+
+    // 更新更新时间
+    if (updateTime && newsData && newsData.last_updated) {
+      updateTime.textContent = `更新: ${new Date(newsData.last_updated).toLocaleDateString('zh-CN')}`;
+    }
+
+    let html = '';
+
+    // 显示市场趋势
+    if (newsData && newsData.market_trends && newsData.market_trends.length > 0) {
+      html += `
+        <div style="margin-bottom:16px;">
+          <div style="font-size:12px;font-weight:600;color:#94A3B8;margin-bottom:10px;">市场趋势</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      `;
+      for (const trend of newsData.market_trends.slice(0, 6)) {
+        html += `<span style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:12px;padding:4px 12px;border-radius:20px;">${escapeHtml(trend)}</span>`;
+      }
+      html += `</div></div>`;
+    }
+
+    // 显示新闻列表
+    if (newsData && newsData.news && newsData.news.length > 0) {
+      for (const item of newsData.news.slice(0, 5)) {
+        html += `
+          <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span style="background:rgba(16,185,129,0.2);color:#10B981;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;">${item.source || '行业报告'}</span>
+              <span style="font-size:11px;color:#94A3B8;">${item.date || ''}</span>
+            </div>
+            <div style="font-size:13px;color:#fff;line-height:1.5;">${escapeHtml(item.headline || item.title || '')}</div>
+          </div>
+        `;
+      }
+    }
+
+    if (!html) {
+      html = `
+        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:20px;text-align:center;color:#94A3B8;">
+          暂无行业动态数据<br><span style="font-size:11px;">爬虫将在下次运行时自动抓取</span>
+        </div>
+      `;
+    }
+
+    newsList.innerHTML = html;
+
+  } catch (err) {
+    console.error('加载行业动态失败:', err);
+    newsList.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败</div>`;
   }
 }
 
