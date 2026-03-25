@@ -1,0 +1,94 @@
+name: Daily Auto Update & Deploy
+
+on:
+  # 每天北京时间08:00自动执行
+  schedule:
+    - cron: '0 0 * * *'  # UTC 00:00 = 北京时间 08:00
+  # 也可以手动触发
+  workflow_dispatch:
+  # push时也执行（开发测试用）
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      # 1. 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. 设置Python环境
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 lxml
+
+      # 4. 运行数据更新脚本
+      - name: Run data update
+        run: |
+          python auto_update.py
+        env:
+          TZ: Asia/Shanghai
+
+      # 5. 检查更新内容
+      - name: Check updates
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "检测到文件变更，准备提交..."
+            git config user.name "GitHub Actions Bot"
+            git config user.email "actions@github.com"
+            git add -A
+            git commit -m "自动更新：$(date +'%Y-%m-%d %H:%M:%S')"
+          else
+            echo "没有检测到变更，跳过提交"
+          fi
+
+      # 6. 推送到GitHub（仅在有变更时）
+      - name: Push changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git push origin master
+          else
+            echo "无变更，无需推送"
+          fi
+
+      # 7. 部署到GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # 8. 输出更新摘要
+      - name: Update summary
+        run: |
+          echo "## 更新完成" >> $GITHUB_STEP_SUMMARY
+          echo "- 执行时间: $(date '+%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_STEP_SUMMARY
+          echo "- 报告地址: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
