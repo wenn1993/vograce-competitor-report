@@ -412,9 +412,20 @@ def scrape_industry_news():
                             real_url = href
                         
                         if text and len(text) > 20:
+                            # 清理URL，移除DuckDuckGo重定向参数
+                            clean_url = real_url
+                            if 'uddg=' in clean_url:
+                                import urllib.parse
+                                try:
+                                    parsed = urllib.parse.urlparse(clean_url)
+                                    params = urllib.parse.parse_qs(parsed.query)
+                                    if 'uddg' in params:
+                                        clean_url = params['uddg'][0]
+                                except:
+                                    pass
                             news_data["news"].append({
                                 "headline": text[:200],
-                                "url": real_url,
+                                "url": clean_url,
                                 "source": "Industry News",
                                 "date": datetime.now().strftime("%Y-%m-%d")
                             })
