@@ -26,12 +26,25 @@
 - 概览指标增加至5个：核心竞品监测、产品品类覆盖、待处理预警、数据时效、市场规模估算
 
 ## 每日自动化更新任务
-- 自动化任务 ID: vograce，每天 08:00 执行
-- 脚本: competitor_data_update.py v2.1
-- 功能：更新报告时间戳、写入 daily_summary.json、追加 daily_update_log.json
-- **自动同步GitHub**: 更新完成后自动git add/commit/push到origin master
+- 自动化任务 ID: vograce_daily，每天 08:00 执行
+- **核心脚本: auto_update.py v3.0** （整合抓取+分析+更新+Git同步）
+- 功能流程：
+  1. 从所有竞品网站（WooAcry, StickerMule, Zap! Creatives, Vograce）抓取最新数据
+  2. 分析价格变化，生成预警信息
+  3. 更新所有JSON数据文件（latest_scrape_results.json, daily_summary.json, price_history.json等）
+  4. 更新HTML报告中的时间戳
+  5. 自动git add/commit/push到GitHub master
 - GitHub Actions自动部署: push后自动触发GitHub Pages部署workflow
-- 首次成功执行：2026-03-25 08:00
+- 首次成功执行：2026-03-25 15:40
+
+## 竞品数据抓取配置
+追踪竞品（配置在 auto_update.py）：
+- WooAcry: wooacry.com
+- Sticker Mule: stickermule.com
+- Zap! Creatives: zapcreatives.com  
+- Vograce: vograce.com
+
+数据输出目录: competitor_data/
 
 ## 2026-03-24 第五模块重大升级
 第五模块"市场动向追踪"升级为"竞品动向追踪"，全面重构：
