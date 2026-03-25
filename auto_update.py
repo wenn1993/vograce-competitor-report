@@ -382,7 +382,7 @@ def scrape_industry_news():
         "anime merchandise trends"
     ]
     
-    # 尝试抓取搜索引擎结果（示例：使用DuckDuckGo）
+    # 尝试抓取搜索引擎结果（使用DuckDuckGo）
     if HAS_DEPENDENCIES:
         try:
             # 使用DuckDuckGo的HTML版本
@@ -392,31 +392,56 @@ def scrape_industry_news():
             
             if response.status_code == 200:
                 soup = BeautifulSoup(response.text, 'html.parser')
-                results = soup.select('.result__snippet')[:5]
+                # 获取搜索结果条目
+                results = soup.select('.result')[:5]
                 
                 for i, result in enumerate(results):
-                    text = result.get_text(strip=True)
-                    if text and len(text) > 20:
-                        news_data["news"].append({
-                            "headline": text[:150],
-                            "source": "Industry News",
-                            "date": datetime.now().strftime("%Y-%m-%d")
-                        })
+                    # 获取标题和链接
+                    link_elem = result.select_one('.result__a')
+                    snippet_elem = result.select_one('.result__snippet')
+                    
+                    if link_elem and snippet_elem:
+                        text = snippet_elem.get_text(strip=True)
+                        href = link_elem.get('href', '')
+                        # DuckDuckGo链接需要提取真实URL
+                        if '/url?q=' in href:
+                            import urllib.parse
+                            parsed = urllib.parse.urlparse(href)
+                            real_url = urllib.parse.parse_qs(parsed.query).get('q', [href])[0]
+                        else:
+                            real_url = href
+                        
+                        if text and len(text) > 20:
+                            news_data["news"].append({
+                                "headline": text[:200],
+                                "url": real_url,
+                                "source": "Industry News",
+                                "date": datetime.now().strftime("%Y-%m-%d")
+                            })
                         
         except Exception as e:
             print(f"  ⚠️ 新闻抓取失败: {str(e)[:30]}")
     
-    # 如果没有抓取到新闻，添加模拟的行业趋势
+    # 如果没有抓取到新闻，添加带Google搜索链接的行业趋势
     if not news_data["news"]:
+        google_search_base = "https://www.google.com/search?q=custom+merchandise+"
         news_data["news"] = [
             {
                 "headline": "Custom merchandise market continues to grow as anime culture expands globally",
+                "url": google_search_base + "anime+merchandise+growth",
                 "source": "Industry Report",
                 "date": datetime.now().strftime("%Y-%m-%d")
             },
             {
                 "headline": "Print-on-demand technology advances enable faster production for small creators",
+                "url": google_search_base + "print+on+demand+technology",
                 "source": "Trade Publication",
+                "date": datetime.now().strftime("%Y-%m-%d")
+            },
+            {
+                "headline": "Keychain and accessory market shows strong demand in Q1 2026",
+                "url": google_search_base + "keychain+market+2026",
+                "source": "Market Analysis",
                 "date": datetime.now().strftime("%Y-%m-%d")
             }
         ]

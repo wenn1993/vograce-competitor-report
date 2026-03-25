@@ -74,3 +74,17 @@
 - 流量洞察与行动建议（短期/中期/长期）
 - 数据来源说明（SimilarWeb估算，每日08:00更新）
 - 导航栏同步更新"流量对比"入口
+
+## 2026-03-25 数据源全面自动化
+auto_update.py升级至v3.1，整合更多数据源：
+1. **竞品价格数据** - WooAcry, StickerMule, Zap! Creatives, Vograce
+2. **社媒动态** - social_summary.json (粉丝数、提及量)
+3. **Reddit话题热度** - reddit_trends.json (r/ArtistAlley, r/merch等热门帖子)
+4. **行业动态** - industry_news.json (搜索趋势、行业报告)
+
+HTML报告新增动态加载模块：
+- loadRedditTrends() - 加载Reddit热门话题
+- loadIndustryNews() - 加载行业动态新闻
+- Section 6末尾新增Reddit趋势网格和行业动态列表
+
+所有数据源每日08:00自动抓取并同步到GitHub

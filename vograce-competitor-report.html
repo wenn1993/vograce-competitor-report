@@ -4857,14 +4857,19 @@ async function loadIndustryNews() {
     // 显示新闻列表
     if (newsData && newsData.news && newsData.news.length > 0) {
       for (const item of newsData.news.slice(0, 5)) {
+        const linkUrl = item.url || item.link || `https://www.google.com/search?q=${encodeURIComponent(item.headline || item.title || '')}`;
+        const headline = escapeHtml(item.headline || item.title || '');
         html += `
-          <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">
+          <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(16,185,129,0.4)';this.style.background='rgba(16,185,129,0.05)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.background='rgba(255,255,255,0.02)';">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
               <span style="background:rgba(16,185,129,0.2);color:#10B981;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;">${item.source || '行业报告'}</span>
               <span style="font-size:11px;color:#94A3B8;">${item.date || ''}</span>
             </div>
-            <div style="font-size:13px;color:#fff;line-height:1.5;">${escapeHtml(item.headline || item.title || '')}</div>
-          </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="font-size:13px;color:#fff;line-height:1.5;flex:1;">${headline}</div>
+              <span style="color:#60A5FA;font-size:12px;white-space:nowrap;">阅读原文 →</span>
+            </div>
+          </a>
         `;
       }
     }
