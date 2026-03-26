@@ -3221,7 +3221,7 @@
         <span style="font-size:11px;font-weight:400;color:#94A3B8;margin-left:8px;">Instagram · TikTok · YouTube · X</span>
       </div>
       <div style="font-size:12px;color:#94A3B8;" id="socialBannerMeta">
-        数据更新：2026-03-25
+        数据更新：<span id="socialDataDate">加载中...</span>
       </div>
     </div>
   </div>
@@ -5189,7 +5189,11 @@ async function updateSocialStats() {
 
     // 更新社媒监控摘要横幅
     const bannerMetaEl = document.getElementById('socialBannerMeta');
-    if (bannerMetaEl) {
+    const socialDateEl = document.getElementById('socialDataDate');
+    if (socialDateEl) {
+      const ts = data.last_updated || data.generated_at || '';
+      socialDateEl.textContent = ts ? new Date(ts).toLocaleString('zh-CN', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : new Date().toLocaleDateString('zh-CN');
+    } else if (bannerMetaEl) {
       const ts = data.last_updated || data.generated_at || '';
       const dateStr = ts ? new Date(ts).toLocaleString('zh-CN', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : new Date().toLocaleDateString('zh-CN');
       bannerMetaEl.textContent = `最后更新: ${dateStr} | 7日总提及: ${data.total_mentions || 0} | 最活跃: ${data.most_active || '未知'}`;
