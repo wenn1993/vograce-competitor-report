@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-26T11:13:05.125410",
+  "timestamp": "2026-03-26T16:56:07.066684",
   "data": {
     "vograce": {
       "domain": "vograce.com",
-      "source": "AITDK估算",
+      "source": "行业估算",
       "monthly_visits": "156.5K",
       "monthly_visits_raw": 156500,
       "bounce_rate": "48.2%",
@@ -17,19 +17,11 @@
         "referral": 10.3,
         "paid": 4.3
       },
-      "top_countries": [
-        "US",
-        "UK",
-        "CA",
-        "AU",
-        "DE"
-      ],
-      "global_rank": 45000,
-      "country_rank": 12500
+      "global_rank": 45000
     },
     "wooacry": {
       "domain": "wooacry.com",
-      "source": "AITDK估算",
+      "source": "行业估算",
       "monthly_visits": "89.2K",
       "monthly_visits_raw": 89200,
       "bounce_rate": "42.1%",
@@ -43,19 +35,11 @@
         "referral": 8.9,
         "paid": 5.1
       },
-      "top_countries": [
-        "US",
-        "CA",
-        "AU",
-        "UK",
-        "DE"
-      ],
-      "global_rank": 85000,
-      "country_rank": 28000
+      "global_rank": 85000
     },
     "stickermule": {
       "domain": "stickermule.com",
-      "source": "AITDK估算",
+      "source": "行业估算",
       "monthly_visits": "520K",
       "monthly_visits_raw": 520000,
       "bounce_rate": "35.5%",
@@ -69,19 +53,11 @@
         "referral": 7.2,
         "paid": 3.8
       },
-      "top_countries": [
-        "US",
-        "UK",
-        "CA",
-        "AU",
-        "DE"
-      ],
-      "global_rank": 8500,
-      "country_rank": 2500
+      "global_rank": 8500
     },
     "zapcreatives": {
       "domain": "zapcreatives.com",
-      "source": "AITDK估算",
+      "source": "行业估算",
       "monthly_visits": "78.5K",
       "monthly_visits_raw": 78500,
       "bounce_rate": "44.8%",
@@ -95,16 +71,8 @@
         "referral": 9.5,
         "paid": 4.5
       },
-      "top_countries": [
-        "US",
-        "UK",
-        "CA",
-        "AU",
-        "DE"
-      ],
-      "global_rank": 92000,
-      "country_rank": 31000
+      "global_rank": 92000
     }
   },
-  "note": "数据来源: AITDK.com (免费工具) + 行业估算"
+  "note": "数据来源: AITDK.com + 行业估算"
 }
