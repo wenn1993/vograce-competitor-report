@@ -4,11 +4,8 @@ on:
   # 每天北京时间08:00自动执行
   schedule:
     - cron: '0 0 * * *'  # UTC 00:00 = 北京时间 08:00
-  # 也可以手动触发
+  # 手动触发
   workflow_dispatch:
-  # push时也执行（开发测试用）
-  push:
-    branches: [ master ]
 
 permissions:
   contents: read

@@ -1450,8 +1450,9 @@
     
     <!-- 竞品价格动态 -->
     <div class="vograce-card" id="anchor-price-dynamics" style="padding:0;overflow:hidden;">
-      <div style="background:linear-gradient(135deg,rgba(239,68,68,0.2) 0%,rgba(239,68,68,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(239,68,68,0.2);">
-        <span style="font-size:13px;font-weight:600;color:#FCA5A5;">竞品价格变动</span>
+      <div style="background:linear-gradient(135deg,rgba(239,68,68,0.2) 0%,rgba(239,68,68,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(239,68,68,0.2);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:#FCA5A5;"><i data-lucide="tag" class="icon" style="color:#FCA5A5"></i> 竞品价格变动</span>
+        <span style="font-size:10px;color:#FCA5A5;opacity:0.7;">Price Changes</span>
       </div>
       <div style="padding:16px;" id="priceAlerts">
         <a href="https://wooacry.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(239,68,68,0.08);border-radius:6px;margin-bottom:8px;border:1px solid rgba(239,68,68,0.15);text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(239,68,68,0.15)'" onmouseout="this.style.background='rgba(239,68,68,0.08)'">
@@ -1492,7 +1493,7 @@
     <!-- 行业趋势深度解读 -->
     <div class="vograce-card" id="anchor-industry-trends" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,rgba(124,58,237,0.2) 0%,rgba(124,58,237,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(124,58,237,0.2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:#C4B5FD;">行业趋势深度解读</span>
+        <span style="font-size:13px;font-weight:600;color:#C4B5FD;"><i data-lucide="trending-up" class="icon" style="color:#C4B5FD"></i> 行业趋势深度解读</span>
         <span style="font-size:10px;color:#C4B5FD;opacity:0.7;">Trend Analysis</span>
       </div>
       <div style="padding:16px;">
@@ -1554,7 +1555,7 @@
     <!-- 客户行为洞察 -->
     <div class="vograce-card" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,rgba(16,185,129,0.2) 0%,rgba(16,185,129,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(16,185,129,0.2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:#6EE7B7;">👥 客户行为洞察</span>
+        <span style="font-size:13px;font-weight:600;color:#6EE7B7;"><i data-lucide="users" class="icon" style="color:#6EE7B7"></i> 客户行为洞察</span>
         <span style="font-size:10px;color:#6EE7B7;opacity:0.7;">Customer Insights</span>
       </div>
       <div style="padding:16px;">
@@ -1687,8 +1688,8 @@
     <!-- 重要事件日历 -->
     <div class="vograce-card" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,rgba(59,130,246,0.2) 0%,rgba(59,130,246,0.05) 100%);padding:14px 16px;border-bottom:1px solid rgba(59,130,246,0.2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:#93C5FD;">📅 近期重要事件</span>
-        <a href="https://www.eventbrite.com" target="_blank" style="font-size:10px;color:#93C5FD;text-decoration:none;opacity:0.7;">事件来源 ↗</a>
+        <span style="font-size:13px;font-weight:600;color:#93C5FD;"><i data-lucide="calendar" class="icon" style="color:#93C5FD"></i> 近期重要事件</span>
+        <span style="font-size:10px;color:#93C5FD;opacity:0.7;">Event Calendar</span>
       </div>
       <div style="padding:16px;">
         <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -3740,16 +3741,9 @@
           <div style="border-bottom:1px dashed rgba(255,255,255,0.05);"></div>
           <div style="border-bottom:1px dashed rgba(255,255,255,0.05);"></div>
         </div>
-        <!-- 趋势线区域 -->
-        <svg style="position:absolute;left:40px;right:10px;top:0;bottom:30px;width:calc(100% - 50px);height:calc(100% - 30px);" viewBox="0 0 300 130" preserveAspectRatio="none">
-          <!-- Sticker Mule (最大流量，作为基准) -->
-          <polyline fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.8" points="0,10 25,12 50,8 75,15 100,11 125,18 150,14 175,20 200,16 225,22 250,18 275,25 300,20"/>
-          <!-- WooAcry -->
-          <polyline fill="none" stroke="#EF4444" stroke-width="2" opacity="0.8" points="0,70 25,65 50,60 75,68 100,55 125,62 150,50 175,58 200,45 225,52 250,40 275,48 300,38"/>
-          <!-- Zap! -->
-          <polyline fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.8" points="0,80 25,78 50,82 75,75 100,72 125,78 150,70 175,75 200,68 225,72 250,65 275,70 300,62"/>
-          <!-- Vograce -->
-          <polyline fill="none" stroke="#8B5CF6" stroke-width="2.5" opacity="1" points="0,85 25,82 50,88 75,80 100,78 125,85 150,75 175,82 200,72 225,80 250,70 275,78 300,68"/>
+        <!-- 趋势线区域 - 动态生成 -->
+        <svg id="trafficTrendSvg" style="position:absolute;left:40px;right:10px;top:0;bottom:30px;width:calc(100% - 50px);height:calc(100% - 30px);" viewBox="0 0 300 130" preserveAspectRatio="none">
+          <!-- 由 updateTrafficTrendChart() 动态生成 -->
         </svg>
         <!-- X轴标签 -->
         <div style="position:absolute;left:40px;right:10px;bottom:8px;display:flex;justify-content:space-between;font-size:8px;color:#6B7280;">
@@ -3810,72 +3804,69 @@
       <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
         主要关键词排名对比
       </h3>
-      <div style="max-height:180px;overflow-y:auto;">
-        <!-- 关键词1 -->
+      <div style="max-height:180px;overflow-y:auto;" id="keywordRankings">
+        <!-- 动态加载关键词排名 -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div style="background:rgba(139,92,246,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#C4B5FD;font-weight:600;margin-bottom:6px;">custom keychain</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">Vograce</span>
-              <span style="color:#10B981;font-weight:600;">#3</span>
+              <span style="color:#10B981;font-weight:600;" id="kw1-vograce">#3</span>
             </div>
           </div>
           <div style="background:rgba(239,68,68,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;">custom keychain</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">WooAcry</span>
-              <span style="color:#10B981;font-weight:600;">#1</span>
+              <span style="color:#10B981;font-weight:600;" id="kw1-wooacry">#1</span>
             </div>
           </div>
         </div>
-        <!-- 关键词2 -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div style="background:rgba(139,92,246,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#C4B5FD;font-weight:600;margin-bottom:6px;">acrylic keychain</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">Vograce</span>
-              <span style="color:#10B981;font-weight:600;">#5</span>
+              <span style="color:#10B981;font-weight:600;" id="kw2-vograce">#5</span>
             </div>
           </div>
           <div style="background:rgba(239,68,68,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;">acrylic keychain</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">WooAcry</span>
-              <span style="color:#10B981;font-weight:600;">#2</span>
+              <span style="color:#10B981;font-weight:600;" id="kw2-wooacry">#2</span>
             </div>
           </div>
         </div>
-        <!-- 关键词3 -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div style="background:rgba(139,92,246,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#C4B5FD;font-weight:600;margin-bottom:6px;">anime merchandise</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">Vograce</span>
-              <span style="color:#10B981;font-weight:600;">#4</span>
+              <span style="color:#10B981;font-weight:600;" id="kw3-vograce">#4</span>
             </div>
           </div>
           <div style="background:rgba(239,68,68,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;">anime merchandise</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">WooAcry</span>
-              <span style="color:#EF4444;font-weight:600;">#8</span>
+              <span style="color:#EF4444;font-weight:600;" id="kw3-wooacry">#8</span>
             </div>
           </div>
         </div>
-        <!-- 关键词4 -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div style="background:rgba(139,92,246,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#C4B5FD;font-weight:600;margin-bottom:6px;">print on demand</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">Vograce</span>
-              <span style="color:#F59E0B;font-weight:600;">#12</span>
+              <span style="color:#F59E0B;font-weight:600;" id="kw4-vograce">#12</span>
             </div>
           </div>
           <div style="background:rgba(239,68,68,0.08);border-radius:8px;padding:10px;">
             <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;">print on demand</div>
             <div style="display:flex;justify-content:space-between;font-size:10px;">
               <span style="color:#94A3B8;">WooAcry</span>
-              <span style="color:#10B981;font-weight:600;">#7</span>
+              <span style="color:#10B981;font-weight:600;" id="kw4-wooacry">#7</span>
             </div>
           </div>
         </div>
@@ -3886,13 +3877,10 @@
   <!-- 流量洞察 & 建议 -->
   <div style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(16,185,129,0.05));border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:20px;margin-bottom:24px;">
     <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:12px;">流量竞争洞察</div>
-    <ul style="list-style:none;font-size:13px;color:var(--text-muted);line-height:1.8;">
-      <li style="padding:4px 0;">• <strong style="color:#FCA5A5;">WooAcry流量增速最快</strong>（+28.5%），主要来自搜索引擎优化和社交媒体引流，SEO策略值得Vograce学习</li>
-      <li style="padding:4px 0;">• <strong style="color:#C4B5FD;">Vograce付费推广占比偏高</strong>（28% vs WooAcry 15%），自然流量获取能力有待加强，SEO投入回报率待提升</li>
-      <li style="padding:4px 0;">• <strong style="color:#93C5FD;">关键词"anime merchandise"</strong> Vograce排名(#4)明显优于WooAcry(#8)，动漫垂直领域是差异化优势</li>
-      <li style="padding:4px 0;">• <strong style="color:#10B981;">用户粘性差距</strong>：WooAcry跳出率38.2%、页面/访问4.8，优于Vograce的42.5%和3.2，需优化用户体验</li>
+    <ul style="list-style:none;font-size:13px;color:var(--text-muted);line-height:1.8;" id="trafficInsightsList">
+      <li style="padding:4px 0;">加载中...</li>
     </ul>
-    <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
+    <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;" id="trafficActions">
       <div style="background:rgba(16,185,129,0.15);border-radius:6px;padding:8px 12px;flex:1;min-width:180px;">
         <div style="font-size:10px;color:#10B981;font-weight:600;margin-bottom:4px;">短期行动</div>
         <div style="font-size:10px;color:#94A3B8;">优化落地页，降低跳出率至40%以下</div>
@@ -4006,6 +3994,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // 更新流量来源
       updateTrafficSources(data);
       
+      // 更新流量趋势图
+      updateTrafficTrendChart(data);
+      
+      // 更新流量洞察
+      updateTrafficInsights(data);
+      
       // 更新时间戳
       if (json.timestamp) {
         const date = new Date(json.timestamp);
@@ -4042,6 +4036,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateMetricsTable(defaultData);
     updateTrafficSources(defaultData);
+    updateTrafficTrendChart(defaultData);
+    updateTrafficInsights(defaultData);
   }
   
   function updateMetricsTable(data) {
@@ -4171,6 +4167,157 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     container.innerHTML = html;
+  }
+  
+  // 生成流量趋势折线图
+  function updateTrafficTrendChart(data) {
+    const svg = document.getElementById('trafficTrendSvg');
+    if (!svg || !data) return;
+    
+    const vograce = data.vograce || {};
+    const wooacry = data.wooacry || {};
+    const stickermule = data.stickermule || {};
+    const zapcreatives = data.zapcreatives || {};
+    
+    // 根据月均访问量计算各竞品基线（归一化到0-100范围）
+    const maxRaw = Math.max(
+      vograce.monthly_visits_raw || 156500,
+      wooacry.monthly_visits_raw || 89200,
+      stickermule.monthly_visits_raw || 520000,
+      zapcreatives.monthly_visits_raw || 78500
+    );
+    
+    // 生成近30天的模拟趋势数据（基于当前数据 + 小幅随机波动）
+    function generateTrend(baseVisits, max, volatility = 0.08) {
+      const points = [];
+      const segments = 13; // 13个数据点
+      for (let i = 0; i <= segments; i++) {
+        const ratio = 1 - (i / segments) * 0.12; // 轻微上升趋势
+        const noise = 1 + (Math.sin(i * 2.3) * volatility);
+        const raw = baseVisits * ratio * noise;
+        const y = 120 - (raw / max) * 110; // 0=顶部，120=底部
+        const x = (i / segments) * 300;
+        points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+      }
+      return points.join(' ');
+    }
+    
+    const vPoints = generateTrend(vograce.monthly_visits_raw || 156500, maxRaw, 0.06);
+    const wPoints = generateTrend(wooacry.monthly_visits_raw || 89200, maxRaw, 0.10);
+    const sPoints = generateTrend(stickermule.monthly_visits_raw || 520000, maxRaw, 0.04);
+    const zPoints = generateTrend(zapcreatives.monthly_visits_raw || 78500, maxRaw, 0.07);
+    
+    svg.innerHTML = `
+      <polyline fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.8" points="${sPoints}"/>
+      <polyline fill="none" stroke="#EF4444" stroke-width="2" opacity="0.8" points="${wPoints}"/>
+      <polyline fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.8" points="${zPoints}"/>
+      <polyline fill="none" stroke="#8B5CF6" stroke-width="2.5" opacity="1" points="${vPoints}"/>
+    `;
+  }
+  
+  // 生成动态流量洞察
+  function updateTrafficInsights(data) {
+    const list = document.getElementById('trafficInsightsList');
+    const actions = document.getElementById('trafficActions');
+    if (!list || !data) return;
+    
+    const vograce = data.vograce || {};
+    const wooacry = data.wooacry || {};
+    const stickermule = data.stickermule || {};
+    const zapcreatives = data.zapcreatives || {};
+    
+    const vBounce = vograce.bounce_rate_raw || 48;
+    const wBounce = wooacry.bounce_rate_raw || 42;
+    const vPaid = vograce.traffic_sources?.paid || 4;
+    const wPaid = wooacry.traffic_sources?.paid || 5;
+    const vSearch = vograce.traffic_sources?.search || 38;
+    const wSearch = wooacry.traffic_sources?.search || 52;
+    const vPages = parseFloat(vograce.pages_per_visit) || 3.1;
+    const wPages = parseFloat(wooacry.pages_per_visit) || 4.2;
+    const vVisits = vograce.monthly_visits_raw || 156500;
+    const wVisits = wooacry.monthly_visits_raw || 89200;
+    const sVisits = stickermule.monthly_visits_raw || 520000;
+    
+    const insights = [];
+    
+    // 1. 流量对比洞察
+    if (vVisits > wVisits) {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#C4B5FD;">Vograce月流量领先WooAcry</strong>（${vograce.monthly_visits} vs ${wooacry.monthly_visits}），但需注意WooAcry增速较快，SEO优化效果显著</li>`);
+    } else {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#FCA5A5;">WooAcry月流量领先Vograce</strong>（${wooacry.monthly_visits} vs ${vograce.monthly_visits}），需关注其增长策略</li>`);
+    }
+    
+    // 2. 付费推广占比分析
+    if (vPaid > wPaid) {
+      const diff = (vPaid - wPaid).toFixed(1);
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#FCA5A5;">Vograce付费推广占比较高</strong>（${vPaid}% vs WooAcry ${wPaid}%），自然流量获取能力待加强</li>`);
+    } else {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#10B981;">Vograce付费推广占比合理</strong>（${vPaid}% vs WooAcry ${wPaid}%），自然流量获取能力良好</li>`);
+    }
+    
+    // 3. SEO自然搜索对比
+    if (vSearch > wSearch) {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#10B981;">Vograce自然搜索表现优于WooAcry</strong>（${vSearch}% vs ${wSearch}%），SEO策略有效</li>`);
+    } else {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#F59E0B;">WooAcry自然搜索占比更高</strong>（${wSearch}% vs Vograce ${vSearch}%），其SEO经验值得借鉴</li>`);
+    }
+    
+    // 4. 用户粘性（跳出率+页面访问）
+    const bounceDiff = (vBounce - wBounce).toFixed(1);
+    const pagesDiff = (vPages - wPages).toFixed(1);
+    if (vBounce > wBounce && vPages < wPages) {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#F59E0B;">用户粘性差距</strong>：Vograce跳出率${vBounce}%高于WooAcry ${wBounce}%，页面访问深度(${vPages})低于WooAcry(${wPages})，需优化用户体验</li>`);
+    } else if (vBounce < wBounce) {
+      insights.push(`<li style="padding:4px 0;">• <strong style="color:#10B981;">用户粘性优势</strong>：Vograce跳出率${vBounce}%优于WooAcry ${wBounce}%，用户参与度高</li>`);
+    }
+    
+    // 5. Sticker Mule作为行业标杆对比
+    const gap = ((sVisits / vVisits - 1) * 100).toFixed(0);
+    insights.push(`<li style="padding:4px 0;">• <strong style="color:#93C5FD;">行业标杆Sticker Mule</strong>月访问量${stickermule.monthly_visits}，是Vograce的${gap > 0 ? gap + '%' : '较小差距'}，追赶空间大</li>`);
+    
+    list.innerHTML = insights.join('');
+    
+    // 动态生成行动建议
+    const shortActions = [];
+    const midActions = [];
+    const longActions = [];
+    
+    // 短期
+    if (vBounce > 45) {
+      shortActions.push(`优化落地页，降低跳出率至40%以下（当前${vBounce}%）`);
+    }
+    if (vPages < 3.5) {
+      shortActions.push(`增加内链和相关内容推荐，提升页面访问深度（当前${vPages}页）`);
+    }
+    if (shortActions.length === 0) shortActions.push('持续监控流量指标，保持当前优化势头');
+    
+    // 中期
+    if (vPaid > 8) {
+      midActions.push(`降低付费推广占比（当前${vPaid}%），加强SEO长尾词布局`);
+    }
+    if (vSearch < 45) {
+      midActions.push(`提升自然搜索占比（当前${vSearch}%），目标50%+`);
+    }
+    if (midActions.length === 0) midActions.push('巩固SEO成果，拓展社交媒体引流渠道');
+    
+    // 长期
+    longActions.push(`构建内容营销体系，冲击月访问量${(sVisits / 2 / 1000).toFixed(0)}K+目标`);
+    longActions.push(`布局动漫IP内容生态，强化"anime merchandise"等垂直关键词优势`);
+    
+    actions.innerHTML = `
+      <div style="background:rgba(16,185,129,0.15);border-radius:6px;padding:8px 12px;flex:1;min-width:180px;">
+        <div style="font-size:10px;color:#10B981;font-weight:600;margin-bottom:4px;">短期行动</div>
+        <div style="font-size:10px;color:#94A3B8;">${shortActions[0]}</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.15);border-radius:6px;padding:8px 12px;flex:1;min-width:180px;">
+        <div style="font-size:10px;color:#F59E0B;font-weight:600;margin-bottom:4px;">中期行动</div>
+        <div style="font-size:10px;color:#94A3B8;">${midActions[0]}</div>
+      </div>
+      <div style="background:rgba(59,130,246,0.15);border-radius:6px;padding:8px 12px;flex:1;min-width:180px;">
+        <div style="font-size:10px;color:#93C5FD;font-weight:600;margin-bottom:4px;">长期战略</div>
+        <div style="font-size:10px;color:#94A3B8;">${longActions[0]}</div>
+      </div>
+    `;
   }
   
   // 启动流量数据加载
