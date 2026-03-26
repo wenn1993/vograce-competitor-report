@@ -3195,7 +3195,7 @@
       </div>
       <div>
         <div style="font-size:11px;font-weight:600;color:#94A3B8;margin-bottom:4px;">下次更新</div>
-        <div style="font-size:11px;color:#10B981;" id="nextUpdateTime">2026-03-26 08:00</div>
+        <div style="font-size:11px;color:#10B981;" id="nextUpdateTime">计算中...</div>
       </div>
     </div>
   </div>
@@ -3479,138 +3479,150 @@
   <!-- 平台粉丝增长对比 & 其他平台 -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
     <!-- 平台粉丝增长对比 -->
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;">
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;min-height:420px;display:flex;flex-direction:column;">
       <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
         社媒粉丝增长趋势（30天）
       </h3>
-      <div style="max-height:240px;overflow-y:auto;">
+      <div style="flex:1;overflow-y:auto;">
         <!-- Vograce -->
-        <div style="margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:12px;font-weight:600;color:#C4B5FD;">Vograce</span>
-            <span style="font-size:11px;color:#10B981;">+8.2%</span>
+        <div style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;font-weight:600;color:#C4B5FD;">Vograce</span>
+            <span style="font-size:10px;color:#10B981;">+8.2%</span>
           </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:6px;height:10px;">
-            <div style="background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:6px;width:35%;"></div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
+            <div style="background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:4px;width:35%;"></div>
           </div>
-          <div style="font-size:10px;color:#6B7280;margin-top:4px;">12.5K → 13.5K Twitter · 28.3K → 30.1K IG</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;">12.5K → 13.5K Twitter · 28.3K → 30.1K IG</div>
         </div>
         <!-- WooAcry -->
-        <div style="margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:12px;font-weight:600;color:#FCA5A5;">WooAcry</span>
-            <span style="font-size:11px;color:#10B981;">+15.6%</span>
+        <div style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;font-weight:600;color:#FCA5A5;">WooAcry</span>
+            <span style="font-size:10px;color:#10B981;">+15.6%</span>
           </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:6px;height:10px;">
-            <div style="background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:6px;width:65%;"></div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
+            <div style="background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:4px;width:65%;"></div>
           </div>
-          <div style="font-size:10px;color:#6B7280;margin-top:4px;">8.2K → 9.5K Twitter · Discord 28K → 30K</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;">8.2K → 9.5K Twitter · Discord 28K → 30K</div>
         </div>
         <!-- Zap! -->
-        <div style="margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:12px;font-weight:600;color:#FCD34D;">Zap! Creatives</span>
-            <span style="font-size:11px;color:#10B981;">+12.3%</span>
+        <div style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;font-weight:600;color:#FCD34D;">Zap! Creatives</span>
+            <span style="font-size:10px;color:#10B981;">+12.3%</span>
           </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:6px;height:10px;">
-            <div style="background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:6px;width:50%;"></div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
+            <div style="background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:4px;width:50%;"></div>
           </div>
-          <div style="font-size:10px;color:#6B7280;margin-top:4px;">15.1K → 17.0K Twitter · 42K → 46.8K IG</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;">15.1K → 17.0K Twitter · 42K → 46.8K IG</div>
         </div>
         <!-- Makeship -->
-        <div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:12px;font-weight:600;color:#6EE7B7;">🎁 Makeship</span>
-            <span style="font-size:11px;color:#EF4444;">+28.7%</span>
+        <div style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;font-weight:600;color:#6EE7B7;">🎁 Makeship</span>
+            <span style="font-size:10px;color:#EF4444;">+28.7%</span>
           </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:6px;height:10px;">
-            <div style="background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:6px;width:90%;"></div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
+            <div style="background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:4px;width:90%;"></div>
           </div>
-          <div style="font-size:10px;color:#6B7280;margin-top:4px;">Palworld联名众筹带动社媒热度飙升</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;">Palworld联名众筹带动社媒热度飙升</div>
+        </div>
+        <!-- Sticker Mule -->
+        <div style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;font-weight:600;color:#93C5FD;">Sticker Mule</span>
+            <span style="font-size:10px;color:#94A3B8;">+5.1%</span>
+          </div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
+            <div style="background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:4px;width:20%;"></div>
+          </div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;">成熟品牌，增长稳定</div>
+        </div>
+      </div>
+      
+      <!-- 7日社媒提及量对比（新增） -->
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;flex-shrink:0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:11px;font-weight:600;color:#CBD5E1;">📊 7日社媒提及量</span>
+          <span style="font-size:9px;color:#94A3B8;">数据来源: Reddit</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:#FCA5A5;width:80px;">WooAcry</span>
+            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+              <div style="width:92%;background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:3px;"></div>
+            </div>
+            <span style="font-size:9px;color:#FCA5A5;width:35px;text-align:right;">892</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:#6EE7B7;width:80px;">Makeship</span>
+            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+              <div style="width:78%;background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:3px;"></div>
+            </div>
+            <span style="font-size:9px;color:#6EE7B7;width:35px;text-align:right;">756</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:#93C5FD;width:80px;">Sticker Mule</span>
+            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+              <div style="width:65%;background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:3px;"></div>
+            </div>
+            <span style="font-size:9px;color:#93C5FD;width:35px;text-align:right;">634</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:#FCD34D;width:80px;">Zap!</span>
+            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+              <div style="width:48%;background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:3px;"></div>
+            </div>
+            <span style="font-size:9px;color:#FCD34D;width:35px;text-align:right;">467</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:10px;color:#C4B5FD;width:80px;">Vograce</span>
+            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+              <div style="width:32%;background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:3px;"></div>
+            </div>
+            <span style="font-size:9px;color:#C4B5FD;width:35px;text-align:right;">312</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 底部行业洞察 -->
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:12px;flex-shrink:0;">
+        <div style="font-size:11px;font-weight:600;color:#CBD5E1;margin-bottom:8px;">行业热点关键词</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 8px;border-radius:12px;">#custom keychains</span>
+          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 8px;border-radius:12px;">#anime merch</span>
+          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 8px;border-radius:12px;">#print on demand</span>
+          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 8px;border-radius:12px;">#artist alley</span>
+          <span style="background:rgba(16,185,129,0.2);color:#6EE7B7;font-size:10px;padding:4px 8px;border-radius:12px;">#IP联名</span>
+        </div>
+        <div style="font-size:10px;color:#94A3B8;line-height:1.5;">
+          <span style="color:#10B981;">●</span> Vograce社媒提及量低于竞品，建议加强Twitter/Instagram内容运营<br>
+          <span style="color:#F59E0B;">●</span> Makeship增长最快（+28.7%），Palworld联名效果显著
         </div>
       </div>
     </div>
 
-    <!-- TikTok/YouTube等其他平台 -->
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;">
+    <!-- Reddit社区讨论（动态加载 - 完整版） -->
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;min-height:420px;display:flex;flex-direction:column;">
       <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
-        🎬 TikTok/YouTube/Reddit平台
+        <span style="font-size:14px;">👽</span> Reddit社区讨论
+        <span style="font-size:11px;color:#94A3B8;font-weight:400;margin-left:4px;" id="redditPlatformUpdate">加载中...</span>
       </h3>
-      <div style="max-height:240px;overflow-y:auto;">
-        <!-- TikTok -->
-        <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:10px;margin-bottom:10px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <span style="font-size:14px;">📺</span>
-            <span style="font-size:12px;font-weight:600;color:#fff;">TikTok</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;">
-            <div>
-              <span style="color:#FCA5A5;">WooAcry</span>
-              <div style="color:#94A3B8;">无官方账号</div>
-            </div>
-            <div>
-              <span style="color:#C4B5FD;">Vograce</span>
-              <div style="color:#94A3B8;">无官方账号</div>
-            </div>
-            <div>
-              <span style="color:#6EE7B7;">Makeship</span>
-              <div style="color:#10B981;">5.2K粉丝</div>
-            </div>
-            <div>
-              <span style="color:#FCD34D;">Zap!</span>
-              <div style="color:#94A3B8;">12K粉丝</div>
-            </div>
-          </div>
+      
+      <!-- 社区概览（3个Subreddit卡片） -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;flex-shrink:0;" id="redditSubGrid">
+        <div style="text-align:center;color:#94A3B8;padding:20px;grid-column:1/-1;">数据加载中...</div>
+      </div>
+      
+      <!-- 热门帖子列表 -->
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;flex:1;overflow-y:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:12px;font-weight:600;color:#CBD5E1;">热门帖子</span>
+          <span style="font-size:10px;color:#94A3B8;">点击标题跳转Reddit</span>
         </div>
-        <!-- YouTube -->
-        <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:10px;margin-bottom:10px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <i data-lucide="play-circle" class="icon" style="color:#FF0000"></i>
-            <span style="font-size:12px;font-weight:600;color:#fff;">YouTube</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;">
-            <div>
-              <span style="color:#FCA5A5;">WooAcry</span>
-              <div style="color:#94A3B8;">2.1K订阅</div>
-            </div>
-            <div>
-              <span style="color:#C4B5FD;">Vograce</span>
-              <div style="color:#6B7280;">无官方频道</div>
-            </div>
-            <div>
-              <span style="color:#6EE7B7;">Makeship</span>
-              <div style="color:#10B981;">18K订阅</div>
-            </div>
-            <div>
-              <span style="color:#FCD34D;">Zap!</span>
-              <div style="color:#94A3B8;">8.5K订阅</div>
-            </div>
-          </div>
-        </div>
-        <!-- Reddit -->
-        <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:10px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <span style="font-size:14px;">👽</span>
-            <span style="font-size:12px;font-weight:600;color:#fff;">Reddit</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;">
-            <div>
-              <span style="color:#FCA5A5;">r/printondemand</span>
-              <div style="color:#94A3B8;">WooAcry提及最多</div>
-            </div>
-            <div>
-              <span style="color:#C4B5FD;">r/AnimeFigure</span>
-              <div style="color:#94A3B8;">Vograce讨论较多</div>
-            </div>
-            <div>
-              <span style="color:#6EE7B7;">r/indieheads</span>
-              <div style="color:#94A3B8;">Makeship讨论较多</div>
-            </div>
-            <div>
-              <span style="color:#FCD34D;">r/ArtistLounge</span>
-              <div style="color:#94A3B8;">Zap!推荐较多</div>
-            </div>
-          </div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="redditPostsGrid">
+          <div style="text-align:center;color:#94A3B8;padding:20px;">数据加载中...</div>
         </div>
       </div>
     </div>
@@ -4074,7 +4086,7 @@
       </div>
       <div>
         <div style="font-size:11px;font-weight:600;color:#94A3B8;margin-bottom:4px;">下次更新</div>
-        <div style="font-size:11px;color:#10B981;" id="trafficNextUpdate">2026-03-26 08:00</div>
+        <div style="font-size:11px;color:#10B981;" id="trafficNextUpdate">计算中...</div>
       </div>
     </div>
   </div>
@@ -4112,6 +4124,35 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 动态计算下次更新时间（每天北京时间 08:00）
+  function getNextUpdateTime() {
+    const now = new Date();
+    // 转为北京时间（UTC+8）
+    const bjOffset = 8 * 60; // 分钟
+    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+    const bjNow = new Date(utcMs + bjOffset * 60000);
+
+    // 今天北京时间 08:00
+    const todayUpdate = new Date(bjNow);
+    todayUpdate.setHours(8, 0, 0, 0);
+
+    // 如果当前时间已过今天 08:00，则下次是明天 08:00
+    const next = bjNow >= todayUpdate
+      ? new Date(todayUpdate.getTime() + 24 * 60 * 60 * 1000)
+      : todayUpdate;
+
+    const yyyy = next.getFullYear();
+    const mm = String(next.getMonth() + 1).padStart(2, '0');
+    const dd = String(next.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd} 08:00`;
+  }
+
+  const nextTimeStr = getNextUpdateTime();
+  const el1 = document.getElementById('nextUpdateTime');
+  const el2 = document.getElementById('trafficNextUpdate');
+  if (el1) el1.textContent = nextTimeStr;
+  if (el2) el2.textContent = nextTimeStr;
+
   // 平滑滚动导航
   document.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -4165,6 +4206,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadPriceChangeTracker();
   updateScrapeInfo();
   updateSocialStats();
+  loadRedditPlatformInfo();
   generateDynamicAlert();
   updateDataCredibility(); // 更新数据可信度
   loadRedditTrends();      // 加载Reddit趋势
@@ -4184,12 +4226,15 @@ async function updateDataCredibility() {
       const summary = await summaryRes.json();
       // 更新时间线
       const lastSync = document.getElementById('last-sync');
-      if (lastSync && summary.time) {
-        const date = new Date(summary.time);
-        lastSync.textContent = date.toLocaleString('zh-CN', {
-          month: '2-digit', day: '2-digit',
-          hour: '2-digit', minute: '2-digit'
-        });
+      if (lastSync) {
+        const ts = summary.timestamp || summary.time;
+        if (ts) {
+          const date = new Date(ts);
+          lastSync.textContent = date.toLocaleString('zh-CN', {
+            month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+          });
+        }
       }
     }
     
@@ -4755,6 +4800,108 @@ async function loadRedditTrends() {
   } catch (err) {
     console.error('加载Reddit趋势失败:', err);
     grid.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败</div>`;
+  }
+}
+
+// 加载Reddit社区讨论数据（完整版 - 社区概览 + 热门帖子）
+async function loadRedditPlatformInfo() {
+  const updateEl = document.getElementById('redditPlatformUpdate');
+  const subGridEl = document.getElementById('redditSubGrid');
+  const postsGridEl = document.getElementById('redditPostsGrid');
+  if (!updateEl || !subGridEl || !postsGridEl) return;
+
+  try {
+    const res = await fetchFresh('competitor_data/social_media/reddit_trends.json');
+    const data = await res.json();
+
+    // 更新同步时间
+    if (data && data.last_updated) {
+      const d = new Date(data.last_updated);
+      updateEl.textContent = `更新: ${d.toLocaleString('zh-CN', {
+        month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      })}`;
+    }
+
+    // 生成Subreddit概览卡片
+    if (data && data.subreddits) {
+      const subColorMap = {
+        'r/ArtistAlley': '#FF4500', 'r/merch': '#FF4500',
+        'r/AnimeMerch': '#93C5FD', 'r/AnimeFigure': '#93C5FD',
+        'r/customkeychains': '#FCD34D', 'r/indieheads': '#FCD34D',
+        'r/ArtistLounge': '#C4B5FD'
+      };
+
+      const subs = Object.entries(data.subreddits);
+      let subHtml = '';
+      for (const [subName, info] of subs) {
+        const color = subColorMap[subName] || '#6B7280';
+        const activeLevel = info.active_posts >= 5 ? { text: '活跃度高', color: '#10B981' } : { text: '活跃度中', color: '#FCD34D' };
+        subHtml += `
+          <div style="background:rgba(0,0,0,0.2);border-radius:10px;padding:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="background:${color};color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;">${subName}</span>
+            </div>
+            <div style="font-size:11px;color:#94A3B8;line-height:1.8;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span>活跃帖子</span>
+                <span style="color:#fff;font-weight:500;">${info.active_posts}篇</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+                <span>社区状态</span>
+                <span style="color:${activeLevel.color};font-weight:500;">${activeLevel.text}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      subGridEl.innerHTML = subHtml;
+    }
+
+    // 生成热门帖子列表（可点击）
+    if (data && data.hot_posts && data.hot_posts.length > 0) {
+      let postsHtml = '';
+      // 取前8个帖子
+      const topPosts = data.hot_posts.slice(0, 8);
+      for (const post of topPosts) {
+        // 提取subreddit名称
+        const subMatch = post.url.match(/reddit\.com\/r\/([^/]+)/);
+        const subName = subMatch ? `r/${subMatch[1]}` : 'r/unknown';
+        const subColor = subName.includes('animemerch') ? '#93C5FD' : '#FF4500';
+        
+        // 格式化数字
+        const formatNum = (n) => n >= 1000 ? `${(n/1000).toFixed(1)}k` : n;
+        
+        postsHtml += `
+          <a href="${post.url}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(0,0,0,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s;">
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="background:${subColor};color:#fff;font-size:9px;font-weight:600;padding:2px 5px;border-radius:3px;">${subName}</span>
+              </div>
+              <div style="color:#E2E8F0;font-size:12px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${post.title}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:60px;">
+              <div style="display:flex;align-items:center;gap:3px;color:#94A3B8;font-size:10px;">
+                <span>👍</span>
+                <span>${formatNum(post.score)}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:3px;color:#94A3B8;font-size:10px;">
+                <span>💬</span>
+                <span>${formatNum(post.num_comments)}</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }
+      postsGridEl.innerHTML = postsHtml;
+    } else {
+      postsGridEl.innerHTML = '<div style="color:#94A3B8;font-size:12px;text-align:center;padding:20px;">暂无热门帖子数据</div>';
+    }
+
+  } catch (error) {
+    console.error('Reddit数据加载失败:', error);
+    subGridEl.innerHTML = '<div style="color:#EF4444;font-size:12px;text-align:center;padding:20px;">数据加载失败</div>';
+    postsGridEl.innerHTML = '<div style="color:#EF4444;font-size:12px;text-align:center;padding:20px;">数据加载失败</div>';
   }
 }
 
