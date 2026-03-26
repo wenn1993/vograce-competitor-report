@@ -3431,179 +3431,129 @@
 
   </div>
 
-  <!-- Mentions Comparison Bar -->
-  <div id="mentionsChart" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px;margin-bottom:40px;">
-    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:16px;">7日社媒提及量对比</div>
-    <div class="mentions-bar-chart" id="mentionsBarChart">
-      <div class="mentions-bar-row">
-        <span class="mentions-bar-label">Sticker Mule</span>
-        <div class="mentions-bar-track">
-          <div class="mentions-bar-fill" style="width:100%;background:linear-gradient(90deg,#3B82F6,#2563EB);">892</div>
-        </div>
-        <span class="mentions-bar-count">892</span>
-      </div>
-      <div class="mentions-bar-row">
-        <span class="mentions-bar-label">WooAcry </span>
-        <div class="mentions-bar-track">
-          <div class="mentions-bar-fill" style="width:47%;background:linear-gradient(90deg,#EF4444,#DC2626);">423</div>
-        </div>
-        <span class="mentions-bar-count">423</span>
-      </div>
-      <div class="mentions-bar-row">
-        <span class="mentions-bar-label">Zap! Creatives</span>
-        <div class="mentions-bar-track">
-          <div class="mentions-bar-fill" style="width:32%;background:linear-gradient(90deg,#F59E0B,#D97706);">287</div>
-        </div>
-        <span class="mentions-bar-count">287</span>
-      </div>
-      <div class="mentions-bar-row">
-        <span class="mentions-bar-label">Makeship</span>
-        <div class="mentions-bar-track">
-          <div class="mentions-bar-fill" style="width:26%;background:linear-gradient(90deg,#10B981,#059669);">234</div>
-        </div>
-        <span class="mentions-bar-count">234</span>
-      </div>
-      <div class="mentions-bar-row">
-        <span class="mentions-bar-label" style="color:#C4B5FD;">Vograce</span>
-        <div class="mentions-bar-track">
-          <div class="mentions-bar-fill" style="width:17%;background:linear-gradient(90deg,#7C3AED,#6D28D9);">156</div>
-        </div>
-        <span class="mentions-bar-count">156</span>
-      </div>
-    </div>
-    <div id="mentionsInsight" style="font-size:11px;color:var(--text-muted);margin-top:12px;">
-      Vograce社媒提及量低于竞品，建议加强Twitter/Instagram内容运营
-    </div>
-  </div>
-
-  <!-- 平台粉丝增长对比 & 其他平台 -->
+  <!-- 社媒数据综合分析 & Reddit -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
-    <!-- 平台粉丝增长对比 -->
+    <!-- 左侧：社媒数据综合 -->
     <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;min-height:420px;display:flex;flex-direction:column;">
-      <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
-        社媒粉丝增长趋势（30天）
-      </h3>
-      <div style="flex:1;overflow-y:auto;">
-        <!-- Vograce -->
-        <div style="margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-size:11px;font-weight:600;color:#C4B5FD;">Vograce</span>
-            <span style="font-size:10px;color:#10B981;">+8.2%</span>
+      <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 16px 0;">社媒数据综合对比</h3>
+      <!-- 上排：粉丝增长 & 7日提及量并排 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;">
+        <!-- 粉丝增长趋势 -->
+        <div style="background:rgba(0,0,0,0.2);border-radius:10px;padding:14px;">
+          <h4 style="font-size:12px;font-weight:700;color:#fff;margin:0 0 6px 0;">粉丝增长（30天）</h4>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:9px;color:#9CA3AF;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">📱 Twitter/X</span>
+            <span style="font-size:9px;color:#9CA3AF;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">📸 Instagram</span>
           </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
-            <div style="background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:4px;width:35%;"></div>
-          </div>
-          <div style="font-size:9px;color:#6B7280;margin-top:2px;">12.5K → 13.5K Twitter · 28.3K → 30.1K IG</div>
-        </div>
-        <!-- WooAcry -->
-        <div style="margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-size:11px;font-weight:600;color:#FCA5A5;">WooAcry</span>
-            <span style="font-size:10px;color:#10B981;">+15.6%</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
-            <div style="background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:4px;width:65%;"></div>
-          </div>
-          <div style="font-size:9px;color:#6B7280;margin-top:2px;">8.2K → 9.5K Twitter · Discord 28K → 30K</div>
-        </div>
-        <!-- Zap! -->
-        <div style="margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-size:11px;font-weight:600;color:#FCD34D;">Zap! Creatives</span>
-            <span style="font-size:10px;color:#10B981;">+12.3%</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
-            <div style="background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:4px;width:50%;"></div>
-          </div>
-          <div style="font-size:9px;color:#6B7280;margin-top:2px;">15.1K → 17.0K Twitter · 42K → 46.8K IG</div>
-        </div>
-        <!-- Makeship -->
-        <div style="margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-size:11px;font-weight:600;color:#6EE7B7;">🎁 Makeship</span>
-            <span style="font-size:10px;color:#EF4444;">+28.7%</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
-            <div style="background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:4px;width:90%;"></div>
-          </div>
-          <div style="font-size:9px;color:#6B7280;margin-top:2px;">Palworld联名众筹带动社媒热度飙升</div>
-        </div>
-        <!-- Sticker Mule -->
-        <div style="margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-size:11px;font-weight:600;color:#93C5FD;">Sticker Mule</span>
-            <span style="font-size:10px;color:#94A3B8;">+5.1%</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.3);border-radius:4px;height:6px;">
-            <div style="background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:4px;width:20%;"></div>
-          </div>
-          <div style="font-size:9px;color:#6B7280;margin-top:2px;">成熟品牌，增长稳定</div>
-        </div>
-      </div>
-      
-      <!-- 7日社媒提及量对比（新增） -->
-      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;flex-shrink:0;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-          <span style="font-size:11px;font-weight:600;color:#CBD5E1;">📊 7日社媒提及量</span>
-          <span style="font-size:9px;color:#94A3B8;">数据来源: Reddit</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:#FCA5A5;width:80px;">WooAcry</span>
-            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
-              <div style="width:92%;background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:3px;"></div>
+          <!-- Vograce -->
+          <div style="margin-bottom:10px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:600;color:#C4B5FD;">Vograce</span>
+              <span style="font-size:10px;color:#10B981;">+8.2%</span>
             </div>
-            <span style="font-size:9px;color:#FCA5A5;width:35px;text-align:right;">892</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:#6EE7B7;width:80px;">Makeship</span>
-            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
-              <div style="width:78%;background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:3px;"></div>
+            <div style="background:rgba(0,0,0,0.3);border-radius:3px;height:6px;">
+              <div style="background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:3px;width:35%;"></div>
             </div>
-            <span style="font-size:9px;color:#6EE7B7;width:35px;text-align:right;">756</span>
+            <div style="font-size:9px;color:#6B7280;margin-top:3px;">13.5K Twitter · 30.1K IG</div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:#93C5FD;width:80px;">Sticker Mule</span>
-            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
-              <div style="width:65%;background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:3px;"></div>
+          <!-- WooAcry -->
+          <div style="margin-bottom:10px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:600;color:#FCA5A5;">WooAcry</span>
+              <span style="font-size:10px;color:#10B981;">+15.6%</span>
             </div>
-            <span style="font-size:9px;color:#93C5FD;width:35px;text-align:right;">634</span>
+            <div style="background:rgba(0,0,0,0.3);border-radius:3px;height:6px;">
+              <div style="background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:3px;width:65%;"></div>
+            </div>
+            <div style="font-size:9px;color:#6B7280;margin-top:3px;">9.5K Twitter · 30K Discord</div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:#FCD34D;width:80px;">Zap!</span>
-            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
-              <div style="width:48%;background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:3px;"></div>
+          <!-- Makeship -->
+          <div style="margin-bottom:10px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:600;color:#6EE7B7;">Makeship</span>
+              <span style="font-size:10px;color:#EF4444;">+28.7%</span>
             </div>
-            <span style="font-size:9px;color:#FCD34D;width:35px;text-align:right;">467</span>
+            <div style="background:rgba(0,0,0,0.3);border-radius:3px;height:6px;">
+              <div style="background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:3px;width:90%;"></div>
+            </div>
+            <div style="font-size:9px;color:#6B7280;margin-top:3px;">Palworld联名带动飙升</div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:10px;color:#C4B5FD;width:80px;">Vograce</span>
-            <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
-              <div style="width:32%;background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:3px;"></div>
+          <!-- Sticker Mule -->
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:600;color:#93C5FD;">Sticker Mule</span>
+              <span style="font-size:10px;color:#94A3B8;">+5.1%</span>
             </div>
-            <span style="font-size:9px;color:#C4B5FD;width:35px;text-align:right;">312</span>
+            <div style="background:rgba(0,0,0,0.3);border-radius:3px;height:6px;">
+              <div style="background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:3px;width:20%;"></div>
+            </div>
+            <div style="font-size:9px;color:#6B7280;margin-top:3px;">成熟品牌，增长稳定</div>
+          </div>
+        </div>
+        <!-- 7日社媒提及量 -->
+        <div style="background:rgba(0,0,0,0.2);border-radius:10px;padding:14px;">
+          <h4 style="font-size:12px;font-weight:700;color:#fff;margin:0 0 6px 0;">📊 7日社媒提及量</h4>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:9px;color:#9CA3AF;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">🐦 Twitter/X</span>
+            <span style="font-size:9px;color:#9CA3AF;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">💬 Reddit</span>
+            <span style="font-size:9px;color:#9CA3AF;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">📌 Tumblr</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#FCA5A5;width:65px;">WooAcry</span>
+              <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+                <div style="width:100%;background:linear-gradient(90deg,#EF4444,#F87171);height:100%;border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:#FCA5A5;width:32px;text-align:right;">892</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#6EE7B7;width:65px;">Makeship</span>
+              <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+                <div style="width:85%;background:linear-gradient(90deg,#10B981,#34D399);height:100%;border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:#6EE7B7;width:32px;text-align:right;">756</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#93C5FD;width:65px;">Sticker Mule</span>
+              <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+                <div style="width:71%;background:linear-gradient(90deg,#3B82F6,#60A5FA);height:100%;border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:#93C5FD;width:32px;text-align:right;">634</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#FCD34D;width:65px;">Zap!</span>
+              <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+                <div style="width:52%;background:linear-gradient(90deg,#F59E0B,#FCD34D);height:100%;border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:#FCD34D;width:32px;text-align:right;">467</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#C4B5FD;width:65px;">Vograce</span>
+              <div style="flex:1;background:rgba(0,0,0,0.3);border-radius:3px;height:8px;">
+                <div style="width:35%;background:linear-gradient(90deg,#7C3AED,#A78BFA);height:100%;border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:#C4B5FD;width:32px;text-align:right;">312</span>
+            </div>
           </div>
         </div>
       </div>
-      
-      <!-- 底部行业洞察 -->
-      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:12px;flex-shrink:0;">
-        <div style="font-size:11px;font-weight:600;color:#CBD5E1;margin-bottom:8px;">行业热点关键词</div>
+      <!-- 下排：行业洞察 -->
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;margin-top:14px;flex-shrink:0;">
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
-          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 8px;border-radius:12px;">#custom keychains</span>
-          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 8px;border-radius:12px;">#anime merch</span>
-          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 8px;border-radius:12px;">#print on demand</span>
-          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 8px;border-radius:12px;">#artist alley</span>
-          <span style="background:rgba(16,185,129,0.2);color:#6EE7B7;font-size:10px;padding:4px 8px;border-radius:12px;">#IP联名</span>
+          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 10px;border-radius:12px;">#custom keychains</span>
+          <span style="background:rgba(124,58,237,0.3);color:#C4B5FD;font-size:10px;padding:4px 10px;border-radius:12px;">#anime merch</span>
+          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 10px;border-radius:12px;">#print on demand</span>
+          <span style="background:rgba(239,68,68,0.2);color:#FCA5A5;font-size:10px;padding:4px 10px;border-radius:12px;">#artist alley</span>
+          <span style="background:rgba(16,185,129,0.2);color:#6EE7B7;font-size:10px;padding:4px 10px;border-radius:12px;">#IP联名</span>
         </div>
         <div style="font-size:10px;color:#94A3B8;line-height:1.5;">
-          <span style="color:#10B981;">●</span> Vograce社媒提及量低于竞品，建议加强Twitter/Instagram内容运营<br>
+          <span style="color:#FCA5A5;">●</span> Vograce提及量垫底，需加强Twitter/Instagram内容运营<br>
           <span style="color:#F59E0B;">●</span> Makeship增长最快（+28.7%），Palworld联名效果显著
         </div>
       </div>
     </div>
 
-    <!-- Reddit社区讨论（动态加载 - 完整版） -->
+    <!-- Reddit社区讨论 -->
     <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;min-height:420px;display:flex;flex-direction:column;">
       <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px 0;display:flex;align-items:center;gap:8px;">
         <span style="font-size:14px;">👽</span> Reddit社区讨论
