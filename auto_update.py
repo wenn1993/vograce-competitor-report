@@ -29,8 +29,8 @@ except ImportError:
     except:
         HAS_DEPENDENCIES = False
 
-# 配置
-WORKSPACE = "/Users/admin/WorkBuddy/20260324141124"
+# 配置 - 自动检测运行环境（本地 or GitHub Actions）
+WORKSPACE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(WORKSPACE, "competitor_data")
 REPORT_FILE = os.path.join(WORKSPACE, "vograce-competitor-report.html")
 INDEX_FILE = os.path.join(WORKSPACE, "index.html")
