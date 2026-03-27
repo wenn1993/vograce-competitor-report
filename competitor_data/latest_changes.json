@@ -2,18 +2,18 @@
   "price_changes": [
     {
       "competitor": "WooAcry",
-      "old_price": 0.14,
-      "new_price": 0.12,
-      "change_pct": -14.3
+      "old_price": 0.12,
+      "new_price": 0.2,
+      "change_pct": 66.7
     }
   ],
   "new_promotions": [],
   "new_products": [],
   "alerts": [
     {
-      "type": "danger",
+      "type": "info",
       "competitor": "WooAcry",
-      "message": "WooAcry 价格下降了 14.3%，现最低价 $0.12"
+      "message": "WooAcry 价格上调了 66.7%"
     }
   ]
 }
