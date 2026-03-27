@@ -814,9 +814,19 @@ def update_html_report(results, changes):
         print(f"✅ 报告已更新: {os.path.basename(report_file)}")
 
 def sync_to_github():
-    """同步到GitHub"""
+    """同步到GitHub
+    
+    在 CI 环境（GitHub Actions）下，CI=true 环境变量会被设置，
+    此时只做 git add + commit，跳过 git push（由 workflow 统一 push）。
+    在本地环境下，正常执行完整的 add + commit + push。
+    """
+    import os
+    is_ci = os.environ.get("CI", "").lower() in ("true", "1", "yes")
+
     print("\n" + "=" * 50)
     print("🔄 同步到GitHub...")
+    if is_ci:
+        print("ℹ️  CI 模式：跳过 git push（由 GitHub Actions workflow 统一处理）")
     print("=" * 50)
     
     # 配置git
@@ -852,8 +862,13 @@ def sync_to_github():
         return False
     
     print(f"✅ 已提交: {commit_msg}")
+
+    # CI 模式下跳过 push，由 workflow 统一处理
+    if is_ci:
+        print("✅ CI 模式：commit 完成，push 由 workflow 执行")
+        return True
     
-    # 推送
+    # 本地模式：正常推送
     result = subprocess.run(
         ["git", "push", "origin", "master"],
         cwd=WORKSPACE,
