@@ -26,16 +26,24 @@
 - 概览指标增加至5个：核心竞品监测、产品品类覆盖、待处理预警、数据时效、市场规模估算
 
 ## 每日自动化更新任务
-- 自动化任务 ID: vograce_daily，每天 08:00 执行
-- **核心脚本: auto_update.py v3.0** （整合抓取+分析+更新+Git同步）
-- 功能流程：
-  1. 从所有竞品网站（WooAcry, StickerMule, Zap! Creatives, Vograce）抓取最新数据
-  2. 分析价格变化，生成预警信息
-  3. 更新所有JSON数据文件（latest_scrape_results.json, daily_summary.json, price_history.json等）
-  4. 更新HTML报告中的时间戳
-  5. 自动git add/commit/push到GitHub master
-- GitHub Actions自动部署: push后自动触发GitHub Pages部署workflow
-- 首次成功执行：2026-03-25 15:40
+- 本地自动化任务 ID: vograce_daily，每天 08:00 执行（需电脑开机）
+- **核心脚本: auto_update.py v3.1**（整合抓取+分析+更新+Git同步）
+- CI 模式：设置 CI=true 时跳过 git push，由 GitHub Actions workflow 统一 push
+
+### GitHub Actions 云端定时更新（2026-03-27 配置完成）
+- Workflow：`.github/workflows/daily-update.yml`，每天 UTC 00:00 = 北京时间 08:00
+- 权限：`contents: write`（commit + push 数据）
+- 并发组：`daily-update-${{ github.run_id }}`（独立，不与 deploy.yml 冲突）
+- 流程：checkout → python auto_update.py (CI=true) → commit → push → deploy Pages
+- 关键修复：原 schedule 被 cancelled 原因：permissions: contents: read + 并发冲突
+- 测试验证：2026-03-27 手动触发 50 秒全部成功
+
+功能流程（auto_update.py）：
+  1. 从竞品网站（WooAcry, StickerMule, Zap! Creatives, Vograce）抓取最新数据
+  2. 分析价格变化，生成预警
+  3. 更新所有JSON数据文件
+  4. 更新HTML报告时间戳
+  5. CI模式跳过push；本地模式自动push
 
 ## 竞品数据抓取配置
 追踪竞品（配置在 auto_update.py）：

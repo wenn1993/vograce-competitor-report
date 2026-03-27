@@ -738,8 +738,247 @@ def update_json_data(results, changes):
     with open(log_file, 'w', encoding='utf-8') as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
     
+    # 10. 生成报告统一数据文件（report_data.json）
+    generate_report_data(results, changes, price_history)
+    
     print(f"✅ 所有JSON数据已更新")
     return summary
+
+
+def generate_report_data(results, changes, price_history):
+    """
+    生成 report_data.json —— 报告所有模块的统一动态数据源。
+    HTML 页面中的每个模块都从这里读取最新数据。
+    """
+    today = datetime.now().strftime("%Y-%m-%d")
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    vograce  = results.get('vograce', {})
+    wooacry  = results.get('wooacry', {})
+    zap      = results.get('zapcreatives', {})
+    smule    = results.get('stickermule', {})
+    social   = results.get('social_media', {})
+    reddit   = results.get('reddit', {})
+    news     = results.get('industry_news', {})
+
+    # ── 辅助函数 ──────────────────────────────────────────────────
+    def fmt_price(val):
+        return f"${val:.2f}" if val is not None else "N/A"
+
+    def pct_diff(base, comp):
+        """base vs comp，返回字符串如 '-34%' 或 '+12%'"""
+        if base and comp and base > 0:
+            p = round((comp - base) / base * 100, 1)
+            return f"{p:+.0f}%"
+        return "N/A"
+
+    # ── 获取各竞品最低起价 ──────────────────────────────────────
+    vograce_min  = vograce.get('min_price')
+    wooacry_min  = wooacry.get('min_price')
+    zap_min      = zap.get('min_price')
+    smule_min    = smule.get('min_price')
+
+    # ── 价格变化 & 预警 ─────────────────────────────────────────
+    price_alerts = []
+    for change in changes.get('price_changes', []):
+        pct = change['change_pct']
+        if pct < -3:
+            level = "danger"
+            label = "降价"
+        elif pct > 3:
+            level = "warning"
+            label = "涨价"
+        else:
+            continue
+        price_alerts.append({
+            "competitor": change['competitor'],
+            "old_price":  fmt_price(change['old_price']),
+            "new_price":  fmt_price(change['new_price']),
+            "change_pct": f"{pct:+.1f}%",
+            "label": label,
+            "level": level,
+        })
+
+    # ── 洞察摘要（基于实时价格自动生成）───────────────────────
+    # 判断谁的亚克力最低
+    acrylic_advantage = ""
+    if wooacry_min and vograce_min:
+        diff = round((wooacry_min - vograce_min) / vograce_min * 100, 1)
+        if diff < 0:
+            acrylic_advantage = f"WooAcry亚克力钥匙扣{fmt_price(wooacry_min)}起，比Vograce低{abs(diff):.0f}%"
+        else:
+            acrylic_advantage = f"Vograce与WooAcry价格相当（{fmt_price(vograce_min)} vs {fmt_price(wooacry_min)}）"
+    
+    insight_summary = {
+        "core_advantage": f"Vograce价格全球竞争力强，SKU覆盖最全面(24+品类)，满足一站式采购需求。当前最低价{fmt_price(vograce_min)}起",
+        "key_risk": acrylic_advantage or "持续监控竞品价格动态中",
+        "strategic_opportunity": "亚洲IP全球化加速(K-pop/J-pop/韩漫)，带动欧美粉丝周边需求激增；漫展经济复苏",
+    }
+
+    # ── 竞品价格对比（4个主要竞品）────────────────────────────
+    competitor_prices = [
+        {
+            "name": "WooAcry",
+            "min_price": fmt_price(wooacry_min),
+            "vs_vograce": pct_diff(vograce_min, wooacry_min),
+            "threat": "高",
+            "color": "#EF4444",
+            "url": "https://wooacry.com",
+        },
+        {
+            "name": "Sticker Mule",
+            "min_price": fmt_price(smule_min),
+            "vs_vograce": pct_diff(vograce_min, smule_min),
+            "threat": "中",
+            "color": "#F59E0B",
+            "url": "https://www.stickermule.com",
+        },
+        {
+            "name": "Zap! Creatives",
+            "min_price": fmt_price(zap_min),
+            "vs_vograce": pct_diff(vograce_min, zap_min),
+            "threat": "中",
+            "color": "#3B82F6",
+            "url": "https://www.zapcreatives.com",
+        },
+        {
+            "name": "Vograce",
+            "min_price": fmt_price(vograce_min),
+            "vs_vograce": "基准",
+            "threat": "—",
+            "color": "#10B981",
+            "url": "https://vograce.com",
+        },
+    ]
+
+    # ── 价格历史（近30天）用于折线图 ─────────────────────────
+    recent_history = {}
+    cutoff = sorted(set(r['date'] for r in price_history))[-30:]
+    for comp in ['WooAcry', 'Vograce', 'Zap! Creatives', 'Sticker Mule']:
+        pts = [r for r in price_history if r['competitor'] == comp and r['date'] in cutoff]
+        recent_history[comp] = [{"date": p['date'], "min": p.get('min_price'), "avg": p.get('avg_price')} for p in pts]
+
+    # ── WooAcry vs Vograce 对比表（Section 4）───────────────
+    wa_vs_v = {
+        "acrylic_keychain": {
+            "vograce":  fmt_price(vograce_min) if vograce_min else "$1.51",
+            "wooacry":  fmt_price(wooacry_min) if wooacry_min else "$0.99",
+            "winner":   "WooAcry" if (wooacry_min and vograce_min and wooacry_min < vograce_min) else "Vograce",
+            "diff":     pct_diff(vograce_min, wooacry_min),
+        },
+    }
+
+    # ── 社媒数据 ────────────────────────────────────────────
+    social_competitors = social.get('competitors', {})
+    social_data = {}
+    SOCIAL_URLS = {
+        "vograce":    {"twitter": "https://x.com/VograceCharms", "tiktok": "https://www.tiktok.com/@vogracecharms", "youtube": "https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ", "instagram": "https://www.instagram.com/vograce_official"},
+        "wooacry":    {"twitter": "https://x.com/Wooacry_Charms", "tiktok": "https://www.tiktok.com/@wooacryofficial", "youtube": "https://www.youtube.com/@wooacry", "instagram": "https://www.instagram.com/wooacryofficial"},
+        "zapcreatives": {"twitter": "https://x.com/ZapCreatives", "tiktok": "https://www.tiktok.com/@zapcreatives", "youtube": "https://www.youtube.com/@zapcreatives", "instagram": "https://www.instagram.com/zapcreatives"},
+        "stickermule": {"twitter": "https://x.com/stickermule", "tiktok": "https://www.tiktok.com/@stickermule", "youtube": "https://www.youtube.com/@stickermule", "instagram": "https://www.instagram.com/stickermule"},
+        "makeship":   {"twitter": "https://x.com/Makeship", "tiktok": "https://www.tiktok.com/@makeship", "youtube": "https://www.youtube.com/@makeship", "instagram": "https://www.instagram.com/makeship"},
+    }
+    for key, info in social_competitors.items():
+        social_data[key] = {
+            "name": info.get("name", key),
+            "followers": info.get("followers", {}),
+            "last_activity": info.get("last_activity", today),
+            "urls": SOCIAL_URLS.get(key, {}),
+        }
+
+    # ── Reddit 热帖 ────────────────────────────────────────
+    hot_posts = reddit.get('hot_posts', [])[:6]
+
+    # ── 行业新闻 ────────────────────────────────────────────
+    news_list = news.get('news', [])[:6] if isinstance(news, dict) else []
+
+    # ── 战略行动建议（基于当前价差自动生成）────────────────
+    urgent_items = []
+    important_items = []
+    
+    if wooacry_min and vograce_min and wooacry_min < vograce_min:
+        diff_pct = abs(round((wooacry_min - vograce_min) / vograce_min * 100))
+        urgent_items.append(f"WooAcry亚克力价格比Vograce低{diff_pct}%，评估是否调整定价策略或增加附加价值")
+    urgent_items.append("检查库存充足性：提前备货漫展旺季")
+
+    important_items.append(f"强化木质钥匙扣宣传：突出{fmt_price(vograce_min)}竞争力")
+    important_items.append("开发或完善POD开店功能：对标WooAcry，留住独立艺术家客户")
+
+    action_plan = {
+        "urgent":    urgent_items,
+        "important": important_items,
+        "plan":      ["考虑引入环保材料产品线：再生亚克力/水性油墨", "加大K-pop/韩漫营销投入：把握亚洲IP出海红利期"],
+    }
+
+    # ── 竞品动向追踪矩阵 ───────────────────────────────────
+    tracker_matrix = {
+        "wooacry": {
+            "name": "WooAcry",
+            "price_trend": f"最低价{fmt_price(wooacry_min)}",
+            "promotion": "免费POD开店",
+            "product_update": "持续新增SKU",
+            "social_active": "高",
+            "threat_level": 90,
+        },
+        "stickermule": {
+            "name": "Sticker Mule",
+            "price_trend": f"最低价{fmt_price(smule_min)}",
+            "promotion": "全球免费配送",
+            "product_update": "专注贴纸品类",
+            "social_active": "中",
+            "threat_level": 55,
+        },
+        "zapcreatives": {
+            "name": "Zap! Creatives",
+            "price_trend": f"最低价{fmt_price(zap_min)}",
+            "promotion": "SAVE20促销",
+            "product_update": "英国制造品质升级",
+            "social_active": "低",
+            "threat_level": 40,
+        },
+    }
+
+    # ── 综合概览指标 ────────────────────────────────────────
+    alert_count = len(changes.get('alerts', []))
+    overview_metrics = {
+        "date":           today,
+        "last_updated":   now_str,
+        "competitors_monitored": 4,
+        "sku_categories":  24,
+        "active_alerts":   alert_count,
+        "data_freshness":  "每日 08:00",
+        "market_size_est": "$2.8B",
+        "vograce_min_price": fmt_price(vograce_min),
+        "wooacry_min_price": fmt_price(wooacry_min),
+        "zap_min_price":    fmt_price(zap_min),
+        "smule_min_price":  fmt_price(smule_min),
+    }
+
+    # ── 合并输出 ─────────────────────────────────────────────
+    report_data = {
+        "_meta": {
+            "generated_at": now_str,
+            "version": "4.0",
+            "description": "Vograce竞品分析报告统一数据源，覆盖所有模块",
+        },
+        "overview":          overview_metrics,
+        "insight_summary":   insight_summary,
+        "price_alerts":      price_alerts,
+        "competitor_prices": competitor_prices,
+        "price_history":     recent_history,
+        "wa_vs_v":           wa_vs_v,
+        "tracker_matrix":    tracker_matrix,
+        "social":            social_data,
+        "hot_posts":         hot_posts,
+        "news":              news_list,
+        "action_plan":       action_plan,
+        "raw_alerts":        changes.get('alerts', []),
+    }
+
+    out_file = os.path.join(DATA_DIR, "report_data.json")
+    with open(out_file, 'w', encoding='utf-8') as f:
+        json.dump(report_data, f, ensure_ascii=False, indent=2)
+    print(f"  ✅ report_data.json 已生成（{len(report_data)}个模块）")
 
 def update_html_report(results, changes):
     """更新HTML报告中的动态数据"""

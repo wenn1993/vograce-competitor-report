@@ -1386,15 +1386,15 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
         <div style="font-size:11px;color:#6EE7B7;font-weight:600;margin-bottom:6px;"><i data-lucide="check-circle" class="icon" style="color:#6EE7B7"></i> 核心优势</div>
-        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">Vograce木质钥匙扣价格全球最低($0.71)，比WooAcry低28%；SKU覆盖最全面(24+品类)，满足一站式采购需求</div>
+        <div id="insightCoreAdvantage" style="font-size:12px;color:var(--text-muted);line-height:1.6;">Vograce木质钥匙扣价格全球最低($0.71)，比WooAcry低28%；SKU覆盖最全面(24+品类)，满足一站式采购需求</div>
       </div>
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
         <div style="font-size:11px;color:#FCA5A5;font-weight:600;margin-bottom:6px;"><i data-lucide="alert-triangle" class="icon" style="color:#FCA5A5"></i> 关键风险</div>
-        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">WooAcry亚克力钥匙扣$0.99起，比Vograce低34%；其POD开店模式对独立艺术家吸引力更强</div>
+        <div id="insightKeyRisk" style="font-size:12px;color:var(--text-muted);line-height:1.6;">WooAcry亚克力钥匙扣$0.99起，比Vograce低34%；其POD开店模式对独立艺术家吸引力更强</div>
       </div>
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:14px;">
         <div style="font-size:11px;color:#FCD34D;font-weight:600;margin-bottom:6px;"><i data-lucide="lightbulb" class="icon" style="color:#FCD34D"></i> 战略机会</div>
-        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">亚洲IP全球化加速(K-pop/J-pop/韩漫)，带动欧美粉丝周边需求激增；漫展经济复苏(Artist Alley需求+35%)</div>
+        <div id="insightOpportunity" style="font-size:12px;color:var(--text-muted);line-height:1.6;">亚洲IP全球化加速(K-pop/J-pop/韩漫)，带动欧美粉丝周边需求激增；漫展经济复苏(Artist Alley需求+35%)</div>
       </div>
     </div>
   </div>
@@ -1752,13 +1752,13 @@
       <span style="font-size:14px;font-weight:700;color:#C4B5FD;">战略行动建议</span>
       <span style="font-size:11px;color:var(--text-muted);margin-left:auto;">Strategic Recommendations</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;" id="actionPlanGrid">
       <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:14px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <span style="font-size:16px;">🔴</span>
           <span style="font-size:12px;font-weight:600;color:#FCA5A5;">紧急 (7天内)</span>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+        <div id="actionUrgent" style="font-size:11px;color:var(--text-muted);line-height:1.7;">
           1. WooAcry亚克力价格对标：评估是否需要价格调整或增加附加价值<br>
           2. 检查库存充足性：为4月MCM Comic Con提前备货
         </div>
@@ -1768,7 +1768,7 @@
           <span style="font-size:16px;">🟡</span>
           <span style="font-size:12px;font-weight:600;color:#FCD34D;">重要 (30天内)</span>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+        <div id="actionImportant" style="font-size:11px;color:var(--text-muted);line-height:1.7;">
           1. 强化木质钥匙扣宣传：突出$0.71全球最低价优势<br>
           2. 开发POD开店功能：对标WooAcry，留住独立艺术家客户
         </div>
@@ -1778,7 +1778,7 @@
           <span style="font-size:16px;">🟢</span>
           <span style="font-size:12px;font-weight:600;color:#6EE7B7;">规划 (季度)</span>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+        <div id="actionPlan" style="font-size:11px;color:var(--text-muted);line-height:1.7;">
           1. 考虑环保材料产品线：再生亚克力/水性油墨<br>
           2. 加大K-pop/韩漫营销投入：把握亚洲IP出海红利期
         </div>
@@ -2588,9 +2588,9 @@
       <tbody>
         <tr>
           <td class="dim">亚克力钥匙扣起价</td>
-          <td class="vograce-col">$1.51</td>
-          <td class="wooacry-col"><strong>$0.99</strong></td>
-          <td class="winner winner-w">WooAcry ↓34%</td>
+          <td class="vograce-col" id="s4VograceAcrylicPrice">$1.51</td>
+          <td class="wooacry-col"><strong id="s4WooAcryAcrylicPrice">$0.99</strong></td>
+          <td class="winner winner-w" id="s4AcrylicWinner">WooAcry ↓34%</td>
         </tr>
         <tr>
           <td class="dim">贴纸起价</td>
@@ -2827,7 +2827,7 @@
         <div style="font-size:12px;font-weight:600;color:#10B981;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
           <span style="font-size:14px;"></span> Vograce核心优势
         </div>
-        <div style="font-size:13px;color:#E2E8F0;line-height:1.6;">
+        <div id="s5CoreAdvantage" style="font-size:13px;color:#E2E8F0;line-height:1.6;">
           <div style="margin-bottom:6px;">• 徽章品类价格优势达30-72%</div>
           <div style="margin-bottom:6px;">• 木质钥匙扣$0.71起（同品类最低）</div>
           <div>• 动漫周边定制专业度高</div>
@@ -2838,7 +2838,7 @@
         <div style="font-size:12px;font-weight:600;color:#EF4444;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
           <i data-lucide="alert-triangle" class="icon" style="color:#EF4444"></i> 关键风险预警
         </div>
-        <div style="font-size:13px;color:#E2E8F0;line-height:1.6;">
+        <div id="s5KeyRisk" style="font-size:13px;color:#E2E8F0;line-height:1.6;">
           <div style="margin-bottom:6px;">• WooAcry亚克力钥匙扣$0.99（低34%）</div>
           <div style="margin-bottom:6px;">• WooAcry批量折扣最高72%（规模优势）</div>
           <div>• Zap! Creatives英国制造（本地化优势）</div>
@@ -2849,7 +2849,7 @@
         <div style="font-size:12px;font-weight:600;color:#F59E0B;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
           <i data-lucide="lightbulb" class="icon" style="color:#F59E0B"></i> 战略机会窗口
         </div>
-        <div style="font-size:13px;color:#E2E8F0;line-height:1.6;">
+        <div id="s5Opportunity" style="font-size:13px;color:#E2E8F0;line-height:1.6;">
           <div style="margin-bottom:6px;">• 动漫IP授权合作（Zap!正在拓展）</div>
           <div style="margin-bottom:6px;">• 毛绒徽章/3D打印新品类</div>
           <div>• 漫展专属定制服务</div>
@@ -3246,7 +3246,7 @@
   <div class="social-platform-grid">
 
     <!-- WooAcry - Most Active -->
-    <div class="social-comp-card" style="border-color:rgba(239,68,68,0.3);">
+    <div class="social-comp-card" style="border-color:rgba(239,68,68,0.3);" id="wooacrySocialCard">
       <div class="social-comp-header">
         <span class="social-comp-name" style="color:#FCA5A5;">WooAcry</span>
         <div class="social-comp-platforms">
@@ -3320,7 +3320,7 @@
     </div>
 
     <!-- Zap! Creatives -->
-    <div class="social-comp-card">
+    <div class="social-comp-card" id="zapcreativesSocialCard">
       <div class="social-comp-header">
         <span class="social-comp-name" style="color:#FCD34D;">Zap! Creatives</span>
         <div class="social-comp-platforms">
@@ -3357,7 +3357,7 @@
     </div>
 
     <!-- Sticker Mule -->
-    <div class="social-comp-card">
+    <div class="social-comp-card" id="stickermuleSocialCard">
       <div class="social-comp-header">
         <span class="social-comp-name" style="color:#93C5FD;"><i data-lucide="tag" class="icon" style="color:#93C5FD"></i> Sticker Mule</span>
         <div class="social-comp-platforms">
@@ -3394,7 +3394,7 @@
     </div>
 
     <!-- Makeship -->
-    <div class="social-comp-card">
+    <div class="social-comp-card" id="makeshipSocialCard">
       <div class="social-comp-header">
         <span class="social-comp-name" style="color:#6EE7B7;">🎁 Makeship</span>
         <div class="social-comp-platforms">
@@ -4411,10 +4411,182 @@ document.addEventListener('DOMContentLoaded', function() {
   loadRedditTrends();      // 加载Reddit趋势
   loadIndustryNews();       // 加载行业动态
 
+  // ── 统一从 report_data.json 更新所有模块 ──
+  loadAllModulesFromReportData();
+
   // 更新追踪数量
   const trackerItems = document.querySelectorAll('#competitorTracker .tracker-item');
   document.getElementById('trackerCount').textContent = trackerItems.length + ' 条动态';
 });
+
+// ══════════════════════════════════════════════════════════
+// 统一数据加载入口 — 从 report_data.json 更新所有模块
+// ══════════════════════════════════════════════════════════
+async function loadAllModulesFromReportData() {
+  let d;
+  try {
+    const res = await fetchFresh('competitor_data/report_data.json');
+    if (!res.ok) return;
+    d = await res.json();
+  } catch(e) {
+    console.warn('report_data.json 加载失败', e);
+    return;
+  }
+
+  // ── 概览指标 ──────────────────────────────────────────
+  const ov = d.overview || {};
+  setText('collection-time', ov.data_freshness || '每日 08:00');
+  // 导航栏更新时间
+  ['footerGenTime', 'reportDate'].forEach(id => setText(id, ov.last_updated || ''));
+
+  // ── Section 1: 洞察摘要 ────────────────────────────
+  const ins = d.insight_summary || {};
+  setText('insightCoreAdvantage', ins.core_advantage || '');
+  setText('insightKeyRisk', ins.key_risk || '');
+  setText('insightOpportunity', ins.strategic_opportunity || '');
+
+  // ── Section 1: 竞品价格变动区（priceAlerts 容器）──
+  const alerts = d.price_alerts || [];
+  const priceAlertsEl = document.getElementById('priceAlerts');
+  if (priceAlertsEl && alerts.length > 0) {
+    const colorMap = { danger: '#EF4444', warning: '#F59E0B', info: '#3B82F6' };
+    const bgMap    = { danger: 'rgba(239,68,68,0.08)', warning: 'rgba(245,158,11,0.08)', info: 'rgba(59,130,246,0.08)' };
+    const labelMap = { danger: 'red', warning: 'amber', info: 'blue' };
+    const urlMap   = { 'WooAcry': 'https://wooacry.com', 'Sticker Mule': 'https://www.stickermule.com', 'Zap! Creatives': 'https://www.zapcreatives.com', 'Vograce': 'https://vograce.com' };
+    priceAlertsEl.innerHTML = alerts.map(a => {
+      const lv = a.level || 'info';
+      const url = urlMap[a.competitor] || '#';
+      return `<a href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:${bgMap[lv]};border-radius:6px;margin-bottom:8px;border:1px solid ${colorMap[lv]}30;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='${bgMap[lv].replace('0.08','0.15')}'" onmouseout="this.style.background='${bgMap[lv]}'">
+        <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[lv]};flex-shrink:0;"></div>
+        <div style="flex:1;">
+          <div style="font-size:12px;font-weight:600;color:${colorMap[lv]};">${a.competitor} ${a.label}</div>
+          <div style="font-size:11px;color:var(--text-muted);">${a.old_price} → ${a.new_price} (${a.change_pct})</div>
+        </div>
+        <span class="tag ${labelMap[lv]}">${a.label}</span>
+      </a>`;
+    }).join('');
+  }
+
+  // ── Section 1: 战略行动建议 ────────────────────────
+  const ap = d.action_plan || {};
+  setListHtml('actionUrgent', ap.urgent || []);
+  setListHtml('actionImportant', ap.important || []);
+  setListHtml('actionPlan', ap.plan || []);
+
+  // ── Section 4: WooAcry vs Vograce 对比表 ──────────
+  const wv = (d.wa_vs_v || {}).acrylic_keychain || {};
+  setText('s4VograceAcrylicPrice', wv.vograce || '');
+  setText('s4WooAcryAcrylicPrice', wv.wooacry || '');
+  if (wv.diff && wv.winner) {
+    setText('s4AcrylicWinner', wv.winner + ' ' + wv.diff);
+  }
+  // 更新快速比较区
+  setText('vograceBreadthPrice', ov.vograce_min_price || '');
+  setText('wooacryBreadthPrice', ov.wooacry_min_price || '');
+
+  // ── Section 5: 竞品动向 — 洞察摘要 ────────────────
+  // 与 Section 1 共享同样的洞察数据
+  setText('s5CoreAdvantage', buildBullets([
+    `Vograce最低价 ${ov.vograce_min_price || 'N/A'}，竞争力强`,
+    '徽章品类价格优势达30-72%',
+    '动漫周边定制专业度高',
+  ]));
+  setText('s5KeyRisk', buildBullets([
+    `WooAcry最低价 ${ov.wooacry_min_price || 'N/A'}（${ins.key_risk || '监控中'}）`,
+    'WooAcry批量折扣最高72%',
+    'Zap! Creatives英国制造本地化优势',
+  ]));
+  setText('s5Opportunity', buildBullets([
+    ins.strategic_opportunity || '',
+    '毛绒徽章/3D打印新品类',
+    '漫展专属定制服务',
+  ]));
+
+  // ── 页头/导航栏：今日日期与更新时间 ───────────────
+  const dateStr = ov.date || new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('.update-date, [data-update-date]').forEach(el => {
+    el.textContent = dateStr.replace(/-/g, '/');
+  });
+
+  // ── 社媒卡片粉丝数 ─────────────────────────────────
+  updateSocialCardsFromReportData();
+}
+
+// ── 工具函数 ──────────────────────────────────────────────
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
+function setListHtml(id, items) {
+  const el = document.getElementById(id);
+  if (!el || !items.length) return;
+  el.innerHTML = items.map((item, i) => `${i+1}. ${item}`).join('<br>');
+}
+
+function buildBullets(items) {
+  return items.filter(Boolean).map(s => '• ' + s).join('\n');
+}
+
+// ── 社媒卡片粉丝数动态更新 ────────────────────────────────
+// 从 report_data.json 的 social 字段读取数据，更新各竞品卡片粉丝数
+async function updateSocialCardsFromReportData() {
+  let d;
+  try {
+    const res = await fetchFresh('competitor_data/report_data.json');
+    if (!res.ok) return;
+    d = await res.json();
+  } catch(e) { return; }
+
+  const social = d.social || {};
+  // 竞品key → 社媒卡片容器ID 映射
+  const cardMap = {
+    vograce:      'vograceSocialCard',
+    wooacry:      'wooacrySocialCard',
+    zapcreatives: 'zapcreativesSocialCard',
+    stickermule:  'stickermuleSocialCard',
+    makeship:     'makeshipSocialCard',
+  };
+  // 平台颜色
+  const platformColors = { tiktok: '#00F2EA', youtube: '#FF0000', twitter: '#1DA1F2', instagram: '#E1306C' };
+
+  for (const [key, cardId] of Object.entries(cardMap)) {
+    const info = social[key];
+    if (!info) continue;
+    const card = document.getElementById(cardId);
+    if (!card) continue;
+
+    const followers = info.followers || {};
+    const urls = info.urls || {};
+
+    // 更新每个平台的粉丝数值（找到 .social-stat-row 里包含对应平台链接的 val span）
+    const rows = card.querySelectorAll('.social-stat-row');
+    rows.forEach(row => {
+      const label = row.querySelector('span:first-child');
+      const valSpan = row.querySelector('.social-stat-val');
+      if (!label || !valSpan) return;
+      const labelText = label.textContent.toLowerCase();
+
+      let platform = null;
+      if (labelText.includes('tiktok')) platform = 'tiktok';
+      else if (labelText.includes('youtube')) platform = 'youtube';
+      else if (labelText.includes('x粉丝') || labelText.includes('twitter')) platform = 'twitter';
+      else if (labelText.includes('instagram')) platform = 'instagram';
+
+      if (platform && followers[platform]) {
+        const url = urls[platform] || '#';
+        const color = platformColors[platform];
+        const innerA = valSpan.querySelector('a');
+        if (innerA) {
+          innerA.href = url;
+          innerA.textContent = followers[platform];
+        } else {
+          valSpan.textContent = followers[platform];
+        }
+      }
+    });
+  }
+}
 
 // 更新数据可信度中心
 async function updateDataCredibility() {
