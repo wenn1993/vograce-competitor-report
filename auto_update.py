@@ -96,16 +96,22 @@ def get_headers():
 # 动态网站列表（需要使用 Playwright 抓取）
 DYNAMIC_SITES = ['stickermule', 'zapcreatives']
 
-def scrape_page_with_playwright(url, timeout=15):
+def scrape_page_with_playwright(url, timeout=30):
     """使用 Playwright 抓取动态页面"""
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.firefox.launch(headless=True)
             page = browser.new_page()
-            page.goto(url, wait_until='networkidle', timeout=timeout * 1000)
-            # 等待页面加载完成
-            page.wait_for_timeout(2000)
+            # 增加超时时间，等待更多内容加载
+            page.goto(url, wait_until='domcontentloaded', timeout=timeout * 1000)
+            # 等待价格元素加载
+            try:
+                page.wait_for_selector('[class*="price"], .price, .product-price', timeout=5000)
+            except:
+                pass
+            # 额外等待让 JS 完成渲染
+            page.wait_for_timeout(3000)
             content = page.content()
             browser.close()
             return content
