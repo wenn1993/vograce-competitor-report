@@ -778,10 +778,42 @@ def generate_report_data(results, changes, price_history):
     zap_min      = zap.get('min_price')
     smule_min    = smule.get('min_price')
 
+    # ── 竞品产品分类URL映射 ─────────────────────────────────────
+    competitor_product_urls = {
+        "WooAcry": {
+            "acrylic_keychains": "https://wooacry.com/collections/acrylic-keychains",
+            "wood_keychains": "https://wooacry.com/collections/wood-keychains",
+            "badges": "https://wooacry.com/collections/badges",
+            "stickers": "https://wooacry.com/collections/stickers",
+            "default": "https://wooacry.com/collections/all"
+        },
+        "Sticker Mule": {
+            "stickers": "https://www.stickermule.com/stickers",
+            "labels": "https://www.stickermule.com/labels",
+            "packaging": "https://www.stickermule.com/packaging",
+            "default": "https://www.stickermule.com"
+        },
+        "Zap! Creatives": {
+            "acrylic_keychains": "https://www.zapcreatives.com/custom-keychains",
+            "badges": "https://www.zapcreatives.com/custom-badges-pins",
+            "stickers": "https://www.zapcreatives.com/custom-stickers",
+            "default": "https://www.zapcreatives.com"
+        },
+        "Vograce": {
+            "acrylic_keychains": "https://www.vograce.com/custom-keychains",
+            "wood_keychains": "https://www.vograce.com/wood-keychains",
+            "badges": "https://www.vograce.com/custom-badges",
+            "stickers": "https://www.vograce.com/custom-stickers",
+            "default": "https://www.vograce.com"
+        }
+    }
+
     # ── 价格变化 & 预警 ─────────────────────────────────────────
     price_alerts = []
     for change in changes.get('price_changes', []):
         pct = change['change_pct']
+        comp_name = change['competitor']
+        
         if pct < -3:
             level = "danger"
             label = "降价"
@@ -790,13 +822,24 @@ def generate_report_data(results, changes, price_history):
             label = "涨价"
         else:
             continue
+        
+        # 获取该竞品的产品分类链接
+        url_info = competitor_product_urls.get(comp_name, {})
+        product_url = url_info.get('default', '#')
+        
+        # 决定链接到哪个分类页面（基于价格变化的产品类型）
+        if 'keychain' in str(change.get('product_type', '')).lower():
+            product_url = url_info.get('acrylic_keychains', product_url)
+        
         price_alerts.append({
-            "competitor": change['competitor'],
+            "competitor": comp_name,
             "old_price":  fmt_price(change['old_price']),
             "new_price":  fmt_price(change['new_price']),
             "change_pct": f"{pct:+.1f}%",
             "label": label,
             "level": level,
+            "product_url": product_url,  # 具体产品分类页链接
+            "product_type": change.get('product_type', '全品类')
         })
 
     # ── 洞察摘要（基于实时价格自动生成）───────────────────────

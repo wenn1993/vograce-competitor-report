@@ -1455,38 +1455,10 @@
         <span style="font-size:10px;color:#FCA5A5;opacity:0.7;">Price Changes</span>
       </div>
       <div style="padding:16px;" id="priceAlerts">
-        <a href="https://wooacry.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(239,68,68,0.08);border-radius:6px;margin-bottom:8px;border:1px solid rgba(239,68,68,0.15);text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(239,68,68,0.15)'" onmouseout="this.style.background='rgba(239,68,68,0.08)'">
-          <div style="width:8px;height:8px;border-radius:50%;background:#EF4444;flex-shrink:0;"></div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;color:#FCA5A5;">WooAcry 亚克力降价</div>
-            <div style="font-size:11px;color:var(--text-muted);">$0.99起，比Vograce低34%</div>
-          </div>
-          <span class="tag red">危机</span>
-        </a>
-        <a href="https://www.vograce.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(16,185,129,0.08);border-radius:6px;margin-bottom:8px;border:1px solid rgba(16,185,129,0.15);text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(16,185,129,0.15)'" onmouseout="this.style.background='rgba(16,185,129,0.08)'">
-          <div style="width:8px;height:8px;border-radius:50%;background:#10B981;flex-shrink:0;"></div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;color:#6EE7B7;">Vograce 木质钥匙扣</div>
-            <div style="font-size:11px;color:var(--text-muted);">$0.71起，价格优势+28%</div>
-          </div>
-          <span class="tag green">优势</span>
-        </a>
-        <a href="https://www.stickermule.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(245,158,11,0.08);border-radius:6px;margin-bottom:8px;border:1px solid rgba(245,158,11,0.15);text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(245,158,11,0.15)'" onmouseout="this.style.background='rgba(245,158,11,0.08)'">
-          <div style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0;"></div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;color:#FCD34D;">Sticker Mule 批量价</div>
-            <div style="font-size:11px;color:var(--text-muted);">1000件$1.19/个，大单竞争激烈</div>
-          </div>
-          <span class="tag amber">监控</span>
-        </a>
-        <a href="https://www.zapcreatives.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(59,130,246,0.08);border-radius:6px;border:1px solid rgba(59,130,246,0.15);text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(59,130,246,0.15)'" onmouseout="this.style.background='rgba(59,130,246,0.08)'">
-          <div style="width:8px;height:8px;border-radius:50%;background:#3B82F6;flex-shrink:0;"></div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;color:#93C5FD;">Zap! Creatives</div>
-            <div style="font-size:11px;color:var(--text-muted);">英国制造$1.44起，品质溢价</div>
-          </div>
-          <span class="tag blue">品质</span>
-        </a>
+        <!-- 动态加载价格变动数据，无数据时显示提示 -->
+        <div style="text-align:center;padding:20px;color:var(--text-muted);font-size:13px;">
+          <div style="margin-bottom:8px;">📊 正在加载价格变动数据...</div>
+        </div>
       </div>
     </div>
     
@@ -4448,23 +4420,36 @@ async function loadAllModulesFromReportData() {
   // ── Section 1: 竞品价格变动区（priceAlerts 容器）──
   const alerts = d.price_alerts || [];
   const priceAlertsEl = document.getElementById('priceAlerts');
-  if (priceAlertsEl && alerts.length > 0) {
-    const colorMap = { danger: '#EF4444', warning: '#F59E0B', info: '#3B82F6' };
-    const bgMap    = { danger: 'rgba(239,68,68,0.08)', warning: 'rgba(245,158,11,0.08)', info: 'rgba(59,130,246,0.08)' };
-    const labelMap = { danger: 'red', warning: 'amber', info: 'blue' };
-    const urlMap   = { 'WooAcry': 'https://wooacry.com', 'Sticker Mule': 'https://www.stickermule.com', 'Zap! Creatives': 'https://www.zapcreatives.com', 'Vograce': 'https://vograce.com' };
-    priceAlertsEl.innerHTML = alerts.map(a => {
-      const lv = a.level || 'info';
-      const url = urlMap[a.competitor] || '#';
-      return `<a href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:${bgMap[lv]};border-radius:6px;margin-bottom:8px;border:1px solid ${colorMap[lv]}30;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='${bgMap[lv].replace('0.08','0.15')}'" onmouseout="this.style.background='${bgMap[lv]}'">
-        <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[lv]};flex-shrink:0;"></div>
-        <div style="flex:1;">
-          <div style="font-size:12px;font-weight:600;color:${colorMap[lv]};">${a.competitor} ${a.label}</div>
-          <div style="font-size:11px;color:var(--text-muted);">${a.old_price} → ${a.new_price} (${a.change_pct})</div>
-        </div>
-        <span class="tag ${labelMap[lv]}">${a.label}</span>
-      </a>`;
-    }).join('');
+  if (priceAlertsEl) {
+    if (alerts.length === 0) {
+      // 无价格变动时显示提示
+      priceAlertsEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--text-muted);font-size:13px;">
+        <div style="margin-bottom:8px;">📊 今日无价格变动</div>
+        <div style="font-size:11px;opacity:0.7;">竞品价格稳定，持续监控中...</div>
+      </div>`;
+    } else {
+      const colorMap = { danger: '#EF4444', warning: '#F59E0B', info: '#3B82F6' };
+      const bgMap    = { danger: 'rgba(239,68,68,0.08)', warning: 'rgba(245,158,11,0.08)', info: 'rgba(59,130,246,0.08)' };
+      const labelMap = { danger: 'red', warning: 'amber', info: 'blue' };
+      const descMap  = { danger: '降价', warning: '涨价', info: '变动' };
+      
+      priceAlertsEl.innerHTML = alerts.map(a => {
+        const lv = a.level || 'info';
+        // 优先使用具体产品分类页链接，否则使用官网
+        const url = a.product_url || '#';
+        const priceChange = a.change_pct || '';
+        const isDrop = lv === 'danger'; // 降价
+        
+        return `<a href="${url}" target="_blank" title="查看产品详情" style="display:flex;align-items:center;gap:8px;padding:10px;background:${bgMap[lv]};border-radius:6px;margin-bottom:8px;border:1px solid ${colorMap[lv]}30;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='${bgMap[lv].replace('0.08','0.15')}'" onmouseout="this.style.background='${bgMap[lv]}'">
+          <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[lv]};flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:600;color:${colorMap[lv]};">${a.competitor} ${descMap[lv] || a.label}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${a.old_price} → ${a.new_price} (${priceChange})</div>
+          </div>
+          <span class="tag ${labelMap[lv]}">${isDrop ? '降价' : a.label}</span>
+        </a>`;
+      }).join('');
+    }
   }
 
   // ── Section 1: 战略行动建议 ────────────────────────
