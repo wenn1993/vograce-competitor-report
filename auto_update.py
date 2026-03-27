@@ -93,8 +93,39 @@ def get_headers():
         'Connection': 'keep-alive',
     }
 
+# 动态网站列表（需要使用 Playwright 抓取）
+DYNAMIC_SITES = ['stickermule', 'zapcreatives']
+
+def scrape_page_with_playwright(url, timeout=15):
+    """使用 Playwright 抓取动态页面"""
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.firefox.launch(headless=True)
+            page = browser.new_page()
+            page.goto(url, wait_until='networkidle', timeout=timeout * 1000)
+            # 等待页面加载完成
+            page.wait_for_timeout(2000)
+            content = page.content()
+            browser.close()
+            return content
+    except Exception as e:
+        print(f"  ⚠️ Playwright失败: {str(e)[:40]}")
+        return None
+
 def scrape_page(url, timeout=15):
-    """抓取单个页面"""
+    """抓取单个页面，自动选择合适的方法"""
+    # 检查是否是动态网站
+    for site in DYNAMIC_SITES:
+        if site in url:
+            print(f"  🌐 使用浏览器抓取（动态页面）: {url[:50]}...")
+            result = scrape_page_with_playwright(url, timeout)
+            if result:
+                return result
+            # 如果 Playwright 失败，回退到 requests
+            print(f"  ⚠️ 回退到 HTTP 请求")
+    
+    # 静态网站使用 requests
     try:
         response = requests.get(url, headers=get_headers(), timeout=timeout)
         response.raise_for_status()
