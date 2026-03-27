@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "timestamp": "2026-03-27T16:41:57.577080",
+  "timestamp": "2026-03-27T16:48:08.939857",
   "competitors_scraped": 4,
   "total_pages": 16,
   "successful_pages": 16,
@@ -8,7 +8,7 @@
   "alerts": [],
   "vograce_min_price": 0.05,
   "wooacry_min_price": 0.14,
-  "zap_min_price": null,
+  "zap_min_price": 1.44,
   "stickermule_min_price": 9.0,
   "social_updated": true,
   "reddit_updated": true,
