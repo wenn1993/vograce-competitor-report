@@ -4435,18 +4435,27 @@ async function loadAllModulesFromReportData() {
       
       priceAlertsEl.innerHTML = alerts.map(a => {
         const lv = a.level || 'info';
-        // 优先使用具体产品分类页链接，否则使用官网
         const url = a.product_url || '#';
         const priceChange = a.change_pct || '';
-        const isDrop = lv === 'danger'; // 降价
+        const isDrop = lv === 'danger';
+        const productType = a.product_type || '多款产品';
+        const displayTitle = isDrop 
+          ? `${a.competitor} 多款产品降价` 
+          : `${a.competitor} ${productType}价格变动`;
         
-        return `<a href="${url}" target="_blank" title="查看产品详情" style="display:flex;align-items:center;gap:8px;padding:10px;background:${bgMap[lv]};border-radius:6px;margin-bottom:8px;border:1px solid ${colorMap[lv]}30;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='${bgMap[lv].replace('0.08','0.15')}'" onmouseout="this.style.background='${bgMap[lv]}'">
-          <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[lv]};flex-shrink:0;"></div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;color:${colorMap[lv]};">${a.competitor} ${descMap[lv] || a.label}</div>
-            <div style="font-size:11px;color:var(--text-muted);">${a.old_price} → ${a.new_price} (${priceChange})</div>
+        return `<a href="${url}" target="_blank" title="点击查看产品详情" style="display:block;padding:12px;background:${bgMap[lv]};border-radius:8px;margin-bottom:10px;border:1px solid ${colorMap[lv]}25;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='${bgMap[lv].replace('0.08','0.15')}';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='${bgMap[lv]}';this.style.transform='translateY(0)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[lv]};flex-shrink:0;"></div>
+              <span style="font-size:13px;font-weight:600;color:${colorMap[lv]};">${displayTitle}</span>
+            </div>
+            <span class="tag ${labelMap[lv]}" style="font-size:11px;padding:2px 8px;">${isDrop ? '降价' : '涨价'}</span>
           </div>
-          <span class="tag ${labelMap[lv]}">${isDrop ? '降价' : a.label}</span>
+          <div style="display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text-muted);">
+            <span style="background:rgba(0,0,0,0.05);padding:3px 8px;border-radius:4px;">${a.old_price} → <strong>${a.new_price}</strong></span>
+            <span style="color:${colorMap[lv]};font-weight:600;">${priceChange}</span>
+            <span style="margin-left:auto;font-size:11px;opacity:0.7;">点击查看产品 →</span>
+          </div>
         </a>`;
       }).join('');
     }

@@ -781,16 +781,18 @@ def generate_report_data(results, changes, price_history):
     # ── 竞品产品分类URL映射 ─────────────────────────────────────
     competitor_product_urls = {
         "WooAcry": {
-            "acrylic_keychains": "https://wooacry.com/collections/acrylic-keychains",
-            "wood_keychains": "https://wooacry.com/collections/wood-keychains",
-            "badges": "https://wooacry.com/collections/badges",
-            "stickers": "https://wooacry.com/collections/stickers",
-            "default": "https://wooacry.com/collections/all"
+            "acrylic_keychains": "https://wooacry.com/product-category/keychains/acrylic-keychains",
+            "wood_keychains": "https://wooacry.com/product-category/keychains/wood-keychains",
+            "badges": "https://wooacry.com/product-category/badges-pins/badges",
+            "stickers": "https://wooacry.com/product-category/stickers/die-cut-stickers",
+            "standees": "https://wooacry.com/product-category/standees/acrylic-standees",
+            "default": "https://wooacry.com"
         },
         "Sticker Mule": {
             "stickers": "https://www.stickermule.com/stickers",
             "labels": "https://www.stickermule.com/labels",
             "packaging": "https://www.stickermule.com/packaging",
+            "keychains": "https://www.stickermule.com/keychains",
             "default": "https://www.stickermule.com"
         },
         "Zap! Creatives": {
