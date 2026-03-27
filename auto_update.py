@@ -827,11 +827,20 @@ def generate_report_data(results, changes, price_history):
         
         # 获取该竞品的产品分类链接
         url_info = competitor_product_urls.get(comp_name, {})
-        product_url = url_info.get('default', '#')
         
-        # 决定链接到哪个分类页面（基于价格变化的产品类型）
-        if 'keychain' in str(change.get('product_type', '')).lower():
-            product_url = url_info.get('acrylic_keychains', product_url)
+        # 根据竞品默认映射到最热门的产品分类（亚克力钥匙扣）
+        product_type = change.get('product_type', '亚克力钥匙扣')
+        
+        # 决定链接到哪个分类页面
+        if 'keychain' in product_type.lower() or '钥匙扣' in product_type:
+            product_url = url_info.get('acrylic_keychains', url_info.get('default', '#'))
+        elif 'badge' in product_type.lower() or '徽章' in product_type:
+            product_url = url_info.get('badges', url_info.get('default', '#'))
+        elif 'sticker' in product_type.lower() or '贴纸' in product_type:
+            product_url = url_info.get('stickers', url_info.get('default', '#'))
+        else:
+            # 默认链接到亚克力钥匙扣分类（最热门产品）
+            product_url = url_info.get('acrylic_keychains', url_info.get('default', '#'))
         
         price_alerts.append({
             "competitor": comp_name,
@@ -841,7 +850,7 @@ def generate_report_data(results, changes, price_history):
             "label": label,
             "level": level,
             "product_url": product_url,  # 具体产品分类页链接
-            "product_type": change.get('product_type', '全品类')
+            "product_type": product_type
         })
 
     # ── 洞察摘要（基于实时价格自动生成）───────────────────────
