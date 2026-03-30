@@ -160,6 +160,9 @@
     margin: 0 8px;
     flex-shrink: 0;
   }
+  .nav-hamburger {
+    display: none;
+  }
 
   /* ── Header ── */
   .hero {
@@ -1209,12 +1212,145 @@
     font-size: 12px;
   }
 
+  /* 移动端H5适配 */
   @media (max-width: 768px) {
-    .container { padding: 20px; }
-    .hero { padding: 40px 20px 30px; }
+    /* 基础调整 */
+    body { font-size: 14px; }
+    .container { padding: 16px; }
+    .hero { padding: 80px 16px 24px; }
+    .hero h1 { font-size: 22px; }
+    .hero p { font-size: 13px; }
+    
+    /* 导航栏移动端 */
+    .nav-menu { 
+      height: 50px; 
+      background: linear-gradient(180deg, rgba(15, 15, 26, 0.98) 0%, rgba(15, 15, 26, 0.92) 100%);
+    }
+    .nav-container { 
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 26, 0.98);
+      flex-direction: column;
+      padding: 12px;
+      gap: 4px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .nav-container.open { display: flex; }
+    .nav-item {
+      padding: 12px 16px;
+      width: 100%;
+      border-radius: 8px;
+    }
+    .nav-num { width: 20px; height: 20px; font-size: 10px; }
+    
+    /* 汉堡菜单按钮 */
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      cursor: pointer;
+      position: absolute;
+      left: 16px;
+      z-index: 101;
+    }
+    .nav-hamburger span {
+      width: 22px;
+      height: 2px;
+      background: #A78BFA;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    
+    /* 网格布局移动端 */
     .comp-grid { grid-template-columns: 1fr; }
     .swot-grid { grid-template-columns: 1fr; }
     .price-grid { grid-template-columns: 1fr; }
+    .market-tracker { grid-template-columns: 1fr; }
+    .section-grid { grid-template-columns: 1fr; }
+    
+    /* 卡片移动端 */
+    .comp-card, .competitor-card {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .comp-card h3 { font-size: 16px; }
+    .comp-card .price { font-size: 20px; }
+    
+    /* 数据可信度中心 */
+    .credibility-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* 表格移动端 */
+    .price-table, .data-table {
+      font-size: 12px;
+      overflow-x: auto;
+      display: block;
+    }
+    .price-table th, .price-table td,
+    .data-table th, .data-table td {
+      padding: 8px 6px;
+      min-width: 80px;
+    }
+    
+    /* 社媒卡片 */
+    .social-card { padding: 12px; }
+    .social-stat-row { 
+      padding: 8px 0; 
+      font-size: 12px;
+    }
+    .social-stat-val { font-size: 14px; }
+    .platform-badges { flex-wrap: wrap; gap: 6px; }
+    .platform-badge { 
+      padding: 6px 10px; 
+      font-size: 11px; 
+    }
+    
+    /* 区块标题 */
+    .section-title { 
+      font-size: 18px; 
+      padding: 12px 0;
+    }
+    
+    /* 进度条和威胁等级 */
+    .threat-bar-container { height: 8px; border-radius: 4px; }
+    
+    /* 锚点偏移 */
+    [id^="anchor-"] { scroll-margin-top: 60px; }
+    
+    /* 隐藏部分大屏元素 */
+    .desktop-only { display: none; }
+    
+    /* 触摸优化 */
+    a, button, .nav-item {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* 更小屏幕 */
+  @media (max-width: 480px) {
+    .hero { padding: 70px 12px 20px; }
+    .hero h1 { font-size: 18px; }
+    .container { padding: 12px; }
+    .section-title { font-size: 16px; }
+    .metric-card { padding: 12px; }
+    .metric-value { font-size: 20px; }
+    .metric-label { font-size: 11px; }
+    .credibility-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8px !important;
+    }
+    .credibility-grid > div { padding: 10px 8px; }
+    .credibility-grid > div > div:first-child { font-size: 18px; }
   }
   /* 数据可信度中心 */
   #credibility-score, #data-sources, #data-coverage, #confidence-level {
@@ -1226,6 +1362,9 @@
 
 <!-- ══════════════ NAVIGATION ══════════════ -->
 <nav class="nav-menu">
+  <div class="nav-hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-container').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
   <div class="nav-container">
     <a class="nav-item active" href="#section-1">
       <span class="nav-num">1</span>
@@ -4331,7 +4470,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetId = this.getAttribute('href').substring(1);
       const target = document.getElementById(targetId);
       if (target) {
-        const navHeight = 60;
+        const navHeight = window.innerWidth <= 768 ? 50 : 60;
         const targetPosition = target.offsetTop - navHeight - 20;
         window.scrollTo({
           top: targetPosition,
@@ -4340,6 +4479,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新active状态
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         this.classList.add('active');
+      }
+      // 移动端点击后关闭菜单
+      if (window.innerWidth <= 768) {
+        document.querySelector('.nav-hamburger').classList.remove('open');
+        document.querySelector('.nav-container').classList.remove('open');
       }
     });
   });
