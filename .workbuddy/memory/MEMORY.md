@@ -29,6 +29,12 @@
 - **2026-03-30** 修复洞察摘要逻辑错误：当 price_alerts 为空（无价格变动）时，key_risk 字段错误显示"Vograce与WooAcry价格相当"。根本原因：diff 计算方向判断错误（Vograce更低时误触发 else 分支）。修复后：WooAcry更低才算 key_risk，否则显示"竞品价格监控中，暂无重大变动"。
 - **2026-03-31** 修复WooAcry Instagram粉丝数每日被重置为354的问题。根本原因：auto_update.py 第348行 `social_accounts` 配置中硬编码了旧数据 `"instagram": "354"`，每次运行脚本就覆盖掉正确的130K。修复：将 auto_update.py 中的硬编码值改为 "130K"。
 
+## 2026-03-31 上线前测试发现的问题
+1. ~~**中等优先级** - generateDynamicAlert函数数据引用错误~~ ✅ 已修复：改用 social_summary.json 中的真实粉丝数据
+2. ~~**低优先级** - 未使用的函数引用：loadSocialMediaTrends~~ ✅ 已清理
+3. ~~**轻微** - 移动端导航栏在375px宽度下可能溢出~~ ✅ 已修复：添加 overflow-x: hidden 和 max-width 控制
+4. **数据问题** - Zap! Creatives价格抓取失败：网站反爬机制导致prices_found为空，已设置备选值$1.44。
+
 ## 每日自动化更新任务（双重备份方案）
 - **核心脚本: auto_update.py v3.1**（整合抓取+分析+更新+Git同步）
 - CI 模式：设置 CI=true 时跳过 git push，由 GitHub Actions workflow 统一 push
@@ -142,3 +148,26 @@ HTML报告新增动态加载模块：
 - Makeship: X=https://x.com/Makeship, TikTok=@makeship, YouTube=搜索页, IG=makeship
 
 已更新：所有粉丝数据和标签改为可点击链接，指向对应社媒页面
+
+## 2026-03-31 Playwright社媒抓取升级 (v3.2)
+**方案B实现完成** - 用 Playwright 网页抓取替代 API：
+- **成功抓取**：Twitter/X 粉丝数、TikTok 粉丝数
+- **备选数据**：YouTube/Instagram 使用历史数据（因平台反爬限制）
+- **技术方案**：
+  - Playwright chromium headless 浏览器模拟真实用户
+  - user-agent 伪装、networkidle 等待策略
+  - 异常自动降级到历史数据
+- **数据路径**：`competitor_data/social_media/social_summary.json`
+- **source 标记**：`"source": "playwright"`（可区分实时/历史数据）
+- **每日更新**：GitHub Actions + 本地 launchd 双重备份
+
+**最新抓取结果 (2026-03-31)**：
+| 竞品 | Twitter | TikTok | YouTube | Instagram |
+|------|---------|--------|---------|-----------|
+| Vograce | 47.1K | 25.0万 | 1.37万 | 175K |
+| WooAcry | 8,473 | 6.5万 | 6,080 | 130K |
+| Zap! Creatives | 15.3K | 5.3K | 413 | 36.7K |
+| Sticker Mule | 213.6K | 11.3万 | 1.43万 | 450K |
+| Makeship | 443.3K | 13.2万 | 2.86万 | 310K |
+
+**注意**：TikTok/YouTube/Instagram 仍使用历史数据作为备选（格式保留"万"或"K"以保持一致性）

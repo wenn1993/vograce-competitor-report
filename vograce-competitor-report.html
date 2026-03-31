@@ -1232,18 +1232,24 @@
       top: 50px;
       left: 0;
       right: 0;
+      max-width: 100vw;
       background: rgba(15, 15, 26, 0.98);
       flex-direction: column;
       padding: 12px;
       gap: 4px;
       border-bottom: 1px solid rgba(139, 92, 246, 0.3);
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 80vh;
     }
     .nav-container.open { display: flex; }
     .nav-item {
       padding: 12px 16px;
       width: 100%;
       border-radius: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .nav-num { width: 20px; height: 20px; font-size: 10px; }
     
@@ -4667,16 +4673,17 @@ function buildBullets(items) {
 }
 
 // ── 社媒卡片粉丝数动态更新 ────────────────────────────────
-// 从 report_data.json 的 social 字段读取数据，更新各竞品卡片粉丝数
+// 从 social_summary.json 读取实时抓取的社媒数据，更新各竞品卡片粉丝数
 async function updateSocialCardsFromReportData() {
   let d;
   try {
-    const res = await fetchFresh('competitor_data/report_data.json');
+    // 从 social_summary.json 读取 Playwright 抓取的实时数据
+    const res = await fetchFresh('competitor_data/social_media/social_summary.json');
     if (!res.ok) return;
     d = await res.json();
   } catch(e) { return; }
 
-  const social = d.social || {};
+  const socialData = d.data || {};
   // 竞品key → 社媒卡片容器ID 映射
   const cardMap = {
     vograce:      'vograceSocialCard',
@@ -4685,19 +4692,29 @@ async function updateSocialCardsFromReportData() {
     stickermule:  'stickermuleSocialCard',
     makeship:     'makeshipSocialCard',
   };
-  // 平台颜色
-  const platformColors = { tiktok: '#00F2EA', youtube: '#FF0000', twitter: '#1DA1F2', instagram: '#E1306C' };
+  // 平台颜色和URL映射
+  const platformConfig = {
+    tiktok: { color: '#00F2EA', urlPrefix: 'https://www.tiktok.com/@' },
+    youtube: { color: '#FF0000', urlPrefix: 'https://www.youtube.com/results?search_query=' },
+    twitter: { color: '#1DA1F2', urlPrefix: 'https://x.com/' },
+    instagram: { color: '#E1306C', urlPrefix: 'https://www.instagram.com/' }
+  };
+  // 竞品账号后缀
+  const accountSuffixes = {
+    vograce: { tiktok: 'vogracecharms', youtube: 'VograceCharm', twitter: 'VograceCharms', instagram: 'vograce_official' },
+    wooacry: { tiktok: 'wooacryofficial', youtube: 'Wooacry', twitter: 'Wooacry_Charms', instagram: 'wooacryofficial' },
+    zapcreatives: { tiktok: 'zapcreatives', youtube: 'zapcreatives', twitter: 'ZapCreatives', instagram: 'zapcreatives' },
+    stickermule: { tiktok: 'stickermule', youtube: 'stickermule', twitter: 'stickermule', instagram: 'stickermule' },
+    makeship: { tiktok: 'makeship', youtube: 'makeship', twitter: 'Makeship', instagram: 'makeship' }
+  };
 
   for (const [key, cardId] of Object.entries(cardMap)) {
-    const info = social[key];
+    const info = socialData[key];
     if (!info) continue;
     const card = document.getElementById(cardId);
     if (!card) continue;
 
-    const followers = info.followers || {};
-    const urls = info.urls || {};
-
-    // 更新每个平台的粉丝数值（找到 .social-stat-row 里包含对应平台链接的 val span）
+    // 更新每个平台的粉丝数值
     const rows = card.querySelectorAll('.social-stat-row');
     rows.forEach(row => {
       const label = row.querySelector('span:first-child');
@@ -4711,15 +4728,17 @@ async function updateSocialCardsFromReportData() {
       else if (labelText.includes('x粉丝') || labelText.includes('twitter')) platform = 'twitter';
       else if (labelText.includes('instagram')) platform = 'instagram';
 
-      if (platform && followers[platform]) {
-        const url = urls[platform] || '#';
-        const color = platformColors[platform];
+      if (platform && info[platform]) {
+        const suffix = accountSuffixes[key]?.[platform] || key;
+        const url = platformConfig[platform].urlPrefix + suffix;
+        const color = platformConfig[platform].color;
         const innerA = valSpan.querySelector('a');
         if (innerA) {
           innerA.href = url;
-          innerA.textContent = followers[platform];
+          innerA.textContent = info[platform];
+          innerA.style.color = color;
         } else {
-          valSpan.textContent = followers[platform];
+          valSpan.textContent = info[platform];
         }
       }
     });
@@ -5013,14 +5032,27 @@ async function loadCompetitorTrackerMatrix() {
         productAction = 'IP联名众筹';
       }
 
-      // 社媒活跃
+      // 社媒活跃（基于Twitter粉丝数）
       let socialActive = '-';
       let socialVal = 0;
-      if (platforms.twitter) {
-        socialVal = socialData.data?.industry_trends?.recent_mentions?.[comp.key] || 0;
-        if (socialVal > 300) {
+      if (platforms.twitter && socialData.data) {
+        // 获取对应竞品的Twitter粉丝数
+        const keyMap = { 'vograce': 'vograce', 'wooacry': 'wooacry', 'zap': 'zapcreatives', 'stickermule': 'stickermule', 'makeship': 'makeship' };
+        const socialKey = keyMap[comp.key];
+        const followerStr = socialData.data[socialKey]?.twitter || '0';
+        // 解析粉丝数
+        socialVal = parseFloat(followerStr.replace(/[K万M]/gi, (m) => {
+          if (m.toUpperCase() === 'K') return '*1000';
+          if (m === '万') return '*10000';
+          if (m.toUpperCase() === 'M') return '*1000000';
+          return '';
+        }).replace(/[^0-9.*]/g, '')) || 0;
+        
+        if (socialVal > 100000) {
+          socialActive = '非常活跃';
+        } else if (socialVal > 30000) {
           socialActive = '活跃';
-        } else if (socialVal > 100) {
+        } else if (socialVal > 5000) {
           socialActive = '中活跃';
         } else {
           socialActive = '一般';
@@ -5551,52 +5583,50 @@ async function updateSocialStats() {
       }
     }
 
-    // 动态更新提及量条形图
-    if (data.data && data.data.industry_trends && data.data.industry_trends.recent_mentions) {
-      const mentions = data.data.industry_trends.recent_mentions;
+    // 动态更新社媒粉丝数对比图（使用真实粉丝数据）
+    if (data.data && data.data.competitors) {
+      const competitors = data.data.competitors;
       const chartEl = document.getElementById('mentionsBarChart');
       const insightEl = document.getElementById('mentionsInsight');
 
       if (chartEl) {
+        // 提取各竞品 Twitter 粉丝数
         const competitorData = [
-          { name: 'Sticker Mule', count: mentions.stickermule || 0, color: '#3B82F6' },
-          { name: 'WooAcry ', count: mentions.wooacry || 0, color: '#EF4444' },
-          { name: 'Zap! Creatives', count: mentions.zapcreatives || 0, color: '#F59E0B' },
-          { name: 'Makeship', count: mentions.makeship || 0, color: '#10B981' },
-          { name: 'Vograce', count: mentions.vograce || 0, color: '#7C3AED', highlight: true }
+          { name: 'Sticker Mule', count: competitors.stickermule?.platforms?.twitter?.followers_raw || 0, color: '#3B82F6' },
+          { name: 'WooAcry', count: competitors.wooacry?.platforms?.twitter?.followers_raw || 0, color: '#EF4444' },
+          { name: 'Zap! Creatives', count: competitors.zapcreatives?.platforms?.twitter?.followers_raw || 0, color: '#F59E0B' },
+          { name: 'Makeship', count: competitors.makeship?.platforms?.twitter?.followers_raw || 0, color: '#10B981' },
+          { name: 'Vograce', count: competitors.vograce?.platforms?.twitter?.followers_raw || 0, color: '#7C3AED', highlight: true }
         ].filter(c => c.count > 0);
 
-        const maxCount = Math.max(...competitorData.map(c => c.count));
-        const total = competitorData.reduce((sum, c) => sum + c.count, 0);
+        if (competitorData.length > 0) {
+          const maxCount = Math.max(...competitorData.map(c => c.count));
 
-        chartEl.innerHTML = competitorData.map(c => `
-          <div class="mentions-bar-row">
-            <span class="mentions-bar-label" style="${c.highlight ? 'color:#C4B5FD;' : ''}">${c.name}</span>
-            <div class="mentions-bar-track">
-              <div class="mentions-bar-fill" style="width:${(c.count / maxCount * 100).toFixed(0)}%;background:linear-gradient(90deg,${c.color},${c.color}dd);">${c.count}</div>
+          chartEl.innerHTML = competitorData.map(c => `
+            <div class="mentions-bar-row">
+              <span class="mentions-bar-label" style="${c.highlight ? 'color:#C4B5FD;' : ''}">${c.name}</span>
+              <div class="mentions-bar-track">
+                <div class="mentions-bar-fill" style="width:${(c.count / maxCount * 100).toFixed(0)}%;background:linear-gradient(90deg,${c.color},${c.color}dd);"></div>
+              </div>
+              <span class="mentions-bar-count">${c.count >= 1000 ? (c.count/1000).toFixed(1)+'K' : c.count}</span>
             </div>
-            <span class="mentions-bar-count">${c.count}</span>
-          </div>
-        `).join('');
+          `).join('');
+        }
       }
 
       // 更新洞察建议
-      if (insightEl && mentions.vograce) {
-        const avgMentions = total / competitorData.length;
-        if (mentions.vograce < avgMentions * 0.5) {
-          insightEl.innerHTML = 'Vograce社媒提及量显著低于竞品平均水平，建议加强Twitter/Instagram内容运营和社区建设';
-        } else if (mentions.vograce > mentions.wooacry) {
-          insightEl.innerHTML = 'Vograce社媒声量领先 WooAcry，建议保持优势并继续扩大社媒影响力';
-        } else {
-          insightEl.innerHTML = 'Vograce社媒运营需持续投入，建议关注竞品社媒策略并学习有效的内容形式';
+      if (insightEl && competitors.vograce) {
+        const vogFollowers = competitors.vograce?.platforms?.twitter?.followers_raw || 0;
+        const wooFollowers = competitors.wooacry?.platforms?.twitter?.followers_raw || 0;
+        
+          if (vogFollowers > wooFollowers) {
+            insightEl.innerHTML = `Vograce Twitter粉丝(${vogFollowers >= 1000 ? (vogFollowers/1000).toFixed(1)+'K' : vogFollowers})领先 WooAcry，建议保持优势并继续扩大社媒影响力`;
+          } else {
+            insightEl.innerHTML = 'Vograce社媒运营需持续投入，建议关注竞品社媒策略并学习有效的内容形式';
+          }
         }
       }
     }
-
-  } catch (err) {
-    console.error('更新社媒统计失败:', err);
-  }
-}
 
 // 刷新数据（重新运行爬虫）
 function refreshData() {
@@ -5671,16 +5701,35 @@ async function generateDynamicAlert() {
       }
     }
 
-    // 检查社媒提及
-    if (!alert && socialData.data && socialData.data.industry_trends) {
-      const mentions = socialData.data.industry_trends.recent_mentions || {};
-      const wooacry = mentions.wooacry || 0;
-      const vograce = mentions.vograce || 0;
-
-      if (wooacry > vograce * 2) {
+    // 检查社媒粉丝数异常（使用social_summary.json的实时数据）
+    if (!alert && socialData.data && socialData.data.vograce && socialData.data.wooacry) {
+      // 解析粉丝数（格式如 "47.1K", "25.0万"）
+      const parseFollowers = (str) => {
+        if (!str) return 0;
+        str = String(str).replace(/,/g, '');
+        if (/万/.test(str)) return parseFloat(str) * 10000;
+        if (/K$/i.test(str)) return parseFloat(str) * 1000;
+        if (/M$/i.test(str)) return parseFloat(str) * 1000000;
+        return parseFloat(str) || 0;
+      };
+      
+      const vogTwitter = parseFollowers(socialData.data.vograce.twitter);
+      const wooTwitter = parseFollowers(socialData.data.wooacry.twitter);
+      const vogTikTok = parseFollowers(socialData.data.vograce.tiktok);
+      const wooTikTok = parseFollowers(socialData.data.wooacry.tiktok);
+      
+      // 如果 WooAcry Twitter 粉丝数超过 Vograce 的 80%，发出预警
+      if (wooTwitter > vogTwitter * 0.8 && vogTwitter > 0) {
         alert = {
-          title: '社媒预警：WooAcry 讨论量显著高于 Vograce',
-          text: `WooAcry 7日提及量 ${wooacry} 次，Vograce ${vograce} 次。WooAcry 社媒声量是 Vograce 的 ${(wooacry/vograce).toFixed(1)} 倍，建议加强社媒运营。`
+          title: '社媒预警：WooAcry Twitter 粉丝数快速增长',
+          text: `WooAcry Twitter ${socialData.data.wooacry.twitter} 粉丝，Vograce ${socialData.data.vograce.twitter} 粉丝。WooAcry 正在追赶，建议关注其社媒策略。`
+        };
+      }
+      // 如果 Vograce TikTok 增长显著
+      else if (wooTikTok > vogTikTok * 1.5 && vogTikTok > 0) {
+        alert = {
+          title: '社媒预警：Vograce TikTok 相对落后',
+          text: `Vograce TikTok ${socialData.data.vograce.tiktok}，WooAcry ${socialData.data.wooacry.tiktok}。WooAcry TikTok 声量更大，建议加强 TikTok 运营。`
         };
       }
     }
