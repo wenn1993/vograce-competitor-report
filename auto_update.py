@@ -345,7 +345,7 @@ def scrape_social_media():
             "youtube": "wooacry",
             "followers": {
                 "twitter": "8,466",
-                "instagram": "354",
+                "instagram": "130K",
                 "tiktok": "65.1K",
                 "youtube": "6,080"
             },
