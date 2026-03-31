@@ -28,6 +28,15 @@
 ## 已知Bug修复
 - **2026-03-30** 修复洞察摘要逻辑错误：当 price_alerts 为空（无价格变动）时，key_risk 字段错误显示"Vograce与WooAcry价格相当"。根本原因：diff 计算方向判断错误（Vograce更低时误触发 else 分支）。修复后：WooAcry更低才算 key_risk，否则显示"竞品价格监控中，暂无重大变动"。
 - **2026-03-31** 修复WooAcry Instagram粉丝数每日被重置为354的问题。根本原因：auto_update.py 第348行 `social_accounts` 配置中硬编码了旧数据 `"instagram": "354"`，每次运行脚本就覆盖掉正确的130K。修复：将 auto_update.py 中的硬编码值改为 "130K"。
+- **2026-03-31** 修复页面数据加载失败问题（多处）：根本原因是 HTML JavaScript 代码期望的数据结构与 JSON 文件实际结构不匹配。修复内容：
+  - loadCompetitorTrackerMatrix: `socialData.data.competitors.vograce` → `socialData.data.vograce`
+  - updateSocialStats: `data.data.competitors.vograce` → `data.data.vograce`；platforms字段访问改为直接字段
+  - loadRealTrackerData: `socialData.data.competitors` → `socialData.data`
+  - loadRealMarketData: 移除不存在的 industry_trends/reddit_search 引用，使用 trending 字段
+  - generateDynamicAlert: 移除 industry_trends.recent_mentions 引用，改用粉丝数比较
+  - loadRedditTrends: 修复从 URL 提取 subreddit
+  - social_summary.json: 添加 `last_updated` 字段
+- **2026-03-31** 修复第五/六模块数据无法加载问题：HTML 中缺少 `id="competitorTracker"` 和 `id="marketWatcher"` 容器元素，导致 `loadRealTrackerData()` 和 `loadRealMarketData()` 函数无法找到目标元素。新增两个隐藏容器：`div#competitorTracker` 和 `div#marketWatcher`，并重构 `loadRealTrackerData()` 函数以适配 social_summary.json 的实际数据结构（直接字段而非嵌套 platforms 结构）
 
 ## 2026-03-31 上线前测试发现的问题
 1. ~~**中等优先级** - generateDynamicAlert函数数据引用错误~~ ✅ 已修复：改用 social_summary.json 中的真实粉丝数据
@@ -171,3 +180,25 @@ HTML报告新增动态加载模块：
 | Makeship | 443.3K | 13.2万 | 2.86万 | 310K |
 
 **注意**：TikTok/YouTube/Instagram 仍使用历史数据作为备选（格式保留"万"或"K"以保持一致性）
+
+## 2026-03-31 竞品扩展项目
+**需求**：新增Etsy Custom和CUSTOMPLAK两个竞品
+
+### 已完成
+1. **PRD文档**：.workbuddy/PRD/PRD-竞品扩展-Etsy&CUSTOMPLAK.md
+2. **新增数据文件**：
+   - competitor_data/etsy_summary.json
+   - competitor_data/customplak_summary.json
+3. **HTML报告更新**：Section 2新增2个竞品卡片（Etsy Custom + CUSTOMPLAK）
+4. **auto_update.py更新**：
+   - COMPETITORS新增etsy和customplak配置
+   - DYNAMIC_SITES添加etsy和customplak
+   - FALLBACK_PRICES添加参考价格
+   - competitor_prices列表扩展至6个竞品
+5. **CSS样式**：flag-global（Etsy）、flag-eu（CUSTOMPLAK荷兰）
+
+### 竞品信息
+| 竞品 | 参考价格 | 威胁等级 | 来源 |
+|------|---------|---------|------|
+| Etsy Custom | $3.50起(中位数$8.50) | 中等(55%) | C2C市场聚合 |
+| CUSTOMPLAK | €2.50起 | 较低(35%) | customplak.com |
