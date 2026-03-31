@@ -5,7 +5,7 @@
 # 逻辑: 如果 GitHub Actions 今天已成功运行，跳过；否则执行本地更新
 # ============================================================
 LOG_DIR="/Users/admin/WorkBuddy/20260324141124/logs"
-LOG="$LOG_DIR/cron_update.log"
+LOG="$LOG_DIR/launchd_stdout.log"
 mkdir -p "$LOG_DIR"
 
 echo "=============================" >> "$LOG"
