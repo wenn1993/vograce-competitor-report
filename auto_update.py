@@ -83,6 +83,26 @@ COMPETITORS = {
             "https://vograce.com/collections/custom-badges-pins",
             "https://vograce.com/collections/custom-standees"
         ]
+    },
+    "etsy": {
+        "name": "Etsy Custom",
+        "url": "https://www.etsy.com",
+        "products": ["acrylic-keychains", "custom-keychains", "handmade-keychains"],
+        "price_check_pages": [
+            "https://www.etsy.com/search?q=custom+acrylic+keychain",
+            "https://www.etsy.com/market/acrylic_keychain"
+        ],
+        "data_type": "marketplace"
+    },
+    "customplak": {
+        "name": "CUSTOMPLAK",
+        "url": "https://customplak.com",
+        "products": ["acrylic-keychains", "metal-keychains", "wooden-keychains", "badge-reels"],
+        "price_check_pages": [
+            "https://customplak.com/collections/custom-keychains",
+            "https://customplak.com/collections/keychains"
+        ],
+        "country": "Netherlands"
     }
 }
 
@@ -95,7 +115,7 @@ def get_headers():
     }
 
 # 动态网站列表（需要使用 Playwright 抓取）
-DYNAMIC_SITES = ['stickermule', 'zapcreatives']
+DYNAMIC_SITES = ['stickermule', 'zapcreatives', 'etsy', 'customplak']
 
 # 参考价格（当无法抓取时的备用价格，基于历史公开数据）
 FALLBACK_PRICES = {
@@ -105,9 +125,20 @@ FALLBACK_PRICES = {
         "note": "价格不透明，需登录询价"
     },
     "zapcreatives": {
-        "name": "Zap! Creatives", 
+        "name": "Zap! Creatives",
         "min_price": 1.44,  # 历史参考价：英国制造亚克力钥匙扣约$1.44
         "note": "英国制造，品质溢价"
+    },
+    "etsy": {
+        "name": "Etsy Custom",
+        "min_price": 3.50,  # Etsy C2C亚克力钥匙扣中位数价格
+        "median_price": 8.50,
+        "note": "C2C市场价格分散，3.50-25.00区间"
+    },
+    "customplak": {
+        "name": "CUSTOMPLAK",
+        "min_price": 2.50,  # CUSTOMPLAK 亚克力钥匙扣（EUR）
+        "note": "欧洲本地制造，价格含税"
     }
 }
 
@@ -1094,12 +1125,31 @@ def generate_report_data(results, changes, price_history):
             "color": "#10B981",
             "url": "https://vograce.com",
         },
+        {
+            "name": "Etsy Custom",
+            "min_price": "$3.50",
+            "median_price": "$8.50",
+            "vs_vograce": "+130%",
+            "threat": "中",
+            "color": "#F59E0B",
+            "url": "https://www.etsy.com",
+            "note": "C2C市场价格分散"
+        },
+        {
+            "name": "CUSTOMPLAK",
+            "min_price": "€2.50",
+            "vs_vograce": "+10%",
+            "threat": "低",
+            "color": "#A78BFA",
+            "url": "https://customplak.com",
+            "note": "欧洲本地品牌"
+        },
     ]
 
     # ── 价格历史（近30天）用于折线图 ─────────────────────────
     recent_history = {}
     cutoff = sorted(set(r['date'] for r in price_history))[-30:]
-    for comp in ['WooAcry', 'Vograce', 'Zap! Creatives', 'Sticker Mule']:
+    for comp in ['WooAcry', 'Vograce', 'Zap! Creatives', 'Sticker Mule', 'Etsy Custom', 'CUSTOMPLAK']:
         pts = [r for r in price_history if r['competitor'] == comp and r['date'] in cutoff]
         recent_history[comp] = [{"date": p['date'], "min": p.get('min_price'), "avg": p.get('avg_price')} for p in pts]
 

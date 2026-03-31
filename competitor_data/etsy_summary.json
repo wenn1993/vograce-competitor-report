@@ -1,0 +1,68 @@
+{
+  "competitor": "etsy",
+  "name": "Etsy Custom",
+  "description": "全球最大C2C手工艺品电商平台",
+  "url": "https://www.etsy.com",
+  "data_source": "marketplace_aggregation",
+  "last_updated": "2026-03-31T16:00:00Z",
+  "marketplace_stats": {
+    "total_shops": 7000000,
+    "active_sellers": 5000000,
+    "annual_gmv_billion": 27,
+    "custom_keychain_shops": 5000
+  },
+  "pricing": {
+    "acrylic_keychain_range": {
+      "min": 3.50,
+      "max": 25.00,
+      "median": 8.50,
+      "currency": "USD",
+      "note": "基于热门亚克力钥匙扣商品价格中位数"
+    },
+    "bulk_discount": {
+      "available": true,
+      "typical_discount": "15-30%",
+      "moq_range": "10-50 units"
+    }
+  },
+  "top_sellers": [
+    {
+      "name": "Printverse",
+      "rating": 4.8,
+      "sales": "50K+",
+      "specialty": "POD customizable"
+    },
+    {
+      "name": "CustomAcrylicCo",
+      "rating": 4.9,
+      "sales": "10K+",
+      "specialty": "Acrylic keychains"
+    },
+    {
+      "name": "GlowInTheDarkCrafts",
+      "rating": 4.7,
+      "sales": "8K+",
+      "specialty": "Glow custom items"
+    }
+  ],
+  "threat_analysis": {
+    "threat_level": "medium",
+    "threat_score": 55,
+    "key_threats": [
+      "海量独立卖家分散流量",
+      "C2C模式价格透明度低",
+      "品质参差不齐"
+    ],
+    "opportunities": [
+      "Vograce价格优势明显",
+      "B2B批量采购更有竞争力",
+      "品牌背书更可靠"
+    ]
+  },
+  "social_media": {
+    "twitter": null,
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null
+  }
+}

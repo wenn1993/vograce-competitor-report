@@ -1,0 +1,66 @@
+{
+  "competitor": "customplak",
+  "name": "CUSTOMPLAK",
+  "description": "欧洲定制周边品牌",
+  "url": "https://customplak.com",
+  "country": "Netherlands",
+  "flag": "NL",
+  "data_source": "website_scraping",
+  "last_updated": "2026-03-31T16:00:00Z",
+  "pricing": {
+    "acrylic_keychain_range": {
+      "min": 2.50,
+      "max": 15.00,
+      "median": 6.50,
+      "currency": "EUR",
+      "note": "欧洲本地制造，价格含税"
+    },
+    "metal_keychain_range": {
+      "min": 4.00,
+      "max": 20.00,
+      "median": 10.00,
+      "currency": "EUR"
+    },
+    "production_time": "5-7 business days",
+    "shipping": "Free EU shipping over €50"
+  },
+  "products": [
+    "Custom Acrylic Keychains",
+    "Metal Keychains", 
+    "Wooden Keychains",
+    "Badge Reels",
+    "Lanyards"
+  ],
+  "market_position": {
+    "target": "European artists, event organizers",
+    "strengths": [
+      "EU manufacturing",
+      "Fast delivery to Europe",
+      "VAT inclusive pricing"
+    ],
+    "weaknesses": [
+      "Limited product range",
+      "Higher prices for non-EU customers",
+      "Smaller production capacity"
+    ]
+  },
+  "threat_analysis": {
+    "threat_level": "low-medium",
+    "threat_score": 35,
+    "key_threats": [
+      "欧洲本地品牌信任度高",
+      "快速交付优势"
+    ],
+    "opportunities": [
+      "Vograce在全球价格竞争力更强",
+      "Vograce品类更丰富",
+      "Vograce支持亚洲IP更专业"
+    ]
+  },
+  "social_media": {
+    "twitter": null,
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null
+  }
+}
