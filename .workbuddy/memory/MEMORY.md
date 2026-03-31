@@ -41,7 +41,7 @@
 
 **层级2 - 本地 launchd（备份）：**
 - 脚本：`local_update.sh`，每天 09:00 执行（比GitHub Actions晚1小时）
-- 日志：`logs/launchd_stdout.log` + `logs/launchd_stderr.log`
+- 日志：`logs/launchd_stdout.log`（已修复 local_update.sh 中日志路径 bug：原来错误指向 cron_update.log）
 - 智能逻辑：先检查 GitHub Actions 今天是否已运行（通过 git log），若已运行则跳过，否则执行本地更新
 - launchd配置：`~/Library/LaunchAgents/com.vograce.daily-update.plist`（已加载激活）
 - **优势：电脑睡眠期间错过09:00，唤醒后会立即补跑**（cron不具备此能力）

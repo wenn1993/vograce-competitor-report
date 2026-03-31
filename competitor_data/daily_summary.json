@@ -1,6 +1,6 @@
 {
   "date": "2026-03-31",
-  "timestamp": "2026-03-31T11:17:00.359455",
+  "timestamp": "2026-03-31T13:08:14.273637",
   "competitors_scraped": 4,
   "total_pages": 16,
   "successful_pages": 16,
@@ -10,7 +10,7 @@
   "wooacry_min_price": 0.14,
   "zap_min_price": 1.44,
   "stickermule_min_price": 9.0,
-  "social_updated": true,
+  "social_updated": false,
   "reddit_updated": true,
   "news_updated": true
 }
