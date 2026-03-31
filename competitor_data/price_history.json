@@ -518,5 +518,29 @@
     "avg_price": 3.4,
     "max_price": 100.0,
     "prices_count": 75
+  },
+  {
+    "date": "2026-03-31",
+    "competitor": "WooAcry",
+    "min_price": 0.2,
+    "avg_price": 3.11,
+    "max_price": 7.98,
+    "prices_count": 20
+  },
+  {
+    "date": "2026-03-31",
+    "competitor": "Sticker Mule",
+    "min_price": 9.0,
+    "avg_price": 9.0,
+    "max_price": 9.0,
+    "prices_count": 1
+  },
+  {
+    "date": "2026-03-31",
+    "competitor": "Vograce",
+    "min_price": 0.05,
+    "avg_price": 3.4,
+    "max_price": 100.0,
+    "prices_count": 75
   }
 ]
