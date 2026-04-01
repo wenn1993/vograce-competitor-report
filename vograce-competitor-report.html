@@ -5908,14 +5908,14 @@ async function updateSocialStats() {
         const vogFollowers = competitors.vograce?.platforms?.twitter?.followers_raw || 0;
         const wooFollowers = competitors.wooacry?.platforms?.twitter?.followers_raw || 0;
         
-          if (vogFollowers > wooFollowers) {
-            insightEl.innerHTML = `Vograce Twitter粉丝(${vogFollowers >= 1000 ? (vogFollowers/1000).toFixed(1)+'K' : vogFollowers})领先 WooAcry，建议保持优势并继续扩大社媒影响力`;
-          } else {
-            insightEl.innerHTML = 'Vograce社媒运营需持续投入，建议关注竞品社媒策略并学习有效的内容形式';
-          }
+        if (vogFollowers > wooFollowers) {
+          insightEl.innerHTML = `Vograce Twitter粉丝(${vogFollowers >= 1000 ? (vogFollowers/1000).toFixed(1)+'K' : vogFollowers})领先 WooAcry，建议保持优势并继续扩大社媒影响力`;
+        } else {
+          insightEl.innerHTML = 'Vograce社媒运营需持续投入，建议关注竞品社媒策略并学习有效的内容形式';
         }
       }
     }
+  }
 
 // 刷新数据（重新运行爬虫）
 function refreshData() {
