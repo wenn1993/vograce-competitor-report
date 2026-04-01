@@ -4744,9 +4744,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // ── 统一从 report_data.json 更新所有模块 ──
   loadAllModulesFromReportData();
 
-  // 更新追踪数量
+  // 更新追踪数量（仅当元素存在时）
   const trackerItems = document.querySelectorAll('#competitorTracker .tracker-item');
-  document.getElementById('trackerCount').textContent = trackerItems.length + ' 条动态';
+  const trackerCountEl = document.getElementById('trackerCount');
+  if (trackerCountEl) {
+    trackerCountEl.textContent = trackerItems.length + ' 条动态';
+  }
 });
 
 // ══════════════════════════════════════════════════════════
@@ -5968,7 +5971,10 @@ async function updateSocialStats() {
         }
       }
     }
+  } catch (err) {
+    console.warn('更新社媒统计数据失败:', err);
   }
+}
 
 // 刷新数据（重新运行爬虫）
 function refreshData() {
