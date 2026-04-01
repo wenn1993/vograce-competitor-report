@@ -25,43 +25,18 @@
 - 新增战略行动建议（紧急/重要/规划三级分类）
 - 概览指标增加至5个：核心竞品监测、产品品类覆盖、待处理预警、数据时效、市场规模估算
 
-## 已知Bug修复
-- **2026-03-30** 修复洞察摘要逻辑错误：当 price_alerts 为空（无价格变动）时，key_risk 字段错误显示"Vograce与WooAcry价格相当"。根本原因：diff 计算方向判断错误（Vograce更低时误触发 else 分支）。修复后：WooAcry更低才算 key_risk，否则显示"竞品价格监控中，暂无重大变动"。
-- **2026-03-31** 修复WooAcry Instagram粉丝数每日被重置为354的问题。根本原因：auto_update.py 第348行 `social_accounts` 配置中硬编码了旧数据 `"instagram": "354"`，每次运行脚本就覆盖掉正确的130K。修复：将 auto_update.py 中的硬编码值改为 "130K"。
-- **2026-03-31** 修复页面数据加载失败问题（多处）：根本原因是 HTML JavaScript 代码期望的数据结构与 JSON 文件实际结构不匹配。修复内容：
-  - loadCompetitorTrackerMatrix: `socialData.data.competitors.vograce` → `socialData.data.vograce`
-  - updateSocialStats: `data.data.competitors.vograce` → `data.data.vograce`；platforms字段访问改为直接字段
-  - loadRealTrackerData: `socialData.data.competitors` → `socialData.data`
-  - loadRealMarketData: 移除不存在的 industry_trends/reddit_search 引用，使用 trending 字段
-  - generateDynamicAlert: 移除 industry_trends.recent_mentions 引用，改用粉丝数比较
-  - loadRedditTrends: 修复从 URL 提取 subreddit
-  - social_summary.json: 添加 `last_updated` 字段
-- **2026-03-31** 修复第五/六模块数据无法加载问题：HTML 中缺少 `id="competitorTracker"` 和 `id="marketWatcher"` 容器元素，导致 `loadRealTrackerData()` 和 `loadRealMarketData()` 函数无法找到目标元素。新增两个隐藏容器：`div#competitorTracker` 和 `div#marketWatcher`，并重构 `loadRealTrackerData()` 函数以适配 social_summary.json 的实际数据结构（直接字段而非嵌套 platforms 结构）
-
-## 2026-03-31 上线前测试发现的问题
-1. ~~**中等优先级** - generateDynamicAlert函数数据引用错误~~ ✅ 已修复：改用 social_summary.json 中的真实粉丝数据
-2. ~~**低优先级** - 未使用的函数引用：loadSocialMediaTrends~~ ✅ 已清理
-3. ~~**轻微** - 移动端导航栏在375px宽度下可能溢出~~ ✅ 已修复：添加 overflow-x: hidden 和 max-width 控制
-4. **数据问题** - Zap! Creatives价格抓取失败：网站反爬机制导致prices_found为空，已设置备选值$1.44。
-
-## 每日自动化更新任务（双重备份方案）
+## 每日自动化更新任务
+- 本地自动化任务 ID: vograce_daily，每天 08:00 执行（需电脑开机）
 - **核心脚本: auto_update.py v3.1**（整合抓取+分析+更新+Git同步）
 - CI 模式：设置 CI=true 时跳过 git push，由 GitHub Actions workflow 统一 push
 
-### 双重备份架构（2026-03-30 配置完成）
-**层级1 - GitHub Actions（主力）：**
+### GitHub Actions 云端定时更新（2026-03-27 配置完成）
 - Workflow：`.github/workflows/daily-update.yml`，每天 UTC 00:00 = 北京时间 08:00
-- 权限：`contents: write`，并发组独立不冲突
-- 已知问题：有时会静默跳过2-3天（原因未明，GitHub定时任务队列问题）
-
-**层级2 - 本地 launchd（备份）：**
-- 脚本：`local_update.sh`，每天 09:00 执行（比GitHub Actions晚1小时）
-- 日志：`logs/launchd_stdout.log`（已修复 local_update.sh 中日志路径 bug：原来错误指向 cron_update.log）
-- 智能逻辑：先检查 GitHub Actions 今天是否已运行（通过 git log），若已运行则跳过，否则执行本地更新
-- launchd配置：`~/Library/LaunchAgents/com.vograce.daily-update.plist`（已加载激活）
-- **优势：电脑睡眠期间错过09:00，唤醒后会立即补跑**（cron不具备此能力）
-- **已移除旧 cron 任务，避免重复执行**
-- commit信息前缀为"auto: 每日数据更新"
+- 权限：`contents: write`（commit + push 数据）
+- 并发组：`daily-update-${{ github.run_id }}`（独立，不与 deploy.yml 冲突）
+- 流程：checkout → python auto_update.py (CI=true) → commit → push → deploy Pages
+- 关键修复：原 schedule 被 cancelled 原因：permissions: contents: read + 并发冲突
+- 测试验证：2026-03-27 手动触发 50 秒全部成功
 
 功能流程（auto_update.py）：
   1. 从竞品网站（WooAcry, StickerMule, Zap! Creatives, Vograce）抓取最新数据
@@ -139,7 +114,7 @@ HTML报告新增动态加载模块：
 - WooAcry: 65.1K | Vograce: 249.2K | Zap! Creatives: 5,337 | Sticker Mule: 91.4K | Makeship: 131.8K
 
 **Instagram粉丝：**
-- WooAcry: 130K | Vograce: 175K | Zap! Creatives: 36.7K | Sticker Mule: 450K | Makeship: 310K
+- WooAcry: 354 | Vograce: 175K | Zap! Creatives: 36.7K | Sticker Mule: 450K | Makeship: 310K
 
 已同步更新：
 1. vograce-competitor-report.html Section 6所有社媒卡片
@@ -157,48 +132,3 @@ HTML报告新增动态加载模块：
 - Makeship: X=https://x.com/Makeship, TikTok=@makeship, YouTube=搜索页, IG=makeship
 
 已更新：所有粉丝数据和标签改为可点击链接，指向对应社媒页面
-
-## 2026-03-31 Playwright社媒抓取升级 (v3.2)
-**方案B实现完成** - 用 Playwright 网页抓取替代 API：
-- **成功抓取**：Twitter/X 粉丝数、TikTok 粉丝数
-- **备选数据**：YouTube/Instagram 使用历史数据（因平台反爬限制）
-- **技术方案**：
-  - Playwright chromium headless 浏览器模拟真实用户
-  - user-agent 伪装、networkidle 等待策略
-  - 异常自动降级到历史数据
-- **数据路径**：`competitor_data/social_media/social_summary.json`
-- **source 标记**：`"source": "playwright"`（可区分实时/历史数据）
-- **每日更新**：GitHub Actions + 本地 launchd 双重备份
-
-**最新抓取结果 (2026-03-31)**：
-| 竞品 | Twitter | TikTok | YouTube | Instagram |
-|------|---------|--------|---------|-----------|
-| Vograce | 47.1K | 25.0万 | 1.37万 | 175K |
-| WooAcry | 8,473 | 6.5万 | 6,080 | 130K |
-| Zap! Creatives | 15.3K | 5.3K | 413 | 36.7K |
-| Sticker Mule | 213.6K | 11.3万 | 1.43万 | 450K |
-| Makeship | 443.3K | 13.2万 | 2.86万 | 310K |
-
-**注意**：TikTok/YouTube/Instagram 仍使用历史数据作为备选（格式保留"万"或"K"以保持一致性）
-
-## 2026-03-31 竞品扩展项目
-**需求**：新增Etsy Custom和CUSTOMPLAK两个竞品
-
-### 已完成
-1. **PRD文档**：.workbuddy/PRD/PRD-竞品扩展-Etsy&CUSTOMPLAK.md
-2. **新增数据文件**：
-   - competitor_data/etsy_summary.json
-   - competitor_data/customplak_summary.json
-3. **HTML报告更新**：Section 2新增2个竞品卡片（Etsy Custom + CUSTOMPLAK）
-4. **auto_update.py更新**：
-   - COMPETITORS新增etsy和customplak配置
-   - DYNAMIC_SITES添加etsy和customplak
-   - FALLBACK_PRICES添加参考价格
-   - competitor_prices列表扩展至6个竞品
-5. **CSS样式**：flag-global（Etsy）、flag-eu（CUSTOMPLAK荷兰）
-
-### 竞品信息
-| 竞品 | 参考价格 | 威胁等级 | 来源 |
-|------|---------|---------|------|
-| Etsy Custom | $3.50起(中位数$8.50) | 中等(55%) | C2C市场聚合 |
-| CUSTOMPLAK | €2.50起 | 较低(35%) | customplak.com |

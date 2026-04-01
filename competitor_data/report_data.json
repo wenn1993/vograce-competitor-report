@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-04-01 09:20",
+    "generated_at": "2026-03-30 09:13",
     "version": "4.0",
     "description": "Vograce竞品分析报告统一数据源，覆盖所有模块"
   },
   "overview": {
-    "date": "2026-04-01",
-    "last_updated": "2026-04-01 09:20",
+    "date": "2026-03-30",
+    "last_updated": "2026-03-30 09:13",
     "competitors_monitored": 4,
     "sku_categories": 24,
-    "active_alerts": 1,
+    "active_alerts": 0,
     "data_freshness": "每日 08:00",
     "market_size_est": "$2.8B",
     "vograce_min_price": "$0.05",
@@ -18,22 +18,11 @@
     "smule_min_price": "$9.00"
   },
   "insight_summary": {
-    "core_advantage": "Vograce价格全球竞争力强，SKU覆盖最全面(24+品类)，满足一站式采购需求。亚克力钥匙扣$0.05起，比竞品平均低40%以上",
-    "key_risk": "竞品价格监控中，暂无重大变动",
+    "core_advantage": "Vograce价格全球竞争力强，SKU覆盖最全面(24+品类)，满足一站式采购需求。当前最低价$0.05起",
+    "key_risk": "Vograce与WooAcry价格相当（$0.05 vs $0.14）",
     "strategic_opportunity": "亚洲IP全球化加速(K-pop/J-pop/韩漫)，带动欧美粉丝周边需求激增；漫展经济复苏"
   },
-  "price_alerts": [
-    {
-      "competitor": "WooAcry",
-      "old_price": "$0.20",
-      "new_price": "$0.14",
-      "change_pct": "-30.0%",
-      "label": "降价",
-      "level": "danger",
-      "product_url": "https://wooacry.com/product-category/keychains/acrylic-keychains",
-      "product_type": "亚克力钥匙扣"
-    }
-  ],
+  "price_alerts": [],
   "competitor_prices": [
     {
       "name": "WooAcry",
@@ -66,25 +55,6 @@
       "threat": "—",
       "color": "#10B981",
       "url": "https://vograce.com"
-    },
-    {
-      "name": "Etsy Custom",
-      "min_price": "$3.50",
-      "median_price": "$8.50",
-      "vs_vograce": "+130%",
-      "threat": "中",
-      "color": "#F59E0B",
-      "url": "https://www.etsy.com",
-      "note": "C2C市场价格分散"
-    },
-    {
-      "name": "CUSTOMPLAK",
-      "min_price": "€2.50",
-      "vs_vograce": "+10%",
-      "threat": "低",
-      "color": "#A78BFA",
-      "url": "https://customplak.com",
-      "note": "欧洲本地品牌"
     }
   ],
   "price_history": {
@@ -181,11 +151,6 @@
       },
       {
         "date": "2026-03-30",
-        "min": 0.14,
-        "avg": 2.62
-      },
-      {
-        "date": "2026-04-01",
         "min": 0.14,
         "avg": 2.62
       }
@@ -285,11 +250,6 @@
         "date": "2026-03-30",
         "min": 0.05,
         "avg": 1.3
-      },
-      {
-        "date": "2026-04-01",
-        "min": 0.05,
-        "avg": 3.43
       }
     ],
     "Zap! Creatives": [],
@@ -383,15 +343,8 @@
         "date": "2026-03-30",
         "min": 9.0,
         "avg": 9.0
-      },
-      {
-        "date": "2026-04-01",
-        "min": 9.0,
-        "avg": 9.0
       }
-    ],
-    "Etsy Custom": [],
-    "CUSTOMPLAK": []
+    ]
   },
   "wa_vs_v": {
     "acrylic_keychain": {
@@ -427,19 +380,94 @@
       "threat_level": 40
     }
   },
-  "social": {},
+  "social": {
+    "vograce": {
+      "name": "Vograce",
+      "followers": {
+        "twitter": "4.7万",
+        "instagram": "175K",
+        "tiktok": "249.2K",
+        "youtube": "1.37万"
+      },
+      "last_activity": "2026-03-30",
+      "urls": {
+        "twitter": "https://x.com/VograceCharms",
+        "tiktok": "https://www.tiktok.com/@vogracecharms",
+        "youtube": "https://www.youtube.com/channel/UCMd2dQcKZHzYsIc8LhUf8jQ",
+        "instagram": "https://www.instagram.com/vograce_official"
+      }
+    },
+    "wooacry": {
+      "name": "WooAcry",
+      "followers": {
+        "twitter": "8,466",
+        "instagram": "354",
+        "tiktok": "65.1K",
+        "youtube": "6,080"
+      },
+      "last_activity": "2026-03-30",
+      "urls": {
+        "twitter": "https://x.com/Wooacry_Charms",
+        "tiktok": "https://www.tiktok.com/@wooacryofficial",
+        "youtube": "https://www.youtube.com/@wooacry",
+        "instagram": "https://www.instagram.com/wooacryofficial"
+      }
+    },
+    "zapcreatives": {
+      "name": "Zap! Creatives",
+      "followers": {
+        "twitter": "1.5万",
+        "instagram": "36.7K",
+        "tiktok": "5,337",
+        "youtube": "413"
+      },
+      "last_activity": "2026-03-30",
+      "urls": {
+        "twitter": "https://x.com/ZapCreatives",
+        "tiktok": "https://www.tiktok.com/@zapcreatives",
+        "youtube": "https://www.youtube.com/@zapcreatives",
+        "instagram": "https://www.instagram.com/zapcreatives"
+      }
+    },
+    "stickermule": {
+      "name": "Sticker Mule",
+      "followers": {
+        "twitter": "21.3万",
+        "instagram": "450K",
+        "tiktok": "91.4K",
+        "youtube": "1.43万"
+      },
+      "last_activity": "2026-03-30",
+      "urls": {
+        "twitter": "https://x.com/stickermule",
+        "tiktok": "https://www.tiktok.com/@stickermule",
+        "youtube": "https://www.youtube.com/@stickermule",
+        "instagram": "https://www.instagram.com/stickermule"
+      }
+    },
+    "makeship": {
+      "name": "Makeship",
+      "followers": {
+        "twitter": "44.3万",
+        "instagram": "310K",
+        "tiktok": "131.8K",
+        "youtube": "2.86万"
+      },
+      "last_activity": "2026-03-30",
+      "urls": {
+        "twitter": "https://x.com/Makeship",
+        "tiktok": "https://www.tiktok.com/@makeship",
+        "youtube": "https://www.youtube.com/@makeship",
+        "instagram": "https://www.instagram.com/makeship"
+      }
+    }
+  },
   "hot_posts": [
     {
-      "title": "Kakashi bro",
-      "score": 1061,
-      "num_comments": 33,
-      "url": "https://reddit.com/r/animemerch/comments/1ivubg7/kakashi_bro/"
-    },
-    {
-      "title": "Something aint right",
-      "score": 89,
-      "num_comments": 10,
-      "url": "https://reddit.com/r/animemerch/comments/1ivuf1g/something_aint_right/"
+      "title": "I love anime merch",
+      "score": 26,
+      "num_comments": 0,
+      "url": "https://reddit.com/r/animemerch/comments/1s4w2e9/i_love_anime_merch/"
     },
     {
       "title": "Mels the cat, Me, Digital ink, 2022",
@@ -449,53 +477,59 @@
     },
     {
       "title": "Merch Production",
-      "score": 7,
+      "score": 6,
       "num_comments": 15,
       "url": "https://reddit.com/r/merch/comments/y7n176/merch_production/"
     },
     {
       "title": "Just released the first batch of merch for my Post Punk project Another Abyss",
-      "score": 3,
+      "score": 4,
       "num_comments": 0,
       "url": "https://reddit.com/r/merch/comments/xptu7z/just_released_the_first_batch_of_merch_for_my/"
     },
     {
-      "title": "Some nice Naruto anime merch",
+      "title": "My favourite website for Anime Merch Tees Lexxyy",
+      "score": 4,
+      "num_comments": 1,
+      "url": "https://reddit.com/r/animemerch/comments/1hsyapy/my_favourite_website_for_anime_merch_tees_lexxyy/"
+    },
+    {
+      "title": "The return of the king!",
       "score": 3,
-      "num_comments": 2,
-      "url": "https://reddit.com/r/animemerch/comments/1iwj239/some_nice_naruto_anime_merch/"
+      "num_comments": 0,
+      "url": "https://reddit.com/r/animemerch/comments/1gs06fh/the_return_of_the_king/"
     }
   ],
   "news": [
     {
-      "headline": "Find out whykeychainsare still a top pick for businesses looking for effective, budget-friendly merchandise. In the digital age, where online marketing seems to reign supreme, it's easy to overlook th",
-      "url": "https://www.everythingbranded.com/blog/are-promotional-keychains-still-relevant-exploring-their-popularity-in-the-21st-century",
+      "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
+      "url": "https://www.doccreatives.com/news",
       "source": "Industry News",
-      "date": "2026-04-01"
+      "date": "2026-03-30"
     },
     {
-      "headline": "Customkeychainshave long been a staple accessory, cherished for their practicality and potential for personal expression. As we advance into the digital age, the world ofcustomkeychainsis evolving, dr",
-      "url": "https://stonesmentor.com/the-future-of-custom-keychains-trends-and-innovations/",
+      "headline": "Small objects are having a significant moment.Custompins, patches, andkeychainsare seeing rising spring-season demand in 2026, according to GSJJ's 2026 Spring Gift Trends report, with graduation seaso",
+      "url": "https://www.prismnews.com/gifting/personalized-gifts/personalized-pins-patches-and-keychains-surge-in-spring",
       "source": "Industry News",
-      "date": "2026-04-01"
-    },
-    {
-      "headline": "The personalizedmerchindustryis only growing stronger, and customizedkeychainscontinue to lead the way as one of the most versatile, creative, and high-demand products.",
-      "url": "https://theinscribermag.com/the-future-of-personalized-merch-why-customized-keychains-stand-out/",
-      "source": "Industry News",
-      "date": "2026-04-01"
+      "date": "2026-03-30"
     },
     {
       "headline": "The globalkeychainand phone chain market is experiencing unprecedented growth in 2026, with theindustrytransforming from simple functional accessories into fashion-forward personalized gifts. As a lea",
       "url": "https://www.ismartifact.com/the-rise-of-custom-keychains--phone-chains-2026-market-trends-every-wholesaler-should-know",
       "source": "Industry News",
-      "date": "2026-04-01"
+      "date": "2026-03-30"
     },
     {
-      "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
-      "url": "https://www.doccreatives.com/news",
+      "headline": "Sep 04, 2025 Top 10KeychainManufacturers forCustomMerchIn the growing market ofcustommerchandise,keychainsremain a popular and versatile product for artists, businesses, and creators. When it comes to",
+      "url": "https://vograce.com/blogs/information-hub/top-10-keychain-manufacturers-for-custom-merch",
       "source": "Industry News",
-      "date": "2026-04-01"
+      "date": "2026-03-30"
+    },
+    {
+      "headline": "Discover top 10customkeychainmanufacturers in 2025 for brands, traders & e-com sellers. Low MOQ, fast turnaround, premium quality to elevate yourmerch!",
+      "url": "https://uniquecustompins.com/best-custom-keychain-manufacturers/",
+      "source": "Industry News",
+      "date": "2026-03-30"
     }
   ],
   "action_plan": {
@@ -511,11 +545,5 @@
       "加大K-pop/韩漫营销投入：把握亚洲IP出海红利期"
     ]
   },
-  "raw_alerts": [
-    {
-      "type": "danger",
-      "competitor": "WooAcry",
-      "message": "WooAcry 价格下降了 30.0%，现最低价 $0.14"
-    }
-  ]
+  "raw_alerts": []
 }

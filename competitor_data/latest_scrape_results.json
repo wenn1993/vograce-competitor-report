@@ -2,7 +2,7 @@
   "wooacry": {
     "name": "WooAcry",
     "url": "https://wooacry.com",
-    "timestamp": "2026-04-01T09:05:05.502046",
+    "timestamp": "2026-03-30T09:11:26.088007",
     "pages_checked": 5,
     "pages_success": 5,
     "prices_found": [
@@ -36,7 +36,7 @@
   "stickermule": {
     "name": "Sticker Mule",
     "url": "https://www.stickermule.com",
-    "timestamp": "2026-04-01T09:05:15.160638",
+    "timestamp": "2026-03-30T09:11:36.226035",
     "pages_checked": 4,
     "pages_success": 4,
     "prices_found": [
@@ -80,7 +80,7 @@
   "zapcreatives": {
     "name": "Zap! Creatives",
     "url": "https://www.zapcreatives.com",
-    "timestamp": "2026-04-01T09:15:46.830302",
+    "timestamp": "2026-03-30T09:12:20.500804",
     "pages_checked": 4,
     "pages_success": 4,
     "prices_found": [],
@@ -269,11 +269,13 @@
   "vograce": {
     "name": "Vograce",
     "url": "https://vograce.com",
-    "timestamp": "2026-04-01T09:16:44.997570",
+    "timestamp": "2026-03-30T09:13:07.496409",
     "pages_checked": 3,
     "pages_success": 3,
     "prices_found": [
       0.05,
+      0.06,
+      0.1,
       0.16,
       0.2,
       0.22,
@@ -286,13 +288,15 @@
       0.7,
       0.71,
       0.72,
-      0.73,
       0.78,
+      0.79,
       0.8,
+      0.82,
       0.88,
       0.9,
       0.95,
       0.97,
+      0.99,
       1.0,
       1.03,
       1.08,
@@ -313,41 +317,20 @@
       1.86,
       1.9,
       1.91,
+      1.95,
       1.99,
       2.0,
       2.08,
-      2.1,
       2.13,
-      2.23,
+      2.19,
       2.26,
-      2.28,
       2.3,
-      2.33,
       2.46,
       2.47,
       2.5,
       2.54,
       2.6,
-      2.74,
-      2.75,
-      3.0,
-      3.1,
-      3.14,
-      3.22,
-      3.31,
-      3.58,
-      3.6,
-      3.61,
-      3.68,
-      3.7,
-      3.76,
-      3.8,
-      4.0,
-      4.22,
-      8.0,
-      9.18,
-      10.0,
-      100.0
+      2.74
     ],
     "promotions": [],
     "products": [],
@@ -385,37 +368,37 @@
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "New Customer Benefits!",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "Monthly Discount",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "All-Member Frenzy",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "Custom Keychains",
+            "name": "More categories More Points",
             "price": null,
             "price_text": ""
           }
         ],
         "prices": [
           0.05,
+          0.06,
+          0.1,
           0.2,
           0.33,
           0.56,
+          0.68,
           0.71,
           0.72,
-          0.8,
-          0.95,
-          1.0,
-          1.03
+          0.8
         ]
       },
       "custom-stickers": {
@@ -451,37 +434,37 @@
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "New Customer Benefits!",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "Monthly Discount",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "All-Member Frenzy",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "Custom Keychains",
+            "name": "More categories More Points",
             "price": null,
             "price_text": ""
           }
         ],
         "prices": [
+          0.05,
+          0.06,
+          0.1,
           0.16,
           0.22,
           0.45,
           0.57,
           0.6,
           0.68,
-          0.7,
-          0.88,
-          0.9,
-          1.1
+          0.7
         ]
       },
       "custom-standees": {
@@ -517,109 +500,110 @@
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "New Customer Benefits!",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "Monthly Discount",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "New Arrivals",
+            "name": "All-Member Frenzy",
             "price": null,
             "price_text": ""
           },
           {
-            "name": "Custom Keychains",
+            "name": "More categories More Points",
             "price": null,
             "price_text": ""
           }
         ],
         "prices": [
-          0.73,
+          0.05,
+          0.06,
+          0.1,
+          0.68,
+          0.71,
           0.78,
+          0.79,
+          0.82,
           0.97,
-          1.0,
-          1.24,
-          1.3,
-          1.42,
-          1.69,
-          1.78,
-          1.86
+          0.99
         ]
       }
     },
     "min_price": 0.05,
-    "max_price": 100.0,
-    "avg_price": 3.43
-  },
-  "etsy": {
-    "name": "Etsy Custom",
-    "url": "https://www.etsy.com",
-    "timestamp": "2026-04-01T09:16:50.575239",
-    "pages_checked": 2,
-    "pages_success": 2,
-    "prices_found": [],
-    "promotions": [],
-    "products": [],
-    "price_by_category": {},
-    "min_price": 3.5,
-    "note": "C2C市场价格分散，3.50-25.00区间"
-  },
-  "customplak": {
-    "name": "CUSTOMPLAK",
-    "url": "https://customplak.com",
-    "timestamp": "2026-04-01T09:17:09.258596",
-    "pages_checked": 0,
-    "pages_success": 0,
-    "prices_found": [],
-    "promotions": [],
-    "products": [],
-    "price_by_category": {},
-    "min_price": 2.5,
-    "note": "欧洲本地制造，价格含税"
+    "max_price": 2.74,
+    "avg_price": 1.3
   },
   "social_media": {
-    "vograce": {
-      "name": "Vograce",
-      "twitter": "47.1K",
-      "tiktok": "25.0万",
-      "youtube": "1.37万",
-      "instagram": "175K"
+    "last_updated": "2026-03-30 09:13:11",
+    "competitors": {
+      "vograce": {
+        "name": "Vograce",
+        "followers": {
+          "twitter": "4.7万",
+          "instagram": "175K",
+          "tiktok": "249.2K",
+          "youtube": "1.37万"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "wooacry": {
+        "name": "WooAcry",
+        "followers": {
+          "twitter": "8,466",
+          "instagram": "354",
+          "tiktok": "65.1K",
+          "youtube": "6,080"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "zapcreatives": {
+        "name": "Zap! Creatives",
+        "followers": {
+          "twitter": "1.5万",
+          "instagram": "36.7K",
+          "tiktok": "5,337",
+          "youtube": "413"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "stickermule": {
+        "name": "Sticker Mule",
+        "followers": {
+          "twitter": "21.3万",
+          "instagram": "450K",
+          "tiktok": "91.4K",
+          "youtube": "1.43万"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "makeship": {
+        "name": "Makeship",
+        "followers": {
+          "twitter": "44.3万",
+          "instagram": "310K",
+          "tiktok": "131.8K",
+          "youtube": "2.86万"
+        },
+        "last_activity": "2026-03-30"
+      }
     },
-    "wooacry": {
-      "name": "WooAcry",
-      "twitter": "8,473",
-      "tiktok": "6.5万",
-      "youtube": "6,080",
-      "instagram": "130K"
-    },
-    "zapcreatives": {
-      "name": "Zap! Creatives",
-      "twitter": "15.3K",
-      "tiktok": "5.3K",
-      "youtube": "413",
-      "instagram": "36.7K"
-    },
-    "stickermule": {
-      "name": "Sticker Mule",
-      "twitter": "21.3万",
-      "tiktok": "11.4万",
-      "youtube": "1.43万",
-      "instagram": "450K"
-    },
-    "makeship": {
-      "name": "Makeship",
-      "twitter": "44.3万",
-      "tiktok": "13.2万",
-      "youtube": "2.86万",
-      "instagram": "310K"
+    "industry_trends": {
+      "trending": [
+        "custom keychains",
+        "anime merch",
+        "print on demand",
+        "artist alley"
+      ],
+      "sentiment": "positive"
     }
   },
   "reddit": {
-    "last_updated": "2026-04-01 09:19:42",
+    "last_updated": "2026-03-30 09:13:11",
     "subreddits": {
       "r/merch": {
         "subscribers": "N/A",
@@ -636,16 +620,10 @@
     },
     "hot_posts": [
       {
-        "title": "Kakashi bro",
-        "score": 1061,
-        "num_comments": 33,
-        "url": "https://reddit.com/r/animemerch/comments/1ivubg7/kakashi_bro/"
-      },
-      {
-        "title": "Something aint right",
-        "score": 89,
-        "num_comments": 10,
-        "url": "https://reddit.com/r/animemerch/comments/1ivuf1g/something_aint_right/"
+        "title": "I love anime merch",
+        "score": 26,
+        "num_comments": 0,
+        "url": "https://reddit.com/r/animemerch/comments/1s4w2e9/i_love_anime_merch/"
       },
       {
         "title": "Mels the cat, Me, Digital ink, 2022",
@@ -655,33 +633,27 @@
       },
       {
         "title": "Merch Production",
-        "score": 7,
+        "score": 6,
         "num_comments": 15,
         "url": "https://reddit.com/r/merch/comments/y7n176/merch_production/"
       },
       {
         "title": "Just released the first batch of merch for my Post Punk project Another Abyss",
-        "score": 3,
+        "score": 4,
         "num_comments": 0,
         "url": "https://reddit.com/r/merch/comments/xptu7z/just_released_the_first_batch_of_merch_for_my/"
       },
       {
-        "title": "Some nice Naruto anime merch",
-        "score": 3,
-        "num_comments": 2,
-        "url": "https://reddit.com/r/animemerch/comments/1iwj239/some_nice_naruto_anime_merch/"
-      },
-      {
-        "title": "Well known websites",
-        "score": 3,
-        "num_comments": 2,
-        "url": "https://reddit.com/r/animemerch/comments/1iw0dok/well_known_websites/"
-      },
-      {
-        "title": "Naruto X Demon Slayer anime merch which is better?",
-        "score": 3,
+        "title": "My favourite website for Anime Merch Tees Lexxyy",
+        "score": 4,
         "num_comments": 1,
-        "url": "https://reddit.com/r/animemerch/comments/1ivtzy9/naruto_x_demon_slayer_anime_merch_which_is_better/"
+        "url": "https://reddit.com/r/animemerch/comments/1hsyapy/my_favourite_website_for_anime_merch_tees_lexxyy/"
+      },
+      {
+        "title": "The return of the king!",
+        "score": 3,
+        "num_comments": 0,
+        "url": "https://reddit.com/r/animemerch/comments/1gs06fh/the_return_of_the_king/"
       },
       {
         "title": "2 LOGO Designs, which one??",
@@ -694,41 +666,53 @@
         "score": 2,
         "num_comments": 0,
         "url": "https://reddit.com/r/merch/comments/xp06al/just_dropped_a_merch_line_stay_different_dont/"
+      },
+      {
+        "title": "Wts Zero Two File A4",
+        "score": 1,
+        "num_comments": 0,
+        "url": "https://reddit.com/r/animemerch/comments/1s5zwm0/wts_zero_two_file_a4/"
+      },
+      {
+        "title": "(Germany) Do you guys know if layfinity.com is a scam?",
+        "score": 1,
+        "num_comments": 0,
+        "url": "https://reddit.com/r/animemerch/comments/1s1nzfx/germany_do_you_guys_know_if_layfinitycom_is_a_scam/"
       }
     ]
   },
   "industry_news": {
-    "last_updated": "2026-04-01 09:19:48",
+    "last_updated": "2026-03-30 09:13:15",
     "news": [
       {
-        "headline": "Find out whykeychainsare still a top pick for businesses looking for effective, budget-friendly merchandise. In the digital age, where online marketing seems to reign supreme, it's easy to overlook th",
-        "url": "https://www.everythingbranded.com/blog/are-promotional-keychains-still-relevant-exploring-their-popularity-in-the-21st-century",
+        "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
+        "url": "https://www.doccreatives.com/news",
         "source": "Industry News",
-        "date": "2026-04-01"
+        "date": "2026-03-30"
       },
       {
-        "headline": "Customkeychainshave long been a staple accessory, cherished for their practicality and potential for personal expression. As we advance into the digital age, the world ofcustomkeychainsis evolving, dr",
-        "url": "https://stonesmentor.com/the-future-of-custom-keychains-trends-and-innovations/",
+        "headline": "Small objects are having a significant moment.Custompins, patches, andkeychainsare seeing rising spring-season demand in 2026, according to GSJJ's 2026 Spring Gift Trends report, with graduation seaso",
+        "url": "https://www.prismnews.com/gifting/personalized-gifts/personalized-pins-patches-and-keychains-surge-in-spring",
         "source": "Industry News",
-        "date": "2026-04-01"
-      },
-      {
-        "headline": "The personalizedmerchindustryis only growing stronger, and customizedkeychainscontinue to lead the way as one of the most versatile, creative, and high-demand products.",
-        "url": "https://theinscribermag.com/the-future-of-personalized-merch-why-customized-keychains-stand-out/",
-        "source": "Industry News",
-        "date": "2026-04-01"
+        "date": "2026-03-30"
       },
       {
         "headline": "The globalkeychainand phone chain market is experiencing unprecedented growth in 2026, with theindustrytransforming from simple functional accessories into fashion-forward personalized gifts. As a lea",
         "url": "https://www.ismartifact.com/the-rise-of-custom-keychains--phone-chains-2026-market-trends-every-wholesaler-should-know",
         "source": "Industry News",
-        "date": "2026-04-01"
+        "date": "2026-03-30"
       },
       {
-        "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
-        "url": "https://www.doccreatives.com/news",
+        "headline": "Sep 04, 2025 Top 10KeychainManufacturers forCustomMerchIn the growing market ofcustommerchandise,keychainsremain a popular and versatile product for artists, businesses, and creators. When it comes to",
+        "url": "https://vograce.com/blogs/information-hub/top-10-keychain-manufacturers-for-custom-merch",
         "source": "Industry News",
-        "date": "2026-04-01"
+        "date": "2026-03-30"
+      },
+      {
+        "headline": "Discover top 10customkeychainmanufacturers in 2025 for brands, traders & e-com sellers. Low MOQ, fast turnaround, premium quality to elevate yourmerch!",
+        "url": "https://uniquecustompins.com/best-custom-keychain-manufacturers/",
+        "source": "Industry News",
+        "date": "2026-03-30"
       }
     ],
     "market_trends": []

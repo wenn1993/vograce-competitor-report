@@ -1,5 +1,5 @@
 {
-  "last_updated": "",
+  "last_updated": "2026-03-30 09:13:11",
   "total_mentions": 0,
   "most_active": "WooAcry",
   "trending": [
@@ -8,40 +8,67 @@
     "print on demand"
   ],
   "data": {
-    "vograce": {
-      "name": "Vograce",
-      "twitter": "47.1K",
-      "tiktok": "25.0万",
-      "youtube": "1.37万",
-      "instagram": "175K"
+    "last_updated": "2026-03-30 09:13:11",
+    "competitors": {
+      "vograce": {
+        "name": "Vograce",
+        "followers": {
+          "twitter": "4.7万",
+          "instagram": "175K",
+          "tiktok": "249.2K",
+          "youtube": "1.37万"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "wooacry": {
+        "name": "WooAcry",
+        "followers": {
+          "twitter": "8,466",
+          "instagram": "354",
+          "tiktok": "65.1K",
+          "youtube": "6,080"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "zapcreatives": {
+        "name": "Zap! Creatives",
+        "followers": {
+          "twitter": "1.5万",
+          "instagram": "36.7K",
+          "tiktok": "5,337",
+          "youtube": "413"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "stickermule": {
+        "name": "Sticker Mule",
+        "followers": {
+          "twitter": "21.3万",
+          "instagram": "450K",
+          "tiktok": "91.4K",
+          "youtube": "1.43万"
+        },
+        "last_activity": "2026-03-30"
+      },
+      "makeship": {
+        "name": "Makeship",
+        "followers": {
+          "twitter": "44.3万",
+          "instagram": "310K",
+          "tiktok": "131.8K",
+          "youtube": "2.86万"
+        },
+        "last_activity": "2026-03-30"
+      }
     },
-    "wooacry": {
-      "name": "WooAcry",
-      "twitter": "8,473",
-      "tiktok": "6.5万",
-      "youtube": "6,080",
-      "instagram": "130K"
-    },
-    "zapcreatives": {
-      "name": "Zap! Creatives",
-      "twitter": "15.3K",
-      "tiktok": "5.3K",
-      "youtube": "413",
-      "instagram": "36.7K"
-    },
-    "stickermule": {
-      "name": "Sticker Mule",
-      "twitter": "21.3万",
-      "tiktok": "11.4万",
-      "youtube": "1.43万",
-      "instagram": "450K"
-    },
-    "makeship": {
-      "name": "Makeship",
-      "twitter": "44.3万",
-      "tiktok": "13.2万",
-      "youtube": "2.86万",
-      "instagram": "310K"
+    "industry_trends": {
+      "trending": [
+        "custom keychains",
+        "anime merch",
+        "print on demand",
+        "artist alley"
+      ],
+      "sentiment": "positive"
     }
   }
 }
