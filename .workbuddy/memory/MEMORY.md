@@ -151,3 +151,13 @@ HTML报告新增动态加载模块：
 - loadRedditTrends(): 支持 trending_topics 热门话题标签显示
 - loadRedditPlatformInfo(): 改进 subreddit 颜色匹配逻辑
 - loadIndustryNews(): 支持 market_trends 对象格式和 industry_insights 概览
+
+## 2026-04-01 JavaScript 语法错误全面修复
+
+**vograce-competitor-report.html 语法错误修复**：
+- **核心问题**：`updateSocialStats` 函数内的 try 语句缺少 catch 块，导致整个脚本解析失败
+- **症状**：所有数据加载函数未定义（typeof 返回 undefined），页面一直显示"加载中"
+- **修复**：添加缺失的 catch 块
+- **验证**：Reddit趋势、行业动态、社媒统计等模块全部正常加载
+
+**GitHub 已同步**：efd1e1e / 0f6ea5b / 9ba8b40

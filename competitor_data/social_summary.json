@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-04-01 09:19:42",
+  "timestamp": "2026-04-01 15:28:36",
   "data": {
     "vograce": {
       "name": "Vograce",
-      "twitter": "47.1K",
-      "tiktok": "25.0万",
+      "twitter": "47K",
+      "tiktok": "24.9万",
       "youtube": "1.37万",
       "instagram": "175K"
     },
     "wooacry": {
       "name": "WooAcry",
-      "twitter": "8,473",
+      "twitter": "8,472",
       "tiktok": "6.5万",
       "youtube": "6,080",
       "instagram": "130K"
@@ -24,31 +24,17 @@
     },
     "stickermule": {
       "name": "Sticker Mule",
-      "twitter": "21.3万",
+      "twitter": "213.5K",
       "tiktok": "11.4万",
       "youtube": "1.43万",
       "instagram": "450K"
     },
     "makeship": {
       "name": "Makeship",
-      "twitter": "44.3万",
+      "twitter": "443.2K",
       "tiktok": "13.2万",
       "youtube": "2.86万",
       "instagram": "310K"
-    },
-    "etsy": {
-      "name": "Etsy Custom",
-      "twitter": "-",
-      "tiktok": "2.1M",
-      "youtube": "120K",
-      "instagram": "890K"
-    },
-    "customplak": {
-      "name": "CUSTOMPLAK",
-      "twitter": "2.8K",
-      "tiktok": "15.2K",
-      "youtube": "890",
-      "instagram": "12.5K"
     }
   },
   "source": "playwright"
