@@ -5523,13 +5523,19 @@ async function loadRedditTrends() {
     let redditData = null;
     try {
       const res = await fetchFresh('competitor_data/reddit_trends.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       redditData = await res.json();
     } catch (e) {
+      console.warn('Reddit数据加载失败，尝试备用源:', e.message);
       // 如果专门的reddit文件不存在，尝试从social_summary获取
-      const socialRes = await fetchFresh('competitor_data/social_summary.json');
-      const socialData = await socialRes.json();
-      if (socialData.data && socialData.data.reddit_search) {
-        redditData = { hot_posts: socialData.data.reddit_search, last_updated: socialData.last_updated };
+      try {
+        const socialRes = await fetchFresh('competitor_data/social_summary.json');
+        const socialData = await socialRes.json();
+        if (socialData.data && socialData.data.reddit_search) {
+          redditData = { hot_posts: socialData.data.reddit_search, last_updated: socialData.last_updated };
+        }
+      } catch (e2) {
+        console.error('备用数据源也失败:', e2);
       }
     }
 
@@ -5556,7 +5562,6 @@ async function loadRedditTrends() {
         const topicName = typeof topic === 'string' ? topic : (topic.topic || '');
         const trend = typeof topic === 'object' ? topic.trend : null;
         const trendIcon = trend === 'rising' || trend === 'spiking' ? '↑' : trend === 'falling' ? '↓' : '→';
-        const trendColor = trend === 'rising' || trend === 'spiking' ? '#10B981' : '#FCD34D';
         html += `<span style="background:rgba(255,69,0,0.15);border:1px solid rgba(255,69,0,0.3);color:#FF6B35;font-size:11px;padding:3px 10px;border-radius:12px;">${escapeHtml(topicName)} ${trendIcon}</span>`;
       }
       html += `</div></div>`;
@@ -5583,10 +5588,11 @@ async function loadRedditTrends() {
     }
 
     grid.innerHTML = html;
+    console.log('Reddit趋势加载成功:', redditData.hot_posts.length, '条帖子');
 
   } catch (err) {
     console.error('加载Reddit趋势失败:', err);
-    grid.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败</div>`;
+    grid.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败: ${err.message}</div>`;
   }
 }
 
@@ -5714,13 +5720,19 @@ async function loadIndustryNews() {
     let newsData = null;
     try {
       const res = await fetchFresh('competitor_data/industry_news.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       newsData = await res.json();
     } catch (e) {
+      console.warn('行业动态加载失败，尝试备用源:', e.message);
       // 尝试从social_summary获取
-      const socialRes = await fetchFresh('competitor_data/social_summary.json');
-      const socialData = await socialRes.json();
-      if (socialData.data && socialData.data.industry_trends) {
-        newsData = { news: [], market_trends: socialData.data.industry_trends.trending_topics?.map(t => t.topic) || [] };
+      try {
+        const socialRes = await fetchFresh('competitor_data/social_summary.json');
+        const socialData = await socialRes.json();
+        if (socialData.data && socialData.data.industry_trends) {
+          newsData = { news: [], market_trends: socialData.data.industry_trends.trending_topics?.map(t => t.topic) || [] };
+        }
+      } catch (e2) {
+        console.error('备用数据源也失败:', e2);
       }
     }
 
@@ -5741,7 +5753,6 @@ async function loadIndustryNews() {
       for (const trend of newsData.market_trends.slice(0, 6)) {
         // 支持字符串和对象两种格式
         const trendName = typeof trend === 'string' ? trend : (trend.name || trend.topic || '');
-        const impactColor = typeof trend === 'object' && trend.impact === 'high' ? '#10B981' : '#FCD34D';
         html += `<span style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:12px;padding:4px 12px;border-radius:20px;">${escapeHtml(trendName)}</span>`;
       }
       html += `</div></div>`;
@@ -5793,10 +5804,11 @@ async function loadIndustryNews() {
     }
 
     newsList.innerHTML = html;
+    console.log('行业动态加载成功');
 
   } catch (err) {
     console.error('加载行业动态失败:', err);
-    newsList.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败</div>`;
+    newsList.innerHTML = `<div style="text-align:center;color:#EF4444;padding:40px;">数据加载失败: ${err.message}</div>`;
   }
 }
 

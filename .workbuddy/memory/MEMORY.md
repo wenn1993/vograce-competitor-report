@@ -132,3 +132,22 @@ HTML报告新增动态加载模块：
 - Makeship: X=https://x.com/Makeship, TikTok=@makeship, YouTube=搜索页, IG=makeship
 
 已更新：所有粉丝数据和标签改为可点击链接，指向对应社媒页面
+
+## 2026-04-01 数据加载修复
+
+### Reddit 热门话题数据修复
+- reddit_trends.json 数据结构：
+  - hot_posts: 热门帖子数组（title/subreddit/score/num_comments/url）
+  - subreddits: 社区概览对象（active_posts/description/avg_engagement）
+  - trending_topics: 热门话题数组（topic/sentiment/trend/mentions_7d）
+
+### 行业动态数据修复
+- industry_news.json 数据结构：
+  - news: 新闻数组（headline/url/source/date）
+  - market_trends: 市场趋势数组（name/impact/description）
+  - industry_insights: 行业洞察对象（total_market_size/growth_rate/key_drivers）
+
+### 加载函数修复
+- loadRedditTrends(): 支持 trending_topics 热门话题标签显示
+- loadRedditPlatformInfo(): 改进 subreddit 颜色匹配逻辑
+- loadIndustryNews(): 支持 market_trends 对象格式和 industry_insights 概览
