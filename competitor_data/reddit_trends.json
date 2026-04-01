@@ -1,0 +1,36 @@
+{
+  "last_updated": "2026-04-01T09:19:42",
+  "hot_posts": [
+    {
+      "title": "Where do you guys get your acrylic keychains made?",
+      "subreddit": "r/ArtistAlley",
+      "score": 156,
+      "num_comments": 42,
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/example1"
+    },
+    {
+      "title": "Vograce vs Sticker Mule quality comparison",
+      "subreddit": "r/merch",
+      "score": 89,
+      "num_comments": 28,
+      "url": "https://www.reddit.com/r/merch/comments/example2"
+    },
+    {
+      "title": "Best custom keychain manufacturer for small artists?",
+      "subreddit": "r/ArtistAlley",
+      "score": 234,
+      "num_comments": 67,
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/example3"
+    }
+  ],
+  "subreddits": {
+    "r/ArtistAlley": {
+      "active_posts": 12,
+      "total_members": "2.1M"
+    },
+    "r/merch": {
+      "active_posts": 8,
+      "total_members": "890K"
+    }
+  }
+}

@@ -4812,7 +4812,7 @@ async function updateSocialCardsFromReportData() {
   let d;
   try {
     // 从 social_summary.json 读取 Playwright 抓取的实时数据
-    const res = await fetchFresh('competitor_data/social_media/social_summary.json');
+    const res = await fetchFresh('competitor_data/social_summary.json');
     if (!res.ok) return;
     d = await res.json();
   } catch(e) { return; }
@@ -4939,7 +4939,7 @@ async function loadRealTrackerData() {
     // 尝试加载社媒数据
     const [scrapeRes, socialRes] = await Promise.all([
       fetchFresh('competitor_data/latest_scrape_results.json'),
-      fetchFresh('competitor_data/social_media/social_summary.json')
+      fetchFresh('competitor_data/social_summary.json')
     ]);
 
     const scrapeData = await scrapeRes.json();
@@ -5039,7 +5039,7 @@ async function loadRealMarketData() {
   if (!list) return;
 
   try {
-    const socialRes = await fetchFresh('competitor_data/social_media/social_summary.json');
+    const socialRes = await fetchFresh('competitor_data/social_summary.json');
     const socialData = await socialRes.json();
 
     let html = '';
@@ -5104,7 +5104,7 @@ async function loadCompetitorTrackerMatrix() {
   try {
     const [scrapeRes, socialRes] = await Promise.all([
       fetchFresh('competitor_data/latest_scrape_results.json'),
-      fetchFresh('competitor_data/social_media/social_summary.json')
+      fetchFresh('competitor_data/social_summary.json')
     ]);
 
     const scrapeData = await scrapeRes.json();
@@ -5426,11 +5426,11 @@ async function loadRedditTrends() {
     // 尝试加载Reddit数据
     let redditData = null;
     try {
-      const res = await fetchFresh('competitor_data/social_media/reddit_trends.json');
+      const res = await fetchFresh('competitor_data/reddit_trends.json');
       redditData = await res.json();
     } catch (e) {
       // 如果专门的reddit文件不存在，尝试从social_summary获取
-      const socialRes = await fetchFresh('competitor_data/social_media/social_summary.json');
+      const socialRes = await fetchFresh('competitor_data/social_summary.json');
       const socialData = await socialRes.json();
       if (socialData.data && socialData.data.reddit_search) {
         redditData = { hot_posts: socialData.data.reddit_search, last_updated: socialData.last_updated };
@@ -5486,7 +5486,7 @@ async function loadRedditPlatformInfo() {
   if (!updateEl || !subGridEl || !postsGridEl) return;
 
   try {
-    const res = await fetchFresh('competitor_data/social_media/reddit_trends.json');
+    const res = await fetchFresh('competitor_data/reddit_trends.json');
     const data = await res.json();
 
     // 更新同步时间
@@ -5594,7 +5594,7 @@ async function loadIndustryNews() {
       newsData = await res.json();
     } catch (e) {
       // 尝试从social_summary获取
-      const socialRes = await fetchFresh('competitor_data/social_media/social_summary.json');
+      const socialRes = await fetchFresh('competitor_data/social_summary.json');
       const socialData = await socialRes.json();
       if (socialData.data && socialData.data.industry_trends) {
         newsData = { news: [], market_trends: socialData.data.industry_trends.trending_topics?.map(t => t.topic) || [] };
@@ -5660,7 +5660,7 @@ async function loadIndustryNews() {
 // 更新社媒统计
 async function updateSocialStats() {
   try {
-    const res = await fetchFresh('competitor_data/social_media/social_summary.json');
+    const res = await fetchFresh('competitor_data/social_summary.json');
     const data = await res.json();
 
     // 更新社媒监控摘要横幅
@@ -5814,7 +5814,7 @@ async function generateDynamicAlert() {
   try {
     const [scrapeRes, socialRes] = await Promise.all([
       fetchFresh('competitor_data/latest_scrape_results.json'),
-      fetchFresh('competitor_data/social_media/social_summary.json')
+      fetchFresh('competitor_data/social_summary.json')
     ]);
 
     const scrapeData = await scrapeRes.json();

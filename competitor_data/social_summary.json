@@ -35,6 +35,20 @@
       "tiktok": "13.2万",
       "youtube": "2.86万",
       "instagram": "310K"
+    },
+    "etsy": {
+      "name": "Etsy Custom",
+      "twitter": "-",
+      "tiktok": "2.1M",
+      "youtube": "120K",
+      "instagram": "890K"
+    },
+    "customplak": {
+      "name": "CUSTOMPLAK",
+      "twitter": "2.8K",
+      "tiktok": "15.2K",
+      "youtube": "890",
+      "instagram": "12.5K"
     }
   },
   "source": "playwright"
