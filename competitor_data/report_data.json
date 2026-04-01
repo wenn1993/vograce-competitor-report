@@ -1,19 +1,19 @@
 {
   "_meta": {
-    "generated_at": "2026-03-31 18:16",
+    "generated_at": "2026-04-01 09:20",
     "version": "4.0",
     "description": "Vograce竞品分析报告统一数据源，覆盖所有模块"
   },
   "overview": {
-    "date": "2026-03-31",
-    "last_updated": "2026-03-31 18:16",
+    "date": "2026-04-01",
+    "last_updated": "2026-04-01 09:20",
     "competitors_monitored": 4,
     "sku_categories": 24,
     "active_alerts": 1,
     "data_freshness": "每日 08:00",
     "market_size_est": "$2.8B",
     "vograce_min_price": "$0.05",
-    "wooacry_min_price": "$0.20",
+    "wooacry_min_price": "$0.14",
     "zap_min_price": "$1.44",
     "smule_min_price": "$9.00"
   },
@@ -25,11 +25,11 @@
   "price_alerts": [
     {
       "competitor": "WooAcry",
-      "old_price": "$0.14",
-      "new_price": "$0.20",
-      "change_pct": "+42.9%",
-      "label": "涨价",
-      "level": "warning",
+      "old_price": "$0.20",
+      "new_price": "$0.14",
+      "change_pct": "-30.0%",
+      "label": "降价",
+      "level": "danger",
       "product_url": "https://wooacry.com/product-category/keychains/acrylic-keychains",
       "product_type": "亚克力钥匙扣"
     }
@@ -37,8 +37,8 @@
   "competitor_prices": [
     {
       "name": "WooAcry",
-      "min_price": "$0.20",
-      "vs_vograce": "+300%",
+      "min_price": "$0.14",
+      "vs_vograce": "+180%",
       "threat": "高",
       "color": "#EF4444",
       "url": "https://wooacry.com"
@@ -185,24 +185,9 @@
         "avg": 2.62
       },
       {
-        "date": "2026-03-31",
+        "date": "2026-04-01",
         "min": 0.14,
         "avg": 2.62
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.14,
-        "avg": 2.62
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.14,
-        "avg": 2.05
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.2,
-        "avg": 3.11
       }
     ],
     "Vograce": [
@@ -302,24 +287,9 @@
         "avg": 1.3
       },
       {
-        "date": "2026-03-31",
+        "date": "2026-04-01",
         "min": 0.05,
-        "avg": 3.4
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.05,
-        "avg": 3.4
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.05,
-        "avg": 3.4
-      },
-      {
-        "date": "2026-03-31",
-        "min": 0.05,
-        "avg": 3.4
+        "avg": 3.43
       }
     ],
     "Zap! Creatives": [],
@@ -415,22 +385,7 @@
         "avg": 9.0
       },
       {
-        "date": "2026-03-31",
-        "min": 9.0,
-        "avg": 9.0
-      },
-      {
-        "date": "2026-03-31",
-        "min": 9.0,
-        "avg": 9.0
-      },
-      {
-        "date": "2026-03-31",
-        "min": 9.0,
-        "avg": 9.0
-      },
-      {
-        "date": "2026-03-31",
+        "date": "2026-04-01",
         "min": 9.0,
         "avg": 9.0
       }
@@ -441,15 +396,15 @@
   "wa_vs_v": {
     "acrylic_keychain": {
       "vograce": "$0.05",
-      "wooacry": "$0.20",
+      "wooacry": "$0.14",
       "winner": "Vograce",
-      "diff": "+300%"
+      "diff": "+180%"
     }
   },
   "tracker_matrix": {
     "wooacry": {
       "name": "WooAcry",
-      "price_trend": "最低价$0.20",
+      "price_trend": "最低价$0.14",
       "promotion": "免费POD开店",
       "product_update": "持续新增SKU",
       "social_active": "高",
@@ -475,10 +430,16 @@
   "social": {},
   "hot_posts": [
     {
-      "title": "I love anime merch",
-      "score": 33,
-      "num_comments": 0,
-      "url": "https://reddit.com/r/animemerch/comments/1s4w2e9/i_love_anime_merch/"
+      "title": "Kakashi bro",
+      "score": 1061,
+      "num_comments": 33,
+      "url": "https://reddit.com/r/animemerch/comments/1ivubg7/kakashi_bro/"
+    },
+    {
+      "title": "Something aint right",
+      "score": 89,
+      "num_comments": 10,
+      "url": "https://reddit.com/r/animemerch/comments/1ivuf1g/something_aint_right/"
     },
     {
       "title": "Mels the cat, Me, Digital ink, 2022",
@@ -494,53 +455,47 @@
     },
     {
       "title": "Just released the first batch of merch for my Post Punk project Another Abyss",
-      "score": 5,
+      "score": 3,
       "num_comments": 0,
       "url": "https://reddit.com/r/merch/comments/xptu7z/just_released_the_first_batch_of_merch_for_my/"
     },
     {
-      "title": "My favourite website for Anime Merch Tees Lexxyy",
-      "score": 4,
-      "num_comments": 1,
-      "url": "https://reddit.com/r/animemerch/comments/1hsyapy/my_favourite_website_for_anime_merch_tees_lexxyy/"
-    },
-    {
-      "title": "The return of the king!",
-      "score": 4,
-      "num_comments": 0,
-      "url": "https://reddit.com/r/animemerch/comments/1gs06fh/the_return_of_the_king/"
+      "title": "Some nice Naruto anime merch",
+      "score": 3,
+      "num_comments": 2,
+      "url": "https://reddit.com/r/animemerch/comments/1iwj239/some_nice_naruto_anime_merch/"
     }
   ],
   "news": [
     {
-      "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
-      "url": "https://www.doccreatives.com/news",
+      "headline": "Find out whykeychainsare still a top pick for businesses looking for effective, budget-friendly merchandise. In the digital age, where online marketing seems to reign supreme, it's easy to overlook th",
+      "url": "https://www.everythingbranded.com/blog/are-promotional-keychains-still-relevant-exploring-their-popularity-in-the-21st-century",
       "source": "Industry News",
-      "date": "2026-03-31"
+      "date": "2026-04-01"
     },
     {
-      "headline": "Small objects are having a significant moment.Custompins, patches, andkeychainsare seeing rising spring-season demand in 2026, according to GSJJ's 2026 Spring Gift Trends report, with graduation seaso",
-      "url": "https://www.prismnews.com/gifting/personalized-gifts/personalized-pins-patches-and-keychains-surge-in-spring",
+      "headline": "Customkeychainshave long been a staple accessory, cherished for their practicality and potential for personal expression. As we advance into the digital age, the world ofcustomkeychainsis evolving, dr",
+      "url": "https://stonesmentor.com/the-future-of-custom-keychains-trends-and-innovations/",
       "source": "Industry News",
-      "date": "2026-03-31"
-    },
-    {
-      "headline": "Sep 04, 2025 Top 10KeychainManufacturers forCustomMerchIn the growing market ofcustommerchandise,keychainsremain a popular and versatile product for artists, businesses, and creators. When it comes to",
-      "url": "https://vograce.com/blogs/information-hub/top-10-keychain-manufacturers-for-custom-merch",
-      "source": "Industry News",
-      "date": "2026-03-31"
+      "date": "2026-04-01"
     },
     {
       "headline": "The personalizedmerchindustryis only growing stronger, and customizedkeychainscontinue to lead the way as one of the most versatile, creative, and high-demand products.",
       "url": "https://theinscribermag.com/the-future-of-personalized-merch-why-customized-keychains-stand-out/",
       "source": "Industry News",
-      "date": "2026-03-31"
+      "date": "2026-04-01"
     },
     {
       "headline": "The globalkeychainand phone chain market is experiencing unprecedented growth in 2026, with theindustrytransforming from simple functional accessories into fashion-forward personalized gifts. As a lea",
       "url": "https://www.ismartifact.com/the-rise-of-custom-keychains--phone-chains-2026-market-trends-every-wholesaler-should-know",
       "source": "Industry News",
-      "date": "2026-03-31"
+      "date": "2026-04-01"
+    },
+    {
+      "headline": "Stay updated with DOC'snews, product launches, andindustryinsights. Learn about trends incustomacrylickeychains, magnets, standees, and stickers. Our articles help global clients, artists, and brands ",
+      "url": "https://www.doccreatives.com/news",
+      "source": "Industry News",
+      "date": "2026-04-01"
     }
   ],
   "action_plan": {
@@ -558,9 +513,9 @@
   },
   "raw_alerts": [
     {
-      "type": "info",
+      "type": "danger",
       "competitor": "WooAcry",
-      "message": "WooAcry 价格上调了 42.9%"
+      "message": "WooAcry 价格下降了 30.0%，现最低价 $0.14"
     }
   ]
 }
