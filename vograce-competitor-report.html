@@ -5027,39 +5027,61 @@ async function loadRealTrackerData() {
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
 
-    // 从社媒数据生成追踪条目
-    if (socialData.data && socialData.data.competitors) {
-      const competitors = socialData.data.competitors;
+    // 从社媒数据生成追踪条目（支持两种数据结构）
+    const competitors = socialData.data?.competitors || socialData.data || {};
+    
+    // 遍历社媒竞争对手数据
+    for (const [key, comp] of Object.entries(competitors)) {
+      // 跳过非平台数据
+      if (!comp || typeof comp !== 'object') continue;
+      
+      // 获取平台名称和网站
+      const compName = comp.name || (key.charAt(0).toUpperCase() + key.slice(1));
+      const compClass = key.toLowerCase();
+      const website = getCompWebsite(key);
 
-      // 处理每个竞品的最新动态
-      for (const [key, comp] of Object.entries(competitors)) {
-        if (!comp.platforms) continue;
+      // 处理Twitter动态（数据结构1: competitors.xxx.platforms.twitter.recent_activity）
+      if (comp.platforms?.twitter?.recent_activity) {
+        for (const activity of comp.platforms.twitter.recent_activity.slice(0, 2)) {
+          const typeTag = getActivityTag(activity.type);
+          const priority = getActivityPriority(activity.type);
+          const action = escapeHtml(activity.content);
 
-        const compName = comp.name;
-        const compClass = key.toLowerCase();
-        const website = getCompWebsite(key);
-
-        // 处理Twitter动态
-        if (comp.platforms.twitter && comp.platforms.twitter.recent_activity) {
-          for (const activity of comp.platforms.twitter.recent_activity.slice(0, 2)) {
-            const typeTag = getActivityTag(activity.type);
-            const priority = getActivityPriority(activity.type);
-            const action = escapeHtml(activity.content);
-
-            html += `
-              <div class="tracker-item priority-${priority}">
-                <span class="tracker-competitor ${compClass}">${compName}</span>
-                <div class="tracker-content">
-                  <div class="tracker-action">${action}</div>
-                  <div class="tracker-meta">
-                    <span class="tracker-tag ${typeTag}">${getTypeLabel(activity.type)}</span>
-                    <span>${activity.date}</span>
-                    <a href="${website}" target="_blank" class="tracker-link">${getShortUrl(website)}</a>
-                  </div>
+          html += `
+            <div class="tracker-item priority-${priority}">
+              <span class="tracker-competitor ${compClass}">${compName}</span>
+              <div class="tracker-content">
+                <div class="tracker-action">${action}</div>
+                <div class="tracker-meta">
+                  <span class="tracker-tag ${typeTag}">${getTypeLabel(activity.type)}</span>
+                  <span>${activity.date}</span>
+                  <a href="${website}" target="_blank" class="tracker-link">${getShortUrl(website)}</a>
                 </div>
               </div>
-            `;
-          }
+            </div>
+          `;
+        }
+      }
+      
+      // 处理社媒粉丝数变化（数据结构2: 简单的粉丝数字符串如 "47.1K"）
+      if (comp.twitter && typeof comp.twitter === 'string' && comp.twitter !== '-') {
+        // 检测是否有 Twitter 粉丝数
+        const twitterCount = comp.twitter;
+        const platform = comp.platforms?.twitter;
+        if (platform?.followers_raw) {
+          html += `
+            <div class="tracker-item priority-low">
+              <span class="tracker-competitor ${compClass}">${compName}</span>
+              <div class="tracker-content">
+                <div class="tracker-action">社媒数据同步：Twitter ${twitterCount} 粉丝</div>
+                <div class="tracker-meta">
+                  <span class="tracker-tag social">社媒</span>
+                  <span>${socialData.timestamp || dateStr}</span>
+                  <a href="${website}" target="_blank" class="tracker-link">${getShortUrl(website)}</a>
+                </div>
+              </div>
+            </div>
+          `;
         }
       }
     }
@@ -5117,28 +5139,33 @@ async function loadRealMarketData() {
   if (!list) return;
 
   try {
-    const socialRes = await fetchFresh('competitor_data/social_summary.json');
+    // 尝试从多个数据源加载
+    const [socialRes, redditRes] = await Promise.all([
+      fetchFresh('competitor_data/social_summary.json'),
+      fetchFresh('competitor_data/reddit_trends.json').catch(() => null)
+    ]);
+
     const socialData = await socialRes.json();
+    const redditData = redditRes ? await redditRes.json() : null;
 
     let html = '';
 
-    // 添加行业趋势
-    if (socialData.data && socialData.data.industry_trends) {
-      const trends = socialData.data.industry_trends.trending_topics || [];
-
-      for (const trend of trends.slice(0, 4)) {
-        const priority = trend.trend === 'up' ? 'high' : (trend.trend === 'seasonal' ? 'medium' : 'low');
-        const tagClass = trend.trend === 'up' ? 'product' : 'marketing';
-        const action = escapeHtml(`${trend.topic} 搜索量${trend.volume}，趋势${trend.trend === 'up' ? '上升中' : trend.trend === 'seasonal' ? '季节性波动' : '稳定'}`);
-
+    // 添加行业趋势（从 reddit_trends.json）
+    if (redditData?.trending_topics && redditData.trending_topics.length > 0) {
+      for (const trend of redditData.trending_topics.slice(0, 4)) {
+        const topicName = typeof trend === 'string' ? trend : (trend.topic || '');
+        const trendType = typeof trend === 'object' ? trend.trend : null;
+        const priority = trendType === 'rising' || trendType === 'spiking' ? 'high' : (trendType === 'stable' ? 'medium' : 'low');
+        const tagClass = priority === 'high' ? 'product' : 'marketing';
+        
         html += `
           <div class="tracker-item priority-${priority}">
             <span class="tracker-competitor others">趋势</span>
             <div class="tracker-content">
-              <div class="tracker-action">${action}</div>
+              <div class="tracker-action">${escapeHtml(topicName)} 相关话题热度上升</div>
               <div class="tracker-meta">
-                <span class="tracker-tag ${tagClass}">${trend.volume}</span>
-                <span>${trend.trend === 'up' ? '上升中' : trend.trend === 'seasonal' ? '季节性' : '稳定'}</span>
+                <span class="tracker-tag ${tagClass}">${priority === 'high' ? '热门' : '一般'}</span>
+                <span>${redditData.last_updated || '最近'}</span>
               </div>
             </div>
           </div>
@@ -5146,23 +5173,49 @@ async function loadRealMarketData() {
       }
     }
 
-    // 添加Reddit热门帖子
-    if (socialData.data && socialData.data.reddit_search) {
-      const topReddit = socialData.data.reddit_search.slice(0, 2);
+    // 添加Reddit热门帖子（从 reddit_trends.json）
+    if (redditData?.hot_posts && redditData.hot_posts.length > 0) {
+      const topReddit = redditData.hot_posts.slice(0, 2);
       for (const post of topReddit) {
+        const title = (post.title || '无标题').substring(0, 80);
         html += `
           <div class="tracker-item priority-low">
             <span class="tracker-competitor others">Reddit</span>
             <div class="tracker-content">
-              <div class="tracker-action">${escapeHtml(post.title.substring(0, 80))}...</div>
+              <div class="tracker-action">${escapeHtml(title)}${post.title?.length > 80 ? '...' : ''}</div>
               <div class="tracker-meta">
-                <span class="tracker-tag marketing">${post.subreddit}</span>
-                <span>评分: ${post.score}</span>
-                <a href="${post.url}" target="_blank" class="tracker-link">查看原文</a>
+                <span class="tracker-tag marketing">${post.subreddit || 'r/merch'}</span>
+                <span>评分: ${post.score || 0}</span>
+                <a href="${post.url || '#'}" target="_blank" class="tracker-link">查看原文</a>
               </div>
             </div>
           </div>
         `;
+      }
+    }
+
+    // 添加社媒概览数据（从 social_summary.json）
+    if (socialData.data) {
+      const competitors = socialData.data.competitors || socialData.data;
+      const compList = Object.entries(competitors).slice(0, 3);
+      
+      for (const [key, comp] of compList) {
+        if (!comp || typeof comp !== 'object') continue;
+        const compName = comp.name || key;
+        if (comp.twitter && comp.twitter !== '-') {
+          html += `
+            <div class="tracker-item priority-medium">
+              <span class="tracker-competitor ${key.toLowerCase()}">${compName}</span>
+              <div class="tracker-content">
+                <div class="tracker-action">社媒覆盖：Twitter ${comp.twitter} | TikTok ${comp.tiktok || '-'}</div>
+                <div class="tracker-meta">
+                  <span class="tracker-tag social">社媒</span>
+                  <span>${socialData.timestamp || ''}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }
       }
     }
 
