@@ -3681,6 +3681,80 @@
       </div>
     </div>
 
+    <!-- Etsy Custom -->
+    <div class="social-comp-card" id="etsySocialCard">
+      <div class="social-comp-header">
+        <span class="social-comp-name" style="color:#F59E0B;">🧡 Etsy Custom</span>
+        <div class="social-comp-platforms">
+          <a href="https://www.tiktok.com/@etsy" target="_blank" class="platform-badge tiktok" style="text-decoration:none;">📱 TikTok</a>
+          <a href="https://www.youtube.com/results?search_query=etsy" target="_blank" class="platform-badge youtube" style="text-decoration:none;">▶️ YouTube</a>
+          <a href="https://x.com/Etsy" target="_blank" class="platform-badge twitter" style="text-decoration:none;">🐦 X</a>
+          <a href="https://www.instagram.com/etsy/" target="_blank" class="platform-badge instagram" style="text-decoration:none;">📷 IG</a>
+        </div>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.tiktok.com/@etsy" target="_blank" style="color:#00F2EA;text-decoration:none;">TikTok粉丝</a></span>
+        <span class="social-stat-val"><a href="https://www.tiktok.com/@etsy" target="_blank" style="color:#00F2EA;text-decoration:none;">2.1M</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.youtube.com/results?search_query=etsy" target="_blank" style="color:#FF0000;text-decoration:none;">YouTube订阅</a></span>
+        <span class="social-stat-val"><a href="https://www.youtube.com/results?search_query=etsy" target="_blank" style="color:#FF0000;text-decoration:none;">120K</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://x.com/Etsy" target="_blank" style="color:#1DA1F2;text-decoration:none;">X粉丝</a></span>
+        <span class="social-stat-val"><a href="https://x.com/Etsy" target="_blank" style="color:#1DA1F2;text-decoration:none;">-</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.instagram.com/etsy/" target="_blank" style="color:#E1306C;text-decoration:none;">Instagram粉丝</a></span>
+        <span class="social-stat-val"><a href="https://www.instagram.com/etsy/" target="_blank" style="color:#E1306C;text-decoration:none;">890K</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span>7日提及</span>
+        <span class="social-stat-val">5,234</span>
+      </div>
+      <div class="social-stat-row">
+        <span>情感趋势</span>
+        <span class="social-stat-val">→ 稳定</span>
+      </div>
+    </div>
+
+    <!-- CUSTOMPLAK -->
+    <div class="social-comp-card" id="customplakSocialCard">
+      <div class="social-comp-header">
+        <span class="social-comp-name" style="color:#A78BFA;">💜 CUSTOMPLAK</span>
+        <div class="social-comp-platforms">
+          <a href="https://www.tiktok.com/@customplak" target="_blank" class="platform-badge tiktok" style="text-decoration:none;">📱 TikTok</a>
+          <a href="https://www.youtube.com/results?search_query=customplak" target="_blank" class="platform-badge youtube" style="text-decoration:none;">▶️ YouTube</a>
+          <a href="https://x.com/customplak" target="_blank" class="platform-badge twitter" style="text-decoration:none;">🐦 X</a>
+          <a href="https://www.instagram.com/customplak/" target="_blank" class="platform-badge instagram" style="text-decoration:none;">📷 IG</a>
+        </div>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.tiktok.com/@customplak" target="_blank" style="color:#00F2EA;text-decoration:none;">TikTok粉丝</a></span>
+        <span class="social-stat-val"><a href="https://www.tiktok.com/@customplak" target="_blank" style="color:#00F2EA;text-decoration:none;">15.2K</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.youtube.com/results?search_query=customplak" target="_blank" style="color:#FF0000;text-decoration:none;">YouTube订阅</a></span>
+        <span class="social-stat-val"><a href="https://www.youtube.com/results?search_query=customplak" target="_blank" style="color:#FF0000;text-decoration:none;">890</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://x.com/customplak" target="_blank" style="color:#1DA1F2;text-decoration:none;">X粉丝</a></span>
+        <span class="social-stat-val"><a href="https://x.com/customplak" target="_blank" style="color:#1DA1F2;text-decoration:none;">2.8K</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span><a href="https://www.instagram.com/customplak/" target="_blank" style="color:#E1306C;text-decoration:none;">Instagram粉丝</a></span>
+        <span class="social-stat-val"><a href="https://www.instagram.com/customplak/" target="_blank" style="color:#E1306C;text-decoration:none;">12.5K</a></span>
+      </div>
+      <div class="social-stat-row">
+        <span>7日提及</span>
+        <span class="social-stat-val">156</span>
+      </div>
+      <div class="social-stat-row">
+        <span>情感趋势</span>
+        <span class="social-stat-val" style="color:#10B981;">↑ 上升</span>
+      </div>
+    </div>
+
   </div>
 
   <!-- 社媒数据综合分析 & Reddit -->
@@ -4825,6 +4899,8 @@ async function updateSocialCardsFromReportData() {
     zapcreatives: 'zapcreativesSocialCard',
     stickermule:  'stickermuleSocialCard',
     makeship:     'makeshipSocialCard',
+    etsy:         'etsySocialCard',
+    customplak:   'customplakSocialCard',
   };
   // 平台颜色和URL映射
   const platformConfig = {
@@ -4839,7 +4915,9 @@ async function updateSocialCardsFromReportData() {
     wooacry: { tiktok: 'wooacryofficial', youtube: 'Wooacry', twitter: 'Wooacry_Charms', instagram: 'wooacryofficial' },
     zapcreatives: { tiktok: 'zapcreatives', youtube: 'zapcreatives', twitter: 'ZapCreatives', instagram: 'zapcreatives' },
     stickermule: { tiktok: 'stickermule', youtube: 'stickermule', twitter: 'stickermule', instagram: 'stickermule' },
-    makeship: { tiktok: 'makeship', youtube: 'makeship', twitter: 'Makeship', instagram: 'makeship' }
+    makeship: { tiktok: 'makeship', youtube: 'makeship', twitter: 'Makeship', instagram: 'makeship' },
+    etsy: { tiktok: 'etsy', youtube: 'etsy', twitter: 'Etsy', instagram: 'etsy' },
+    customplak: { tiktok: 'customplak', youtube: 'customplak', twitter: 'customplak', instagram: 'customplak' }
   };
 
   for (const [key, cardId] of Object.entries(cardMap)) {
@@ -5118,6 +5196,8 @@ async function loadCompetitorTrackerMatrix() {
       { key: 'zap', name: 'Zap! Creatives', color: '#93C5FD', threat: '中高', threatPct: 55 },
       { key: 'stickermule', name: 'Sticker Mule', color: '#FCD34D', threat: '中等', threatPct: 45 },
       { key: 'makeship', name: 'Makeship', color: '#C4B5FD', threat: '中等', threatPct: 40 },
+      { key: 'etsy', name: 'Etsy Custom', color: '#F59E0B', threat: '中', threatPct: 55 },
+      { key: 'customplak', name: 'CUSTOMPLAK', color: '#A78BFA', threat: '低', threatPct: 35 },
       { key: 'vograce', name: 'Vograce', color: '#C4B5FD', threat: '-', threatPct: 0, isSelf: true }
     ];
 
@@ -5140,6 +5220,12 @@ async function loadCompetitorTrackerMatrix() {
           priceAction = `$${scrape.min_price?.toFixed(2) || '?'}-${scrape.max_price?.toFixed(2) || '?'}`;
           priceClass = 'info';
         }
+      } else if (comp.key === 'etsy') {
+        priceAction = '中位数 $3.50';
+        priceClass = 'info';
+      } else if (comp.key === 'customplak') {
+        priceAction = '参考价 €2.50';
+        priceClass = 'info';
       }
 
       // 促销动作
@@ -5154,6 +5240,12 @@ async function loadCompetitorTrackerMatrix() {
       } else if (comp.key === 'zap') {
         promoAction = 'SAVE20 20%off';
         promoClass = 'info';
+      } else if (comp.key === 'etsy') {
+        promoAction = '平台满减活动';
+        promoClass = 'info';
+      } else if (comp.key === 'customplak') {
+        promoAction = '首单9折';
+        promoClass = 'info';
       }
 
       // 产品更新
@@ -5164,6 +5256,10 @@ async function loadCompetitorTrackerMatrix() {
         productAction = '木质钥匙扣新品';
       } else if (comp.key === 'makeship') {
         productAction = 'IP联名众筹';
+      } else if (comp.key === 'etsy') {
+        productAction = 'C2C定制市场';
+      } else if (comp.key === 'customplak') {
+        productAction = '欧洲本地定制';
       }
 
       // 社媒活跃（基于Twitter粉丝数）
@@ -5171,7 +5267,7 @@ async function loadCompetitorTrackerMatrix() {
       let socialVal = 0;
       if (platforms.twitter && socialData.data) {
         // 获取对应竞品的Twitter粉丝数
-        const keyMap = { 'vograce': 'vograce', 'wooacry': 'wooacry', 'zap': 'zapcreatives', 'stickermule': 'stickermule', 'makeship': 'makeship' };
+        const keyMap = { 'vograce': 'vograce', 'wooacry': 'wooacry', 'zap': 'zapcreatives', 'stickermule': 'stickermule', 'makeship': 'makeship', 'etsy': 'etsy', 'customplak': 'customplak' };
         const socialKey = keyMap[comp.key];
         const followerStr = socialData.data[socialKey]?.twitter || '0';
         // 解析粉丝数
