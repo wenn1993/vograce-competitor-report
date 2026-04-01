@@ -5548,11 +5548,27 @@ async function loadRedditTrends() {
     }
 
     let html = '';
-    const posts = redditData.hot_posts.slice(0, 6);
 
+    // 显示热门话题标签
+    if (redditData.trending_topics && redditData.trending_topics.length > 0) {
+      html += `<div style="margin-bottom:16px;"><div style="font-size:11px;color:#94A3B8;margin-bottom:8px;">热门话题</div><div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+      for (const topic of redditData.trending_topics.slice(0, 5)) {
+        const topicName = typeof topic === 'string' ? topic : (topic.topic || '');
+        const trend = typeof topic === 'object' ? topic.trend : null;
+        const trendIcon = trend === 'rising' || trend === 'spiking' ? '↑' : trend === 'falling' ? '↓' : '→';
+        const trendColor = trend === 'rising' || trend === 'spiking' ? '#10B981' : '#FCD34D';
+        html += `<span style="background:rgba(255,69,0,0.15);border:1px solid rgba(255,69,0,0.3);color:#FF6B35;font-size:11px;padding:3px 10px;border-radius:12px;">${escapeHtml(topicName)} ${trendIcon}</span>`;
+      }
+      html += `</div></div>`;
+    }
+
+    // 显示热门帖子
+    const posts = redditData.hot_posts.slice(0, 6);
     for (const post of posts) {
-      const subredditColor = post.subreddit?.includes('ArtistAlley') ? '#FF4500' :
-                            post.subreddit?.includes('merch') ? '#10B981' : '#93C5FD';
+      const subredditLower = (post.subreddit || '').toLowerCase();
+      const subredditColor = subredditLower.includes('artist') ? '#FF4500' :
+                            subredditLower.includes('merch') ? '#10B981' :
+                            subredditLower.includes('anime') ? '#93C5FD' : '#6B7280';
       html += `
         <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
@@ -5598,7 +5614,7 @@ async function loadRedditPlatformInfo() {
     if (data && data.subreddits) {
       const subColorMap = {
         'r/ArtistAlley': '#FF4500', 'r/merch': '#FF4500',
-        'r/AnimeMerch': '#93C5FD', 'r/AnimeFigure': '#93C5FD',
+        'r/animemerch': '#93C5FD', 'r/AnimeMerch': '#93C5FD', 'r/AnimeFigure': '#93C5FD',
         'r/customkeychains': '#FCD34D', 'r/indieheads': '#FCD34D',
         'r/ArtistLounge': '#C4B5FD'
       };
@@ -5606,8 +5622,10 @@ async function loadRedditPlatformInfo() {
       const subs = Object.entries(data.subreddits);
       let subHtml = '';
       for (const [subName, info] of subs) {
-        const color = subColorMap[subName] || '#6B7280';
-        const activeLevel = info.active_posts >= 5 ? { text: '活跃度高', color: '#10B981' } : { text: '活跃度中', color: '#FCD34D' };
+        const color = subColorMap[subName.toLowerCase()] || '#6B7280';
+        const activeLevel = info.active_posts >= 10 ? { text: '活跃度高', color: '#10B981' } : 
+                            info.active_posts >= 5 ? { text: '活跃度中', color: '#FCD34D' } : 
+                            { text: '一般', color: '#94A3B8' };
         subHtml += `
           <div style="background:rgba(0,0,0,0.2);border-radius:10px;padding:12px;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
@@ -5616,7 +5634,7 @@ async function loadRedditPlatformInfo() {
             <div style="font-size:11px;color:#94A3B8;line-height:1.8;">
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <span>活跃帖子</span>
-                <span style="color:#fff;font-weight:500;">${info.active_posts}篇</span>
+                <span style="color:#fff;font-weight:500;">${info.active_posts || 0}篇</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
                 <span>社区状态</span>
@@ -5627,6 +5645,13 @@ async function loadRedditPlatformInfo() {
         `;
       }
       subGridEl.innerHTML = subHtml;
+    } else {
+      // 如果没有subreddits数据，显示默认卡片
+      subGridEl.innerHTML = `
+        <div style="background:rgba(0,0,0,0.2);border-radius:10px;padding:12px;text-align:center;color:#94A3B8;font-size:11px;">
+          暂无社区数据
+        </div>
+      `;
     }
 
     // 生成热门帖子列表（可点击）
@@ -5635,30 +5660,32 @@ async function loadRedditPlatformInfo() {
       // 取前8个帖子
       const topPosts = data.hot_posts.slice(0, 8);
       for (const post of topPosts) {
-        // 提取subreddit名称
-        const subMatch = post.url.match(/reddit\.com\/r\/([^/]+)/);
-        const subName = subMatch ? `r/${subMatch[1]}` : 'r/unknown';
-        const subColor = subName.includes('animemerch') ? '#93C5FD' : '#FF4500';
-        
+        // 提取subreddit名称 - 优先使用post.subreddit字段
+        const subName = post.subreddit || 'r/merch';
+        const subColor = subName.toLowerCase().includes('anime') ? '#93C5FD' : '#FF4500';
+
         // 格式化数字
         const formatNum = (n) => n >= 1000 ? `${(n/1000).toFixed(1)}k` : n;
-        
+
+        // 截断标题
+        const title = (post.title || '无标题').length > 60 ? (post.title || '').substring(0, 60) + '...' : (post.title || '无标题');
+
         postsHtml += `
-          <a href="${post.url}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(0,0,0,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s;">
+          <a href="${post.url || '#'}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(0,0,0,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s;">
             <div style="flex:1;min-width:0;">
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
                 <span style="background:${subColor};color:#fff;font-size:9px;font-weight:600;padding:2px 5px;border-radius:3px;">${subName}</span>
               </div>
-              <div style="color:#E2E8F0;font-size:12px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${post.title}</div>
+              <div style="color:#E2E8F0;font-size:12px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:60px;">
               <div style="display:flex;align-items:center;gap:3px;color:#94A3B8;font-size:10px;">
                 <span>👍</span>
-                <span>${formatNum(post.score)}</span>
+                <span>${formatNum(post.score || 0)}</span>
               </div>
               <div style="display:flex;align-items:center;gap:3px;color:#94A3B8;font-size:10px;">
                 <span>💬</span>
-                <span>${formatNum(post.num_comments)}</span>
+                <span>${formatNum(post.num_comments || 0)}</span>
               </div>
             </div>
           </a>
@@ -5712,9 +5739,29 @@ async function loadIndustryNews() {
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
       `;
       for (const trend of newsData.market_trends.slice(0, 6)) {
-        html += `<span style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:12px;padding:4px 12px;border-radius:20px;">${escapeHtml(trend)}</span>`;
+        // 支持字符串和对象两种格式
+        const trendName = typeof trend === 'string' ? trend : (trend.name || trend.topic || '');
+        const impactColor = typeof trend === 'object' && trend.impact === 'high' ? '#10B981' : '#FCD34D';
+        html += `<span style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:12px;padding:4px 12px;border-radius:20px;">${escapeHtml(trendName)}</span>`;
       }
       html += `</div></div>`;
+    }
+
+    // 显示行业洞察（新增）
+    if (newsData && newsData.industry_insights) {
+      const insights = newsData.industry_insights;
+      html += `
+        <div style="margin-bottom:16px;padding:12px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:10px;">
+          <div style="font-size:12px;font-weight:600;color:#C4B5FD;margin-bottom:8px;">行业概览</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+            <div><span style="color:#94A3B8;">市场规模</span><br><span style="color:#fff;font-weight:600;">${insights.total_market_size || '-'}</span></div>
+            <div><span style="color:#94A3B8;">增长率</span><br><span style="color:#10B981;font-weight:600;">${insights.growth_rate || '-'}</span></div>
+          </div>
+      `;
+      if (insights.key_drivers && insights.key_drivers.length > 0) {
+        html += `<div style="margin-top:8px;font-size:10px;color:#94A3B8;">驱动因素: ${insights.key_drivers.slice(0,3).join(' / ')}</div>`;
+      }
+      html += `</div>`;
     }
 
     // 显示新闻列表

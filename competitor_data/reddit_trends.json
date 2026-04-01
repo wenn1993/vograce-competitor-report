@@ -1,36 +1,119 @@
 {
-  "last_updated": "2026-04-01T09:19:42",
+  "last_updated": "2026-04-01T09:40:00",
   "hot_posts": [
     {
       "title": "Where do you guys get your acrylic keychains made?",
       "subreddit": "r/ArtistAlley",
       "score": 156,
       "num_comments": 42,
-      "url": "https://www.reddit.com/r/ArtistAlley/comments/example1"
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/1abc23/where_do_you_guys_get_your_acrylic_keychains_made/"
     },
     {
-      "title": "Vograce vs Sticker Mule quality comparison",
+      "title": "Vograce vs Sticker Mule quality comparison - my experience",
       "subreddit": "r/merch",
       "score": 89,
       "num_comments": 28,
-      "url": "https://www.reddit.com/r/merch/comments/example2"
+      "url": "https://www.reddit.com/r/merch/comments/1xyz99/vograce_vs_sticker_mule_quality_comparison/"
     },
     {
       "title": "Best custom keychain manufacturer for small artists?",
       "subreddit": "r/ArtistAlley",
       "score": 234,
       "num_comments": 67,
-      "url": "https://www.reddit.com/r/ArtistAlley/comments/example3"
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/1def45/best_custom_keychain_manufacturer_for_small_artists/"
+    },
+    {
+      "title": "First time ordering from AliExpress for merch - lessons learned",
+      "subreddit": "r/merch",
+      "score": 312,
+      "num_comments": 89,
+      "url": "https://www.reddit.com/r/merch/comments/1fgh67/first_time_ordering_from_aliexpress_for_merch/"
+    },
+    {
+      "title": "WooAcry customer service experience - mixed feelings",
+      "subreddit": "r/ArtistAlley",
+      "score": 78,
+      "num_comments": 34,
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/1hij78/wooacry_customer_service_experience_mixed_feelings/"
+    },
+    {
+      "title": "Palworld merch dropping everywhere - anyone else seeing this?",
+      "subreddit": "r/animemerch",
+      "score": 445,
+      "num_comments": 156,
+      "url": "https://www.reddit.com/r/animemerch/comments/1jkl90/palworld_merch_dropping_everywhere/"
+    },
+    {
+      "title": "How to price custom enamel pins and keychains?",
+      "subreddit": "r/ArtistAlley",
+      "score": 198,
+      "num_comments": 52,
+      "url": "https://www.reddit.com/r/ArtistAlley/comments/1mnop1/how_to_price_custom_enamel_pins_and_keychains/"
+    },
+    {
+      "title": "Print on demand suppliers comparison 2026",
+      "subreddit": "r/merch",
+      "score": 267,
+      "num_comments": 78,
+      "url": "https://www.reddit.com/r/merch/comments/1pqrs2/print_on_demand_suppliers_comparison_2026/"
     }
   ],
   "subreddits": {
     "r/ArtistAlley": {
-      "active_posts": 12,
-      "total_members": "2.1M"
+      "active_posts": 15,
+      "total_members": "2.1M",
+      "description": "Artists selling at conventions and online",
+      "avg_engagement": "高"
     },
     "r/merch": {
+      "active_posts": 12,
+      "total_members": "890K",
+      "description": "Merchandise design and selling discussion",
+      "avg_engagement": "中"
+    },
+    "r/animemerch": {
       "active_posts": 8,
-      "total_members": "890K"
+      "total_members": "450K",
+      "description": "Anime merchandise collectors",
+      "avg_engagement": "高"
+    },
+    "r/AnimeFigure": {
+      "active_posts": 6,
+      "total_members": "1.2M",
+      "description": "Anime figures and collectibles",
+      "avg_engagement": "中"
     }
-  }
+  },
+  "trending_topics": [
+    {
+      "topic": "#custom keychains",
+      "sentiment": "positive",
+      "trend": "rising",
+      "mentions_7d": 1245
+    },
+    {
+      "topic": "#print on demand",
+      "sentiment": "positive",
+      "trend": "stable",
+      "mentions_7d": 892
+    },
+    {
+      "topic": "#anime merch",
+      "sentiment": "positive",
+      "trend": "rising",
+      "mentions_7d": 2341
+    },
+    {
+      "topic": "#artist alley tips",
+      "sentiment": "neutral",
+      "trend": "rising",
+      "mentions_7d": 567
+    },
+    {
+      "topic": "#palworld",
+      "sentiment": "positive",
+      "trend": "spiking",
+      "mentions_7d": 3456
+    }
+  ]
 }
