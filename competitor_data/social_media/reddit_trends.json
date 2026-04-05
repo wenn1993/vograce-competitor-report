@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-04 10:24:31",
+  "last_updated": "2026-04-05 10:15:29",
   "subreddits": {
     "r/merch": {
       "subscribers": "N/A",
@@ -8,30 +8,34 @@
     "r/AnimeMerch": {
       "subscribers": "N/A",
       "active_posts": 5
+    },
+    "r/customkeychains": {
+      "subscribers": "N/A",
+      "active_posts": 5
     }
   },
   "hot_posts": [
     {
       "title": "I love anime merch",
-      "score": 35,
+      "score": 36,
       "num_comments": 1,
       "url": "https://reddit.com/r/animemerch/comments/1s4w2e9/i_love_anime_merch/"
     },
     {
       "title": "Mels the cat, Me, Digital ink, 2022",
-      "score": 9,
+      "score": 10,
       "num_comments": 1,
       "url": "https://reddit.com/r/merch/comments/y7amqo/mels_the_cat_me_digital_ink_2022/"
     },
     {
       "title": "Merch Production",
-      "score": 8,
+      "score": 7,
       "num_comments": 15,
       "url": "https://reddit.com/r/merch/comments/y7n176/merch_production/"
     },
     {
       "title": "Just released the first batch of merch for my Post Punk project Another Abyss",
-      "score": 5,
+      "score": 4,
       "num_comments": 0,
       "url": "https://reddit.com/r/merch/comments/xptu7z/just_released_the_first_batch_of_merch_for_my/"
     },
@@ -43,7 +47,7 @@
     },
     {
       "title": "The return of the king!",
-      "score": 4,
+      "score": 3,
       "num_comments": 0,
       "url": "https://reddit.com/r/animemerch/comments/1gs06fh/the_return_of_the_king/"
     },
