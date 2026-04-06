@@ -1,19 +1,6 @@
 {
-  "price_changes": [
-    {
-      "competitor": "WooAcry",
-      "old_price": 0.1,
-      "new_price": 0.14,
-      "change_pct": 40.0
-    }
-  ],
+  "price_changes": [],
   "new_promotions": [],
   "new_products": [],
-  "alerts": [
-    {
-      "type": "info",
-      "competitor": "WooAcry",
-      "message": "WooAcry 价格上调了 40.0%"
-    }
-  ]
+  "alerts": []
 }
